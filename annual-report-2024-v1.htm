@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Annual report</title>
+	<style>
+		body {
+			max-width: 1000px;
+			margin: 0 auto 600px !important;
+		}
+
+
+
+		.heading-gray {
+			color: #757575;
+		}
+
+		.headline-1,
+		.headline-2,
+		.headline-3,
+		.headline-4,
+		.headline-5,
+		.headline-6 {
+			line-height: 1.2;
+			margin-bottom: 10px;
+			margin-left: 0;
+		}
+
+
+
+
+		.headline-1,
+		.headline-2,
+		.headline-5,
+		.headline-6 {
+			font-size: 2rem;
+		}
+
+		.headline-1,
+		.headline-2,
+		.headline-3,
+		.headline-4,
+		.headline-5,
+		.headline-6 {
+			line-height: inherit;
+		}
+
+		.headline-1,
+		.headline-2,
+		.headline-3,
+		.headline-4 {
+			font-family: 'Aleo', "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-style: normal;
+			font-weight: 700;
+		}
+
+		.headline-1,
+		.headline-2 {
+			font-weight: 400;
+		}
+
+		@media (min-width: 120rem) {
+
+			.headline-1,
+			.headline-2,
+			.headline-5,
+			.headline-6 {
+				font-size: 2rem;
+			}
+		}
+
+		@media (min-width: 30rem) {
+
+			.headline-1,
+			.headline-2,
+			.headline-5,
+			.headline-6 {
+				font-size: calc(1.5rem + ((1vw - 0.3rem) * 0.5556));
+			}
+		}
+	</style>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Aleo&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="src/dev.css" />
+
+	<script src="./assets/js/GSDevTools.min.js"></script>
+	<script src="./assets/js/ScrollSmoother.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+	<script src="./assets/js/annual-report.js"></script>
+	<!-- 
+	-->
+
+
+</head>
+
+<body>
+	<div class="relative bg-yellow grid place-items-center aspect-[3/2] lg:aspect-[2/1] lg:overflow-hidden">
+		<img src="./assets/images/MomentumText.svg" alt="Momentum" class="z-10 px-6 max-w-2xl sm:hidden">
+		<div class="hidden sm:flex sm:z-10 ">
+
+			<img src="./assets/images/Mometext.svg" alt="Mome" class="sm:h-28" data-animate-mome>
+			<img src="./assets/images/NtumText.svg" alt="ntum" class="sm:h-28 sm:transform sm:-translate-x-[6%]"
+				data-animate-ntum>
+		</div>
+		<img src="./assets/images/TireTreadBg.png" class="absolute w-full h-full object-cover z-0 opacity-20"
+			style="transform: rotateX(-180deg) rotate(180deg) translate(25%, 0%);" data-momentum-background>
+	</div>
+	<div class="grid grid-cols-1 md:grid-cols-2">
+		<div class="relative aspect-square md:aspect-auto overflow-hidden">
+			<img src="./assets/images/NiyolWind_parallax.jpg"
+				class="absolute w-full object-center object-cover top-1/2 -translate-y-1/2" alt="Wind Turbine">
+		</div>
+		<div class="flex flex-col gap-4 p-12 lg:py-20 lg:pl-20 lg:pr-16 place-content-center">
+			<h2 class="heading-gray headline-2 leading-9">Our Momentum</h2>
+			<p>
+
+				“Watch our feet” has been our mantra, as we’ve committed to
+				make good on our promises, delivering to our members the
+				reliable, affordable, responsible electricity and services defined
+				in our mission. And with our members, we haven’t just been
+				moving, we’ve been steadily gaining momentum.
+			</p>
+			<p><a href="#" class="inline-flex items-center gap-2 px-4 py-2 border border-black rounded-full">
+					<img src="./assets/images/arrow-down-solid.svg" alt="Plus Icon" class="w-4 h-4 mt-1">
+					<span>Download the <span class="hidden lg:inline">2023 annual</span> report</span>
+				</a>
+			</p>
+
+		</div>
+
+	</div>
+	<div class="relative overflow-hidden grid grid-cols-1 bg-maroon md:grid-cols-2 min-h-screen md:min-h-[auto]"
+		data-parallax-container>
+		<div class="flex flex-col gap-4 z-10 px-10 pt-20 md:py-20 lg:p-20 place-content-center text-white">
+			<img src="./assets/images/PlanningText.svg" alt="Planning & Analytics" data-animate-heading-planning>
+			<p>
+				Tri-State is maintaining
+				reliability while retiring coal
+				and adding renewables.
+			</p>
+			<p><a href="#" class="underline">Read our Q&A with Lisa Tiffin, SVP Energy Management</a></p>
+		</div>
+		<div class="relative z-10 aspect-square md:aspect-auto">
+			<img src="./assets/images/Lisa.png" class="absolute max-w-xs top-10 left-1/2 transform -translate-x-1/2"
+				alt="Lisa Tiffin">
+		</div>
+		<img src="./assets/images/ChartBG_web.png"
+			class="absolute z-0 opacity-20 top-1/2 -translate-y-1/2 -translate-x-1/2 left-1/2 max-w-[200%] md:max-w-full"
+			alt="Background Image" data-parallax-image="absolute opacity-20">
+	</div>
+	<div class="relative overflow-hidden flex flex-col text-white md:flex-row-reverse md:aspect-[5/3]">
+		<img src="./assets/images/Sun.svg" class="absolute z-10 w-1/2 top-4 left-2 opacity-10 md:w-1/3" alt=""
+			data-animate-sun style="transform-origin: 46% 50%;">
+
+		<div class="flex flex-col gap-4 relative z-20 p-10 pt-20 items-center md:justify-center md:flex-none md:w-1/2">
+			<img src="./assets/images/Pin.svg" class="w-10 md:w-20 lg:w-30" alt="Pin" data-animate-pin>
+			<img src="./assets/images/ServingText.svg" class="" alt="Serving Members">
+			<p>
+				<a href="#" class="underline">Learn more about Escalante Solar</a>
+			</p>
+		</div>
+
+		<div class="flex flex-col gap-4 z-20 px-10 pb-20 justify-end md:flex-none md:w-1/2 lg:p-20">
+			<p class="headline-2 leading-9">
+				Tri-State is making a huge investment in clean energy by adding 1,250 MW of renewables and battery
+				storage.
+			</p>
+			<p><a href="#" class="underline">Read our Q&A with Susan Hunter, VP Energy Resources</a></p>
+		</div>
+
+		<img src="./assets/images/Susan.png"
+			class="absolute max-w-xs bottom-0 left-1/4 transform -translate-x-1/4 translate-y-1/2 hidden lg:block z-10"
+			alt="Susan Hunter">
+		<img src="./assets/images/EscalanteSolar.jpg" class="absolute z-0 h-full w-full object-cover lg:max-w-[150%]"
+			alt="Escalante Solar">
+	</div>
+
+	<div
+		class="flex items-center justify-center px-10 md:p-20 box-border aspect-square md:aspect-video lg:aspect-auto lg:py-40">
+		<picture class="flex-grow">
+			<source srcset="./assets/images/70PercentText_Web.svg" media="(min-width: 768px)">
+			<img src="./assets/images/70PercentText_Mobile.svg" class="max-w-full h-auto"
+				alt="70% OF OUR MEMBERS' ENERGY MIX WILL COME FROM CLEAN SOURCES IN 2030">
+		</picture>
+	</div>
+
+	<div class="relative overflow-hidden grid grid-cols-1 bg-yellow md:grid-cols-2 min-h-screen md:min-h-[auto]"
+		data-parallax-container>
+		<div class="flex flex-col gap-4 z-10 px-10 pt-20 md:py-20 lg:p-20 place-content-center text-white">
+
+			<img src="./assets/images/LeadingText.svg" alt="Leading the Conversation" data-animate-heading-leading>
+
+			<p class="headline-2 leading-9">
+				Learn how collaboration and
+				federal funding benefits both
+				members and end-consumers
+			</p>
+			<p><a href="#" class="underline">Read our Q&A with Evan Jurkovich, Energy Policy and
+					Federal Affairs Manager</a></p>
+		</div>
+		<div class="relative z-10 aspect-square md:aspect-auto">
+			<img src="./assets/images/Evan.png" class="absolute max-w-xs md:top-10 left-1/2 transform -translate-x-1/2"
+				alt="Evan Jurkovich">
+		</div>
+		<img src="./assets/images/TireTreadBg.png"
+			class="absolute right-0 z-0 opacity-20 transform translate-x-1/2 -translate-y-[7%]"
+			data-parallax-image="absolute right-0 z-0 opacity-20 transform translate-x-1/2 -translate-y-[7%]">
+	</div>
+	<div class="grid grid-cols-1 md:grid-cols-2">
+		<div class="aspect-square overflow-hidden md:aspect-auto md:relative" data-parallax-container>
+			<img src="./assets/images/TSTrucks_parallax.jpg" class="w-full h-full object-cover md:absolute" alt="Trucks"
+				data-parallax-image="absolute">
+		</div>
+		<div class="flex flex-col gap-4 p-10 pt-20 md:py-20">
+			<h2 class="heading-gray headline-2 leading-9">Accelerating our transition</h2>
+			<p>We have an ambitious plan focused on electric system resilience
+				and reduced costs. Built on a foundation of collaboration, our
+				plan is designed to benefit the electric consumers across our
+				four states, while accelerating our clean energy transition:
+			</p>
+			<ul class="flex flex-col gap-2 overflow-hidden" data-animate-bullets>
+				<li class="flex items-start gap-2">
+					<img src="./assets/images/plus-solid.svg" alt="Plus Icon" class="w-4 h-4 mt-1">
+					1,250 MW of geographically distributed renewables and battery storage added between 2026 and 2031
+				</li>
+				<li class="flex items-start gap-2">
+					<img src="./assets/images/plus-solid.svg" alt="Plus Icon" class="w-4 h-4 mt-1">
+					Retirement of coal-fired generation
+				</li>
+				<li class="flex items-start gap-2">
+					<img src="./assets/images/plus-solid.svg" alt="Plus Icon" class="w-4 h-4 mt-1">
+					New 290 MW combined-cycle natural gas unit in 2028, with carbon capture and sequestration added in
+					2031
+				</li>
+				<li class="flex items-start gap-2">
+					<img src="./assets/images/plus-solid.svg" alt="Plus Icon" class="w-4 h-4 mt-1">
+					Pursuit of federal funding through the USDA
+				</li>
+			</ul>
+
+			<p><a href="#" class="inline-flex items-center gap-2 px-4 py-2 border border-black rounded-full">
+					<img src="./assets/images/arrow-down-solid.svg" alt="Plus Icon" class="w-4 h-4 mt-1">
+					<span>Download the <span class="hidden lg:inline">2023 annual</span> report</span>
+				</a>
+			</p>
+
+		</div>
+
+	</div>
+	<div class="relative overflow-hidden flex flex-col text-white md:flex-row-reverse bg-green md:grid-cols-2 min-h-screen md:min-h-[auto]"
+		data-parallax-container>
+		<div
+			class="flex flex-col gap-4 z-10 px-10 pt-20 place-content-center text-white md:py-20 md:pl-0 md:flex-none md:w-1/2 ">
+
+			<h2 class="headline-2 leading-9">We’re bringing energy efficiency
+				within reach for members,
+				communities and homeowners</h2>
+			<p>
+				We are focused on a few specific programs with big impacts that
+				can help members sell more electricity and reduce their system
+				demand while reducing emissions:
+			</p>
+			<ul class="flex flex-col gap-2 overflow-hidden" data-animate-bullets>
+				<li class="flex items-start gap-2"><img src="./assets/images/plus-solid-white.svg" alt="Plus Icon"
+						class="w-4 h-4 mt-1">Read our Q&A with Pete Rusin, Energy Services</li>
+				<li class="flex items-start gap-2"><img src="./assets/images/plus-solid-white.svg" alt="Plus Icon"
+						class="w-4 h-4 mt-1">Energy efficient home upgrades through On-Bill Repayment</li>
+				<li class="flex items-start gap-2"><img src="./assets/images/plus-solid-white.svg" alt="Plus Icon"
+						class="w-4 h-4 mt-1">Rebates, electrification and more through our Electrify and
+					Save® program</li>
+			</ul>
+		</div>
+		<div class="relative z-10 aspect-square pt-10 md:aspect-auto md:flex-none md:w-1/2">
+			<img src="./assets/images/E&SLogo.svg"
+				class="absolute z-10 size-20 bottom-10 right-10 md:size-32 md:bottom-28 md:right-10"
+				alt="Electrify and Save Logo" data-animate-logo>
+			<img src="./assets/images/Pete.png"
+				class="absolute z-0 max-w-xs md:top-10 left-1/2 transform -translate-x-1/2" alt="Pete">
+		</div>
+		<img src="./assets/images/CircuitTreeBg.png" class="absolute z-0 opacity-20 max-w-none w-full transform translate-x-[-40%] translate-y-[-40%] rotate-90 
+					md:w-[60%] md:right-[55%] md:-top-[5%] md:translate-x-0 md:translate-y-0 md:rotate-0"
+			alt="Circuit Tree Background"
+			data-parallax-image="absolute z-0 opacity-20 transform md:w-[60%] md:right-[55%] md:-top-[5%] md:translate-x-0 md:translate-y-0 md:rotate-0">
+
+	</div>
+
+	<div class="ts-stats-container relative grid grid-cols-1 gap-16 px-10 py-20 md:grid-cols-3">
+		<div class="grid grid-rows-[auto,1fr] gap-4 text-center">
+			<div class="text-5xl"><stat-value>80</stat-value></div>
+			<p class="text-center">In 2023, Tri-State's energy services team averaged 80 electric vehicle charger
+				rebates a month</p>
+		</div>
+		<div class="grid grid-rows-[auto,1fr] gap-4 text-center">
+			<div class="text-5xl"><stat-value>50</stat-value>%</div>
+			<p class="text-center">Compared to 2021, air-source heat pump rebate applications increased more than 50% in
+				2023</p>
+		</div>
+		<div class="grid grid-rows-[auto,1fr] gap-4 text-center">
+			<div class="text-5xl"><stat-value>40</stat-value>+</div>
+			<p class="text-center">Our energy efficiency program has been around for 40+ years, and Tri-State has
+				processed
+				and approved thousands of rebates</p>
+		</div>
+	</div>
+
+
+</body>
+
+</html>

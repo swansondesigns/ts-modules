@@ -1,0 +1,16 @@
+{
+	"name": "website-modules",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "npx tailwindcss -i ./src/input.css -o ./src/dev.css --watch",
+		"build": "npx tailwindcss -i ./src/input.css -o ./src/build.css --minify"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"tailwindcss": "^3.4.4"
+	}
+}
