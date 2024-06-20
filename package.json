@@ -4,8 +4,8 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"dev": "npx tailwindcss -i ./src/input.css -o ./src/dev.css --watch",
-		"build": "npx tailwindcss -i ./src/input.css -o ./src/build.css --minify"
+		"dev": "npx tailwindcss -i ./src/input.css -o ./src/build.css --watch",
+		"build": "npx tailwindcss -i ./src/input.css -o ./assets/css/build.css --minify"
 	},
 	"keywords": [],
 	"author": "",
