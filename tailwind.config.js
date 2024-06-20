@@ -8,9 +8,6 @@ module.exports = {
 				'maroon': '#B04E3F',
 				'green': '#B3C557',
 			},
-			fontFamily: {
-				'rock-salt': ['"Rock Salt"', 'cursive'],
-			},
 		},
 	},
 	plugins: [
