@@ -1,5 +1,6 @@
 .vscode
 .npmrc
 node_modules
+assets/css/
 assets/js/GSDevTools.min.js
 assets/js/ScrollSmoother.min.js
