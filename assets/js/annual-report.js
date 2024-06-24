@@ -57,7 +57,7 @@ function annualReportScrollTriggers() {
 				duration: 0.5,
 				stagger: 0.1,
 				scrollTrigger: {
-					start: 'top center',
+					start: 'top 60%',
 					trigger: list,
 					// markers: true,
 				},
@@ -126,7 +126,6 @@ function annualReportScrollTriggers() {
 function annualReportanimateHeading(selector, direction) {
 	const heading = document.querySelector(selector);
 	const headingContainer = heading.closest('.relative');
-	console.log(headingContainer);
 	const offsetWidth = headingContainer.offsetWidth * direction;
 
 	gsap.from(heading, {
@@ -134,10 +133,9 @@ function annualReportanimateHeading(selector, direction) {
 		duration: 1,
 		ease: 'elastic.out(1, 0.75)',
 		scrollTrigger: {
-			trigger: headingContainer,
-			start: 'top 30%',
+			trigger: heading,
+			start: 'bottom 70%',
 			// markers: true,
-			id: selector,
 		},
 	});
 }
