@@ -1,6 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#main .text-white {
+	--tw-text-opacity: 1;
+	color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+#main .text-black {
+	--tw-text-opacity: 1;
+	color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+#main .font-normal {
+	font-weight: 400;
+}
+#main .no-underline {
+	text-decoration: none;
+}
+
 .hideme {
 	display: none;
 }
