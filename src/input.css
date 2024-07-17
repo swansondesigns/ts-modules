@@ -2,11 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-#main .text-white {
+#main a.text-white,
+#main a.text-white:hover {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
-#main .text-black {
+
+#main a.text-black,
+#main a.text-black:hover {
 	--tw-text-opacity: 1;
 	color: rgb(0 0 0 / var(--tw-text-opacity));
 }
