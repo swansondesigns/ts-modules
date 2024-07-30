@@ -65,14 +65,9 @@ function annualReportScrollTriggers() {
 		});
 
 		/**
-		 * Sun and Pin
+		 * Pin
 		 */
-		gsap.to('[data-animate-sun]', {
-			rotation: 360, // Rotate 360 degrees
-			duration: 20, // Duration of one full rotation in seconds
-			repeat: -1, // Repeat infinitely
-			ease: 'linear', // Smooth linear easing
-		});
+
 		const pin = document.querySelector('[data-animate-pin]');
 		gsap.from(pin, {
 			y: -400,
