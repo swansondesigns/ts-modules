@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+nav .collapse {
+	visibility: visible;
+}
 #main a.text-white,
 #main a.text-white:hover {
 	--tw-text-opacity: 1;
