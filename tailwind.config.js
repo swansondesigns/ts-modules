@@ -1,11 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ['./**/*.{htm,js}'],
+	content: ['./**/*.htm'],
 	theme: {
 		fontFamily: {
 			'serif': ['Aleo', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
 		},
 		extend: {
+			colors: {
+				navy: '#004a76',
+				gray: '#dedcd7',
+			},
 			animation: {
 				'spin-slow': 'spin 20s linear infinite',
 			},
