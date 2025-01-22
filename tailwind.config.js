@@ -3,25 +3,31 @@ module.exports = {
 	content: ['./**/*.htm'],
 	theme: {
 		fontFamily: {
-			'serif': ['Aleo', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
+			serif: ['Aleo', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif']
 		},
 		extend: {
+			animation: {
+				'spin-slow': 'spin 20s linear infinite'
+			},
+			backgroundImage: {
+				'connections-r': "url('https://tristate.coop/sites/default/files/images/electrify-and-save/2023/right-electric-white.svg')",
+				'connections-l': "url('https://tristate.coop/sites/default/files/images/electrify-and-save/2023/left-electric-white.svg')"
+			},
 			colors: {
 				navy: '#004a76',
 				gray: '#dedcd7',
+				green: '#b4c757'
 			},
-			animation: {
-				'spin-slow': 'spin 20s linear infinite',
-			},
-		},
+			display: ['contents']
+		}
 	},
 	plugins: [
 		function ({ addUtilities }) {
 			addUtilities({
 				'.text-wrap-balance': {
-					'text-wrap': 'balance',
-				},
+					'text-wrap': 'balance'
+				}
 			});
-		},
-	],
+		}
+	]
 };
