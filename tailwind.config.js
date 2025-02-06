@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: ['./**/*.htm'],
+	corePlugins: {
+		preflight: false // Disables Tailwind's reset
+	},
 	theme: {
 		fontFamily: {
 			serif: ['Aleo', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif']
