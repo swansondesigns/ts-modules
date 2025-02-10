@@ -111,7 +111,7 @@
 				</div>
 			</section>
 
-			<section class="px-8 py-16 text-center sm:grid sm:place-content-center hiddenXX" data-hvac>
+			<section class="px-8 py-16 text-center sm:grid sm:place-content-center">
 				<div class="max-w-2xl mx-auto space-y-4">
 					<h1 class="text-xl md:text-3xl my-4 font-light">Heading Here?</h1>
 					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat maiores nulla, voluptas,
@@ -119,11 +119,11 @@
 						quaerat
 						dolores vel suscipit labore saepe.</p>
 				</div>
-				<div class=" mx-auto flex justify-center gap-4" style="margin: 2vh auto;">
+				<div class="flex flex-col gap-4 mt-6">
 
-					<a class="text-base text-center mb-5 border-black text-black border-2 px-5 font-normal mx-auto rounded-full no-underline inline-block bg-transparent text-inherit leading-10"
+					<a class="text-base text-center border-2 border-solid border-black text-black px-5 font-normal mx-auto rounded-full no-underline inline-block bg-transparent text-inherit leading-10"
 						data-qi-selector="hvac" href="#">HVAC and Heat Pump Technicians</a>
-					<a class="text-base text-center mb-5 border-black text-black border-2 px-5 font-normal mx-auto rounded-full no-underline inline-block bg-transparent text-inherit leading-10"
+					<a class="text-base text-center border-2 border-solid border-black text-black px-5 font-normal mx-auto rounded-full no-underline inline-block bg-transparent text-inherit leading-10"
 						data-qi-selector="plumber" href="#">Plumbers and Heat Pump
 						Water
 						Heater Technicians</a>
@@ -408,19 +408,30 @@
 			link.addEventListener('click', event => {
 				event.preventDefault();
 
-				// Hide all elements with data-hvac and data-plumber
-				document.querySelectorAll('[data-hvac], [data-plumber]').forEach(el => {
-					el.classList.add('hiddenXX');
+				// Hide all elements with data-hvac, data-plumber, and both forms
+				document.querySelectorAll('[data-hvac], [data-plumber], form.webform-submission-form').forEach(el => {
+					el.classList.add('hidden');
 				});
 
 				// Show only the selected elements
 				const targetSelector = event.currentTarget.getAttribute('data-qi-selector');
 				document.querySelectorAll(`[data-${targetSelector}]`).forEach(el => {
-					el.classList.remove('hiddenXX');
+					el.classList.remove('hidden');
 				});
+
+				// Map data attributes to corresponding form IDs
+				const formMap = {
+					'hvac': 'webform-submission-quality-install-application-node-797-add-form',
+					'plumber': 'webform-submission-quality-install-hpwh-node-797-add-form'
+				};
+
+				// Show the correct form if it exists in the map
+				const formId = formMap[targetSelector];
+				if (formId) {
+					document.getElementById(formId)?.classList.remove('hidden');
+				}
 			});
 		});
-
 	</script>
 </body>
 
