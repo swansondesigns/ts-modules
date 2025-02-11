@@ -1,10 +1,18 @@
 /** @type {import('tailwindcss').Config} */
+const defaultColors = require('tailwindcss/colors');
+
 module.exports = {
 	content: ['./**/*.htm'],
 	corePlugins: {
 		preflight: false // Disables Tailwind's reset
 	},
 	theme: {
+		colors: {
+			...defaultColors,
+			navy: '#004a76',
+			gray: '#dedcd7',
+			green: '#b4c757'
+		},
 		fontFamily: {
 			serif: ['Aleo', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif']
 		},
@@ -18,11 +26,7 @@ module.exports = {
 				'connections-r-grey': "url('https://tristate.coop/sites/default/files/images/electrify-and-save/2023/right-electric-grey.svg')",
 				'connections-l-grey': "url('https://tristate.coop/sites/default/files/images/electrify-and-save/2023/left-electric-grey.svg')"
 			},
-			colors: {
-				navy: '#004a76',
-				gray: '#dedcd7',
-				green: '#b4c757'
-			},
+
 			display: ['contents']
 		}
 	},
