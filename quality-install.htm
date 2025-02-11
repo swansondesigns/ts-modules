@@ -44,6 +44,10 @@
 			font-size: 16px;
 			/* color: #636466; */
 		}
+
+		.hidden {
+			/* display: block !important; */
+		}
 	</style>
 </head>
 
@@ -52,19 +56,84 @@
 
 		<div class="block-region-content">
 
-			<section class="bg-green flex flex-row">
+			<section class="bg-green flex flex-row min-h-80">
 				<div class="bg-connections-l bg-repeat-y basis-[15%] min-w-8 bg-[length:100%]"></div>
-				<div class="box-border flex-grow flex-shrink text-center min-h-60 px-8 py-12 md:py-16 md:text-balance">
+				<div
+					class="box-border flex-grow flex-shrink text-center px-8 py-12 grid place-content-center md:py-16 md:text-balance">
 					<h1 class="text-2xl md:text-4xl text-white my-4">Quality Install Program</h1>
 				</div>
 				<div class="bg-connections-r bg-repeat-y bg-right basis-[15%] min-w-8 bg-[length:100%]"></div>
 			</section>
-			<section class="bg-gray flex flex-row" data-hvac>
-				<div class="bg-connections-l-grey bg-repeat-y basis-[15%] min-w-8 bg-[length:100%] opacity-40"></div>
-				<div
-					class="box-border flex-grow flex-shrink text-center min-h-60 max-w-[70%] px-8 py-12 md:py-16 md:text-balance">
+
+			<section class="px-8 py-16 text-center sm:grid sm:place-content-center">
+				<div class="max-w-2xl mx-auto space-y-4">
+
+					<p>Tri-State’s Quality Install (QI) training program provides in-depth training on the latest
+						technology and advancements
+						in electric heat pumps and heat pump water heaters. These systems deliver superior efficiency,
+						comfort, and performance.
+						Select the appropriate option below based on the type of installation you’re performing.
+					</p>
+				</div>
+
+				<div class="flex flex-col gap-8 mt-6">
+					<div>
+
+						<h1 class="text-base font-bold"
+							style="font-family: 'Sarabun','Helvetica Neue',Helvetica,Arial,sans-serif">
+							HVAC and Heat Pump Technicians</h1>
+						<a class="text-base text-center bg-green text-white px-5 font-normal mx-auto rounded-full no-underline inline-block text-inherit leading-10"
+							data-qi-selector="hvac" href="#">Begin Here</a>
+					</div>
+					<div>
+						<h1 class="text-base font-bold"
+							style="font-family: 'Sarabun','Helvetica Neue',Helvetica,Arial,sans-serif">
+							Plumbers and Heat Pump Water Heater Technicians</h1>
+						<a class="text-base text-center bg-green text-white px-5 font-normal mx-auto rounded-full no-underline inline-block text-inherit leading-10"
+							data-qi-selector="plumber" href="#">Begin Here</a>
+					</div>
+				</div>
+			</section>
+
+			<section class="px-8 py-16 text-center text-balance sm:grid sm:place-content-center hidden" data-hvac>
+				<div class="mx-auto max-w-2xl space-y-4">
+					<h2 class="headline-light ts-heading-2">
+						Contractors can receive up to $450 per HVAC installation as a Quality Install (QI) trade ally
+						with Tri-State
+					</h2>
+					<p>
+						The Tri-State Quality Install Program for HVAC provides a $350 to $450 contractor spiff per
+						install. The
+						program focuses on equipment selection and solutions for 5F and includes static pressure and air
+						flow
+						testing for ducted systems. Qualifying customer systems must be a member of and receive electric
+						service
+						from one of Tri-State G&amp;T’s participating cooperatives or public power district. Find a list
+						of our
+						member systems here.
+					</p>
+				</div>
+			</section>
+
+			<section class="px-8 py-16 text-center text-balance sm:grid sm:place-content-center hidden" data-plumber>
+				<div class="mx-auto max-w-2xl space-y-4">
+					<h2 class="headline-light ts-heading-2">
+						Contractors can receive up to $200 per Heat Pump Water Heater installation as a Quality Install
+						(QI) trade ally with
+						Tri-State.
+					</h2>
+
+				</div>
+			</section>
+
+
+
+			<section
+				class="ts-content ts-background-gray ts-background-connections ts-background-connections-grey hidden"
+				data-hvac>
+				<div class="connections-content">
 					<h2 class="headline-2  headline-light ts-heading-2 ts-text-center">Apply to the QI program through
-						one of the options below</h2>
+						one of options below</h2>
 
 					<p>If accepted, you agree to be listed on Tristate.coop, LoveElectric.org and/or participating
 						member websites. You also agree to annual program updates and future requirements to maintain
@@ -79,132 +148,7 @@
 							</div>
 							<p>
 								Take an approved air source heat pump course from a manufacturer or training provider
-								and email to <a href="mailto:peter.rusin@tristategt.org">peter.rusin@tristategt.org</a>
-							</p>
-						</div>
-						<div class="grid gap-y-4 content-start">
-							<div
-								class="grid place-content-center mx-auto border border-solid aspect-square rounded-full size-16 text-4xl">
-								<span style="margin-top: -20%;">2</span>
-							</div>
-							<p>
-								Verify you are approved by PRPA's Efficiency Works Program or on Xcel Colorado's Heat
-								Pump
-								Contractor list by sending a screenshot to <a
-									href="mailto:peter.rusin@tristategt.org">peter.rusin@tristategt.org</a>
-							</p>
-						</div>
-						<div class="grid gap-y-4 content-start">
-							<div
-								class="grid place-content-center mx-auto border border-solid aspect-square rounded-full size-16 text-4xl">
-								<span style="margin-top: -20%;">3</span>
-							</div>
-							<p>
-								Watch the 4 module training videos below and answer the questionnaire on this webpage.
-							</p>
-						</div>
-					</div>
-
-
-				</div>
-				<div class="bg-connections-r-grey bg-repeat-y bg-right basis-[15%] min-w-8 bg-[length:100%] opacity-40">
-				</div>
-			</section>
-
-			<section class="px-8 py-16 text-center sm:grid sm:place-content-center">
-				<div class="max-w-2xl mx-auto space-y-4">
-					<h1 class="text-xl md:text-3xl my-4 font-light">Heading Here?</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat maiores nulla, voluptas,
-						repellat,
-						quaerat
-						dolores vel suscipit labore saepe.</p>
-				</div>
-				<div class="flex flex-col gap-4 mt-6">
-
-					<a class="text-base text-center border-2 border-solid border-black text-black px-5 font-normal mx-auto rounded-full no-underline inline-block bg-transparent text-inherit leading-10"
-						data-qi-selector="hvac" href="#">HVAC and Heat Pump Technicians</a>
-					<a class="text-base text-center border-2 border-solid border-black text-black px-5 font-normal mx-auto rounded-full no-underline inline-block bg-transparent text-inherit leading-10"
-						data-qi-selector="plumber" href="#">Plumbers and Heat Pump
-						Water
-						Heater Technicians</a>
-				</div>
-			</section>
-
-
-			<section class="px-8 py-16 text-center text-balance sm:grid sm:place-content-center hiddenXX" data-hvac>
-				<div class="max-w-2xl space-y-4">
-
-					<h2 class="headline-light ts-heading-2">Contractors can receive up to $450 per HVAC installation as
-						a
-						Quality
-						Install (QI) trade ally with Tri-State</h2>
-
-					<p>The Tri-State Quality Install Program for HVAC provides a $350 to $450 contractor spiff per
-						install.
-						The
-						program
-						focuses on equipment selection and solutions for 5F and includes static pressure and air flow
-						testing
-						for
-						ducted
-						systems. Qualifying customer systems must be a member of and receive electric service from one
-						of
-						Tri-State
-						G&amp;T’s participating cooperatives or public power district. Find a list of our member systems
-						here.
-					</p>
-				</div>
-			</section>
-			<section class="px-8 py-16 text-center text-balance sm:grid sm:place-content-center hiddenXX" data-plumber>
-				<div class="max-w-2xl space-y-4">
-
-					<h2 class="headline-light ts-heading-2">Contractors can receive up to $450 per Heat Pump Water
-						Heater
-						installation as a Quality
-						Install (QI) trade ally with Tri-State</h2>
-
-					<p>The Tri-State Quality Install Program for Heat Pump Water Heater provides a $350 to $450
-						contractor
-						spiff
-						per
-						install. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, ullam. Qualifying
-						customer
-						systems
-						must be a member of and receive electric service from one of Tri-State
-						G&amp;T’s participating cooperatives or public power district. Find a list of our member systems
-						here.
-					</p>
-				</div>
-			</section>
-
-
-			<section
-				class="ts-content ts-background-gray ts-background-connections ts-background-connections-grey hiddenXX"
-				data-hvac>
-				<div class="connections-content">
-					<h2 class="headline-2  headline-light ts-heading-2 ts-text-center">Apply to the QI program through
-						one
-						of
-						the
-						options below</h2>
-
-					<p>If accepted, you agree to be listed on Tristate.coop, LoveElectric.org and/or participating
-						member
-						websites.
-						You also agree to annual program updates and future requirements to maintain program approval.
-					</p>
-
-					<div class="grid gap-8 mt-8">
-						<div class="grid gap-y-4 content-start">
-							<div
-								class="grid place-content-center mx-auto border border-solid aspect-square rounded-full size-16 text-4xl">
-								<span style="margin-top: -20%;">1</span>
-							</div>
-							<p>
-								Take an approved air source heat pump course from a manufacturer or training provider
-								and
-								email
-								to
+								and email to
 								<a href="mailto:peter.rusin@tristategt.org">peter.rusin@tristategt.org</a>
 							</p>
 						</div>
@@ -215,9 +159,8 @@
 							</div>
 							<p>
 								Verify you are approved by PRPA's Efficiency Works Program or on Xcel Colorado's Heat
-								Pump
-								Contractor list by sending a screenshot to <a
-									href="mailto:peter.rusin@tristategt.org">peter.rusin@tristategt.org</a>
+								Pump Contractor list by sending a screenshot to
+								<a href="mailto:peter.rusin@tristategt.org">peter.rusin@tristategt.org</a>
 							</p>
 						</div>
 						<div class="grid gap-y-4 content-start">
@@ -229,13 +172,23 @@
 								Watch the 4 module training videos below and answer the questionnaire on this webpage.
 							</p>
 						</div>
+						<div class="grid gap-y-4 content-start">
+							<div
+								class="grid place-content-center mx-auto border border-solid aspect-square rounded-full size-16 text-4xl">
+								<span style="margin-top: -20%;">4</span>
+							</div>
+							<p>
+								A representative from Tri-State will contact you within 5 business days on your Quality
+								Install Program status.
+							</p>
+						</div>
 					</div>
 
 
 				</div>
 			</section>
 			<section
-				class="ts-content ts-background-gray ts-background-connections ts-background-connections-grey hiddenXX"
+				class="ts-content ts-background-gray ts-background-connections ts-background-connections-grey hidden"
 				data-plumber>
 				<div class="connections-content">
 					<h2 class="headline-2  headline-light ts-heading-2 ts-text-center">Apply to the QI program through
@@ -257,8 +210,7 @@
 								<span style="margin-top: -20%;">1</span>
 							</div>
 							<p>
-								If you haven’t already, Watch the video: <a href="https://vimeo.com/1020282767"
-									target="_blank">Vimeo video</a>
+								Watch the Heat Pump Water Heater Installation Basics training video below.
 							</p>
 						</div>
 						<div class="grid gap-y-4 content-start">
@@ -267,17 +219,17 @@
 								<span style="margin-top: -20%;">2</span>
 							</div>
 							<p>
-								If you have already watched the video, just email Pete the completed questions at <a
-									href="mailto:peter.rusin@tristategt.org">peter.rusin@tristategt.org</a>
+								Complete the quiz below.
 							</p>
 						</div>
 						<div class="grid gap-y-4 content-start">
 							<div
 								class="grid place-content-center mx-auto border border-solid aspect-square rounded-full size-16 text-4xl">
-								<span style="margin-top: -20%;">3</span>
+								<span style="margin-top: -20%;">2</span>
 							</div>
 							<p>
-								Something else?
+								A representative from Tri-State will contact you within 5 business days on your Quality
+								Install Program status.
 							</p>
 						</div>
 					</div>
@@ -285,7 +237,7 @@
 
 				</div>
 			</section>
-			<section class="min-h-96 hiddenXX" data-hvac><!-- Slider main container -->
+			<section class="hidden" data-hvac><!-- Slider main container -->
 				<div class="swiper ts-slider ts-slider-esg es-slider"><!-- Additional required wrapper -->
 					<div class="swiper-wrapper"><!-- Slides -->
 						<div class="swiper-slide ts-slide">
@@ -341,35 +293,52 @@
 					<!-- If we need scrollbar --><!-- <div class="swiper-scrollbar">&nbsp;</div> -->
 				</div>
 			</section>
-			<section class="min-h-96 hiddenXX" data-plumber><!-- Slider main container -->
-				<div class="swiper ts-slider ts-slider-esg es-slider"><!-- Additional required wrapper -->
-					<div class="swiper-wrapper"><!-- Slides -->
-						<div class="swiper-slide ts-slide">
-							<div class="absolute grid size-full place-content-center"><img
-									alt="Heat Pump Water Heater Install Basics" class="absolute size-full object-cover"
-									src="https://tristate.coop/sites/default/files/images/quality-install/Training-Video-Cards_HPWH.jpg" />
-								<a class="z-10" data-featherlight="iframe"
-									data-featherlight-iframe-allowfullscreen="true"
-									data-featherlight-iframe-height="281" data-featherlight-iframe-width="500"
-									href="https://www.youtube.com/embed/ozzOkWnOFIY"> <img alt="Play button"
-										class="size-44"
-										src="https://tristate.coop/sites/default/files/images/esg/play-video-thumbnail-cover.svg" />
-								</a>
-							</div>
-						</div>
+			<section class="h-96 hidden" data-plumber><!-- Slider main container -->
+				<div class="h-full flex justify-center">
+					<div class="relative aspect-video"><img alt="Heat Pump Water Heater Install Basics"
+							class="absolute size-full object-cover"
+							src="https://tristate.coop/sites/default/files/images/quality-install/Training-Video-Cards_HPWH.jpg" />
+						<a class="absolute inset-0 z-10 grid place-content-center" data-featherlight="iframe"
+							data-featherlight-iframe-allowfullscreen="true" data-featherlight-iframe-height="281"
+							data-featherlight-iframe-width="500" href="https://www.youtube.com/embed/ozzOkWnOFIY"> <img
+								alt="Play button" class="size-44"
+								src="https://tristate.coop/sites/default/files/images/esg/play-video-thumbnail-cover.svg" />
+						</a>
 					</div>
-					<!-- If we need pagination -->
-
-					<div class="swiper-pagination">&nbsp;</div>
-					<!-- If we need navigation buttons -->
-
-					<div class="swiper-button-prev">&nbsp;</div>
-
-					<div class="swiper-button-next">&nbsp;</div>
-					<!-- If we need scrollbar --><!-- <div class="swiper-scrollbar">&nbsp;</div> -->
 				</div>
 			</section>
 		</div><!-- .block-region-content -->
+
+
+		<section class="ts-grid-column ts-grid-row ts-grid-row-reverse hidden" data-plumber="">
+			<div class="grid p-12 place-content-center px-12 text-3xl text-4xl text-white ts-grid-column ts-grid-column-img"
+				style="background:#757575"><img alt="Photo of equipment outdoors" class="video-thumb"
+					src="https://tristate.coop/sites/default/files/images/quality-install/GettyImages-1407175869_HeatPump_web.jpg" />
+				<div class="relative font-serif font-bold">Incentives for heat pump water heaters</div>
+			</div>
+
+			<div class="ts-background-green ts-grid-column ts-grid-column-copy">
+				<div class="ts-grid-column-copy space-y-4">
+					<h2 class="headline-light ts-heading-2" style="margin-bottom:0">Submit each install for cash back
+					</h2>
+
+					<p>Approved QI contractors must download and complete the form below to receive incentives. You will
+						need to
+						submit at least one form per install location. Email forms to participating utility members or
+						the
+						Tri-State rebate portal. You will receive $200 per Heat Pump Water Heater installation. Looking
+						to save your
+						customers
+						money on their equipment? Tri-State and our members offer rebates that can be combined with
+						state and
+						federal rebates.</p>
+
+					<p><a class="button button-transparent" href="https://tristate.coop/programs#trade-ally">Install
+							Incentive
+							Form</a></p>
+				</div>
+			</div>
+		</section>
 
 	</main>
 
