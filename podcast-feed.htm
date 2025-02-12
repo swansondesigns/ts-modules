@@ -33,90 +33,82 @@
 
 <body id="main" class="block-region-content">
 	<!-- Hero -->
-	<section class="h-96">
-		<img src="./assets/images/podcast/western-watts-hero-1200x900.jpg" alt="" srcset=""
-			class="size-full object-cover">
+	<section class="relative overflow-hidden grid place-content-center">
+		<img src="https://tristate.coop/sites/default/files/images/podcast/tooled-leather.jpg" alt="" srcset=""
+			class="absolute inset-0 object-cover">
+		<div class="relative z-10 py-20"><img
+				src="https://tristate.coop/sites/default/files/images/podcast/western-watts-logo.svg"
+				alt="Western Watts Logo" class="h-52"></div>
 	</section>
-
-	<section class="px-8 py-16 text-center sm:grid sm:place-content-center" style="background-color: #F5F5F5;">
-
-		<div class="max-w-2xl space-y-4">
-			<iframe frameborder="no" height="180" scrolling="no" seamless=""
-				src="https://share.transistor.fm/e/6c8f8fb3" width="100%"></iframe>
-		</div>
-	</section>
-	<section class="px-8 py-16 text-center sm:grid sm:place-content-center" style="background-color: #F5F5F5;">
+	<section class="px-8 py-16 text-center sm:grid sm:place-content-center">
 		<div class="max-w-2xl space-y-4">
 			<h2 class="ts-heading-2 font-serif text-2xl font-light text-wrap-balance">
-				Lorem ipsum dolor sit amet consectetur
+				Western Watts Energy Podcast
 			</h2>
 			<p class="text-balance">
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, voluptate libero? Nihil odit
-				perspiciatis, magnam quas maiores, magni qui dolorem fuga, impedit eaque laudantium iste autem et
-				voluptates inventore ipsum.
-
+				Join us as we discover how Tri-State and our members are rising to the
+				challenge of powering the West. We'll be diving into the heart of energy
+				issues, from reliability to renewables, and sharing firsthand insights relevant
+				to rural, agricultural and mountain communities across Colorado, Nebraska,
+				New Mexico, and Wyoming.
 			</p>
-			<div class="grid grid-cols-2 gap-x-4 gap-y-8" data-podcasts>
-				<template data-show-template>
-					<div class="episode-card bg-white rounded-lg shadow-md overflow-hidden">
-						<img class="w-full h-48 object-cover" src="${episode.image}" alt="${episode.title}">
-						<div class="p-4">
-							<h2 class="text-xl font-semibold text-gray-800">${episode.title}</h2>
-							<p class="mt-2 text-gray-600 text-sm line-clamp-3">${episode.description}</p>
-							<a href="${episode.link}" target="_blank"
-								class="mt-4 inline-block bg-blue-600 text-white text-sm font-medium py-2 px-4 rounded-md hover:bg-blue-700 transition">
-								Listen Now
-							</a>
-						</div>
-					</div>
-				</template>
-				<div class="episode-card bg-white rounded-lg shadow-md overflow-hidden">
-					<img class="w-full h-48 object-cover" src="${episode.image}" alt="${episode.title}">
-					<div class="p-4">
-						<h2 class="text-xl font-semibold text-gray-800">${episode.title}</h2>
-						<p class="mt-2 text-gray-600 text-sm line-clamp-3">${episode.description}</p>
-						<a href="${episode.link}" target="_blank"
-							class="mt-4 inline-block bg-blue-600 text-white text-sm font-medium py-2 px-4 rounded-md hover:bg-blue-700 transition">
-							Listen Now
-						</a>
-					</div>
-				</div>
-				<div class="episode-card bg-white rounded-lg shadow-md overflow-hidden">
-					<img class="w-full h-48 object-cover" src="${episode.image}" alt="${episode.title}">
-					<div class="p-4">
-						<h2 class="text-xl font-semibold text-gray-800">${episode.title}</h2>
-						<p class="mt-2 text-gray-600 text-sm line-clamp-3">${episode.description}</p>
-						<a href="${episode.link}" target="_blank"
-							class="mt-4 inline-block bg-blue-600 text-white text-sm font-medium py-2 px-4 rounded-md hover:bg-blue-700 transition">
-							Listen Now
-						</a>
-					</div>
-				</div>
-				<div class="episode-card bg-white rounded-lg shadow-md overflow-hidden">
-					<img class="w-full h-48 object-cover" src="${episode.image}" alt="${episode.title}">
-					<div class="p-4">
-						<h2 class="text-xl font-semibold text-gray-800">${episode.title}</h2>
-						<p class="mt-2 text-gray-600 text-sm line-clamp-3">${episode.description}</p>
-						<a href="${episode.link}" target="_blank"
-							class="mt-4 inline-block bg-blue-600 text-white text-sm font-medium py-2 px-4 rounded-md hover:bg-blue-700 transition">
-							Listen Now
-						</a>
-					</div>
-				</div>
-				<div class="episode-card bg-white rounded-lg shadow-md overflow-hidden">
-					<img class="w-full h-48 object-cover" src="${episode.image}" alt="${episode.title}">
-					<div class="p-4">
-						<h2 class="text-xl font-semibold text-gray-800">${episode.title}</h2>
-						<p class="mt-2 text-gray-600 text-sm line-clamp-3">${episode.description}</p>
-						<a href="${episode.link}" target="_blank"
-							class="mt-4 inline-block bg-blue-600 text-white text-sm font-medium py-2 px-4 rounded-md hover:bg-blue-700 transition">
-							Listen Now
-						</a>
-					</div>
-				</div>
+			<p class="text-balance">
+				Listen here or follow along on your preferred platform:
+			</p>
+			<div class="grid grid-flow-col gap-4 justify-center pt-10 w-max mx-auto">
+				<a href="https://open.spotify.com/show/1NiQnORjcy5IIkFnGX6Po1" target="_blank"
+					class="flex items-center gap-2 text-lg bg-[#3B1A1B] text-white p-2 rounded no-underline uppercase hover:bg-[#6A3D35] w-full">
+					<img src="https://tristate.coop/sites/default/files/images/podcast/spotify-brands-solid-white.svg"
+						alt="Spotify" class="size-8">
+					<span>Spotify</span>
+				</a>
+				<a href="#"
+					class="flex items-center gap-2 text-lg bg-[#3B1A1B] text-white p-2 rounded no-underline uppercase hover:bg-[#6A3D35] w-full">
+					<img src="https://tristate.coop/sites/default/files/images/podcast/podcast-solid-white.svg"
+						alt="Podcast" class="size-8">
+					<span>Apple</span>
+				</a>
 			</div>
+
 		</div>
 	</section>
+	<section class="px-8 py-16 text-center sm:grid sm:place-items-center">
+		<div class="w-full max-w-3xl mx-auto grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+			<a href="#" class="bg-[#3B1A1B] hover:bg-[#6A3D35] text-white border-2 border-[#6A3D35] 
+				flex flex-col items-center justify-center min-h-28 w-full h-full rounded transition p-4 no-underline">
+				<span class="text-xs font-bold uppercase tracking-wide font-serif">Ep 1:</span>
+				<span class="text-lg font-semibold">Duane Highley</span>
+			</a>
+			<a href="#" class="bg-[#3B1A1B] hover:bg-[#6A3D35] text-white border-2 border-[#6A3D35] 
+				flex flex-col items-center justify-center min-h-28 w-full h-full rounded transition p-4 no-underline">
+				<span class="text-xs font-bold uppercase tracking-wide font-serif">Ep 2:</span>
+				<span class="text-lg font-semibold">Tim Rabin</span>
+			</a>
+			<a href="#" class="bg-[#3B1A1B] hover:bg-[#6A3D35] text-white border-2 border-[#6A3D35] 
+				flex flex-col items-center justify-center min-h-28 w-full h-full rounded transition p-4 no-underline">
+				<span class="text-xs font-bold uppercase tracking-wide font-serif">Ep 3:</span>
+				<span class="text-lg font-semibold">Curtis Hartenstein</span>
+			</a>
+			<a href="#" class="bg-[#3B1A1B] hover:bg-[#6A3D35] text-white border-2 border-[#6A3D35] 
+				flex flex-col items-center justify-center min-h-28 w-full h-full rounded transition p-4 no-underline">
+				<span class="text-xs font-bold uppercase tracking-wide font-serif">Ep 4:</span>
+				<span class="text-lg font-semibold">Elda de la Peña</span>
+			</a>
+			<a href="#" class="bg-[#3B1A1B] hover:bg-[#6A3D35] text-white border-2 border-[#6A3D35] 
+				flex flex-col items-center justify-center min-h-28 w-full h-full rounded transition p-4 no-underline">
+				<span class="text-xs font-bold uppercase tracking-wide font-serif">Ep 5:</span>
+				<span class="text-lg font-semibold">Bob Frankmore</span>
+			</a>
+		</div>
+	</section>
+
+
+
+
+
+
+
+
 </body>
 
 
