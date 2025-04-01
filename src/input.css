@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.border {
+	border-width: 1px;
+	border-style: solid;
+}
 nav .collapse {
 	visibility: visible;
 }
