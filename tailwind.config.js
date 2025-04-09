@@ -32,11 +32,17 @@ module.exports = {
 	},
 	plugins: [
 		function ({ addUtilities }) {
-			addUtilities({
-				'.text-wrap-balance': {
-					'text-wrap': 'balance'
-				}
-			});
+			addUtilities(
+				{
+					'.text-wrap-balance': {
+						'text-wrap': 'balance'
+					},
+					'.hideme': {
+						display: 'none'
+					}
+				},
+				['responsive']
+			);
 		}
 	]
 };
