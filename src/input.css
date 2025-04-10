@@ -37,6 +37,7 @@ nav .collapse {
 	text-decoration: none;
 }
 
-.block-region-content p {
+.block-region-content p,
+.block-region-content ul {
 	font-size: 16px;
 }
