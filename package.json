@@ -14,8 +14,9 @@
 		"autoprefixer": "^10.4.7",
 		"cssnano": "^7.0.4",
 		"postcss": "^8.4.16",
-		"prettier-plugin-tailwindcss": "^0.x.x",
 		"postcss-cli": "^9.1.0",
+		"postcss-import": "^16.1.0",
+		"prettier-plugin-tailwindcss": "^0.x.x",
 		"tailwindcss": "^3.4.4"
 	}
 }
