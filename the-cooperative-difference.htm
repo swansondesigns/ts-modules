@@ -161,8 +161,8 @@
 
 			</section>
 
-			<section class="px-8 py-16">
-				<div class="mx-auto max-w-2xl text-center text-balance">
+			<section class="ts-expandable px-8 py-16" data-expandable>
+				<div class="ts-expander mx-auto max-w-2xl text-center text-balance">
 					<h2 class="font-serif font-light text-3xl">
 						Energy Investments
 					</h2>
@@ -170,57 +170,62 @@
 					<h3 class="mt-8 font-serif font-light text-lg">New ERA</h3>
 					<p>
 						Tri-State was recently awarded $2.5 billion in financing through the U.S. Department of
-						Agriculture’s
-						Empowering Rural America (New ERA) Program. This program has been the most significant federal
-						funding for
-						rural electric cooperatives since 1936 and will help to further our investments to meet growing
-						energy
-						demand and improve the reliability and resiliency of our system.
+						Agriculture’s Empowering Rural America (New ERA) Program. This program has been the most
+						significant federal
+						funding for rural electric cooperatives since 1936 and will help to further our investments to
+						meet growing
+						energy demand and improve the reliability and resiliency of our system.
 					</p>
 					<p>
 						The program, designed to help rural cooperatives implement reliable and affordable energy
-						transitions, will support the building of new energy projects and some
-						transmission, as well as the
+						transitions, will support the building of new energy projects and some transmission, as well as
+						the
 						retirement of outdated sites. These projects will fight high energy costs and help our members
-						reach 70%
-						clean energy used in 2030, reducing greenhouse gas emissions by nearly 5.8 million tons
+						reach 70% clean energy used in 2030, reducing greenhouse gas emissions by nearly 5.8 million
+						tons
 						annually.
 					</p>
 					<p>
 						As part of the New ERA Program, we’re also investing in rural communities and offering community
-						support,
-						delivering on our commitment to our communities and those hosting our energy projects.
+						support, delivering on our commitment to our communities and those hosting our energy projects.
 					</p>
 
 					<h3 class="mt-8 font-serif font-light text-lg">Electric Resource Planning</h3>
 					<p>
 						Our Electric Resource Plan (ERP) is central to our work to serve our members and meet our
-						regulatory
-						requirements as we pursue various energy investments. The process includes engagement and
-						collaboration with
-						our members and numerous stakeholders to ensure reliable, affordable, and responsible power for
+						regulatory requirements as we pursue various energy investments. The process includes engagement
+						and
+						collaboration with our members and numerous stakeholders to ensure reliable, affordable, and
+						responsible
+						power for
 						our members.
 					</p>
 					<p>
 						Following <a href="https://tristate.coop/co-regulators-approve-ERP-settlement"
 							class="underline">regulatory
 							approval of our Phase I ERP</a> from the Colorado Public Utilities Commission, we’ve now
-						initiated Phase
-						II, beginning with the procurement process for new resources. It will lead to over an 80%
-						reduction in our
-						greenhouse gas emissions in Colorado and 70% clean energy used by our members systemwide by
-						2030. Phase II
-						also includes landmark direct financial assistance to the communities of Craig and Moffat
-						County, supporting
-						their economic viability in light of coal plant closures.
+						initiated Phase II, beginning with the procurement process for new resources. It will lead to
+						over an 80%
+						reduction in our greenhouse gas emissions in Colorado and 70% clean energy used by our members
+						systemwide by
+						2030. Phase II also includes landmark direct financial assistance to the communities of Craig
+						and Moffat
+						County, supporting their economic viability in light of coal plant closures.
 					</p>
-
-					<a href="/erp"
-						class="inline-flex items-center gap-2 rounded-full border border-black px-4 py-2 font-normal no-underline transition-transform text-black hover:text-gray">
-						Learn More
+				</div>
+				<div class="flex justify-center items-center">
+					<a href="#"
+						class="ts-expand-button inline-flex items-center gap-1 rounded-full border border-black px-4 py-2 font-normal no-underline transition-transform text-black"
+						data-expand-button>
+						More
+						<img src="assets/images/fa-chevron-down-light.svg" alt="caret down" class="size-4" />
 					</a>
 				</div>
 			</section>
+
+
+
+
 
 
 
@@ -412,5 +417,17 @@
 		</div><!-- .block-region-content -->
 	</main>
 </body>
+<script>
+	document.querySelectorAll('[data-expandable]').forEach(section => {
+		const button = section.querySelector('[data-expand-button]');
+		if (!button) return;
+
+		button.addEventListener('click', (e) => {
+			e.preventDefault();
+			section.classList.add('expanded');
+			button.classList.add('byebye');
+		});
+	});
+</script>
 
 </html>
