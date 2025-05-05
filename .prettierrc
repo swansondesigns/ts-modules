@@ -2,9 +2,9 @@
 	"plugins": ["prettier-plugin-tailwindcss"],
 	"useTabs": true,
 	"tabWidth": 4,
-	"printWidth": 220,
 	"htmlWhitespaceSensitivity": "ignore",
 	"proseWrap": "never",
 	"singleQuote": true,
-	"trailingComma": "none"
+	"trailingComma": "none",
+	"printWidth": 999
 }
