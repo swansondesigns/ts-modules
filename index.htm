@@ -4,59 +4,140 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Landing Page</title>
+	<title>Project Index</title>
+	<link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&family=Sarabun:wght@400;700&display=swap"
+		rel="stylesheet">
+	<style>
+		body {
+			font-family: 'Sarabun', sans-serif;
+			font-size: 16px;
+		}
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-family: 'Aleo', serif;
+		}
+	</style>
 	<link href="./assets/css/build.css" rel="stylesheet">
 </head>
 
-<body class="bg-gradient-to-tr from-blue-500 to-white min-h-screen flex items-center justify-center ">
-	<div class="container mx-auto p-8 z-10">
-		<header class="text-center mb-12">
-			<h1 class="text-4xl text-white font-bold">Welcome to Tristate GT</h1>
-			<p class="text-gray-200">Your hub for all project pages</p>
+<body class="bg-slate-100 min-h-screen p-8">
+	<div class="max-w-7xl mx-auto">
+		<header class="mb-12 text-center">
+			<h1 class="text-4xl font-bold text-slate-900">Tristate GT – Project Index</h1>
+			<p class="text-slate-500">Links to all project pages</p>
 		</header>
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-			<div class="bg-white rounded-lg p-6 shadow-lg">
-				<h2 class="text-2xl font-bold mb-2">Project Page 1</h2>
-				<p class="text-gray-700 mb-4">Description of the first project page.</p>
-				<div class="flex mb-4">
-					<div class="w-10 h-10 bg-red-500 text-white flex items-center justify-center rounded-full mr-2">A
-					</div>
-					<div class="w-10 h-10 bg-green-500 text-white flex items-center justify-center rounded-full mr-2">B
-					</div>
-					<div class="w-10 h-10 bg-blue-500 text-white flex items-center justify-center rounded-full">C</div>
+
+		<ul role="list" class="grid grid-cols-1 gap-x-6 gap-y-8 lg:grid-cols-3 xl:gap-x-8">
+			<li class="overflow-hidden rounded-xl border border-slate-200 bg-white">
+				<div class="flex justify-between bg-slate-50 p-6">
+					<div class="font-serif font-medium">OBR</div>
+					<dt class="text-sm opacity-80">Last updated</dt>
 				</div>
-				<a href="page1.html" target="_blank"
-					class="rounded-full border-1 p-2 text-blue-500 hover:underline flex items-center">
-					Visit Page <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20"
-						fill="currentColor">
-						<path fill-rule="evenodd"
-							d="M12.293 3.293a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L14 6.414V17a1 1 0 11-2 0V6.414L8.707 8.707a1 1 0 01-1.414-1.414l4-4z"
-							clip-rule="evenodd" />
-					</svg>
-				</a>
-			</div>
-			<div class="bg-white rounded-lg p-6 shadow-lg">
-				<h2 class="text-2xl font-bold mb-2">Project Page 2</h2>
-				<p class="text-gray-700 mb-4">Description of the second project page.</p>
-				<div class="flex mb-4">
-					<div class="w-10 h-10 bg-yellow-500 text-white flex items-center justify-center rounded-full mr-2">D
+				<dl class="divide-y divide-slate-200 px-6 py-4">
+					<div class="flex justify-between gap-x-4 py-3">
+						<dt class="text-slate-500"><a href="./obr.htm" target="_blank"
+								class="text-slate-900 hover:underline">On-Bill Repayment</a></dt>
+						<dd class="text-sm text-slate-500">May 5, 2025</dd>
 					</div>
-					<div class="w-10 h-10 bg-purple-500 text-white flex items-center justify-center rounded-full mr-2">E
+					<div class="flex justify-between gap-x-4 py-3">
+						<dt class="text-slate-500"><a href="./obr-thank-you.htm" target="_blank"
+								class="text-slate-900 hover:underline">OBR Thank You</a></dt>
+						<dd class="text-sm text-slate-500">Feb 10, 2025</dd>
 					</div>
-					<div class="w-10 h-10 bg-pink-500 text-white flex items-center justify-center rounded-full">F</div>
+				</dl>
+			</li>
+			<li class="overflow-hidden rounded-xl border border-slate-200 bg-white">
+				<div class="flex justify-between bg-slate-50 p-6">
+					<div class="font-serif font-medium">Western Watts</div>
+					<dt class="text-sm opacity-80">Last updated</dt>
 				</div>
-				<a href="page2.html" target="_blank" class="text-blue-500 hover:underline flex items-center">
-					Visit Page <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20"
-						fill="currentColor">
-						<path fill-rule="evenodd"
-							d="M12.293 3.293a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L14 6.414V17a1 1 0 11-2 0V6.414L8.707 8.707a1 1 0 01-1.414-1.414l4-4z"
-							clip-rule="evenodd" />
-					</svg>
-				</a>
-			</div>
-		</div>
+				<dl class="divide-y divide-slate-200 px-6 py-4">
+					<div class="flex justify-between gap-x-4 py-3">
+						<dt class="text-slate-500"><a href="./western-watts.htm" target="_blank"
+								class="text-slate-900 hover:underline">Podcast Launch</a></dt>
+						<dd class="text-sm text-slate-500">Feb 11, 2025</dd>
+					</div>
+					<div class="flex justify-between gap-x-4 py-3">
+						<dt class="text-slate-500"><a href="./podcast-feed.htm" target="_blank"
+								class="text-slate-900 hover:underline">Episode Feed</a></dt>
+						<dd class="text-sm text-slate-500">May 5, 2025</dd>
+					</div>
+				</dl>
+			</li>
+			<li class="overflow-hidden rounded-xl border border-slate-200 bg-white">
+				<div class="flex justify-between bg-slate-50 p-6">
+					<div class="font-serif font-medium">Efficiency</div>
+					<dt class="text-sm opacity-80">Last updated</dt>
+				</div>
+				<dl class="divide-y divide-slate-200 px-6 py-4">
+					<div class="flex justify-between gap-x-4 py-3">
+						<dt class="text-slate-500"><a href="./the-cooperative-difference.htm" target="_blank"
+								class="text-slate-900 hover:underline">Cooperative Difference</a></dt>
+						<dd class="text-sm text-slate-500">May 5, 2025</dd>
+					</div>
+					<div class="flex justify-between gap-x-4 py-3">
+						<dt class="text-slate-500"><a href="./erp.htm" target="_blank"
+								class="text-slate-900 hover:underline">ERP</a></dt>
+						<dd class="text-sm text-slate-500">May 5, 2025</dd>
+					</div>
+					<div class="flex justify-between gap-x-4 py-3">
+						<dt class="text-slate-500"><a href="./our-energy-mix.htm" target="_blank"
+								class="text-slate-900 hover:underline">Energy Mix</a></dt>
+						<dd class="text-sm text-slate-500">May 5, 2025</dd>
+					</div>
+					<div class="flex justify-between gap-x-4 py-3">
+						<dt class="text-slate-500"><a href="./powering-future.htm" target="_blank"
+								class="text-slate-900 hover:underline">Powering the Future</a></dt>
+						<dd class="text-sm text-slate-500">May 5, 2025</dd>
+					</div>
+
+					<div class="flex justify-between gap-x-4 py-3">
+						<dt class="text-slate-500"><a href="./quality-install.htm" target="_blank"
+								class="text-slate-900 hover:underline">Quality Install Program</a></dt>
+						<dd class="text-sm text-slate-500">Feb 26, 2025</dd>
+					</div>
+				</dl>
+			</li>
+			<li class="overflow-hidden rounded-xl border border-slate-200 bg-white">
+				<div class="flex justify-between bg-slate-50 p-6">
+					<div class="font-serif font-medium">Annual Report</div>
+					<dt class="text-sm opacity-80">Last updated</dt>
+				</div>
+				<dl class="divide-y divide-slate-200 px-6 py-4">
+					<div class="flex justify-between gap-x-4 py-3">
+						<dt class="text-slate-500"><a href="./annual-report-2024.htm" target="_blank"
+								class="text-slate-900 hover:underline">Annual Report 2024</a></dt>
+						<dd class="text-sm text-slate-500">Feb 11, 2025</dd>
+					</div>
+				</dl>
+			</li>
+			<li class="overflow-hidden rounded-xl border border-slate-200 bg-white">
+				<div class="flex justify-between bg-slate-50 p-6">
+					<div class="font-serif font-medium">Ungrouped</div>
+					<dt class="text-sm opacity-80">Last updated</dt>
+				</div>
+				<dl class="divide-y divide-slate-200 px-6 py-4">
+					<div class="flex justify-between gap-x-4 py-3">
+						<dt class="text-slate-500"><a href="./wildfire-mitigation.htm" target="_blank"
+								class="text-slate-900 hover:underline">Wildfire Mitigation</a></dt>
+						<dd class="text-sm text-slate-500">Feb 26, 2025</dd>
+					</div>
+					<div class="flex justify-between gap-x-4 py-3">
+						<dt class="text-slate-500"><a href="./media.htm" target="_blank"
+								class="text-slate-900 hover:underline">Media</a></dt>
+						<dd class="text-sm text-slate-500">Feb 11, 2025</dd>
+					</div>
+
+				</dl>
+			</li>
+		</ul>
+		</ul>
 	</div>
-	<img src="home-bg.svg" class="absolute z-0 bottom-0 opacity-25" alt="" srcset="">
 </body>
 
 </html>
