@@ -18,5 +18,8 @@
 		"postcss-import": "^16.1.0",
 		"prettier-plugin-tailwindcss": "^0.x.x",
 		"tailwindcss": "^3.4.4"
+	},
+	"dependencies": {
+		"gsap": "^3.13.0"
 	}
 }
