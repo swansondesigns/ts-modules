@@ -3,6 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
+*,
+::before,
+::after {
+	border-width: 0;
+	border-style: solid;
+}
+
 .border {
 	border-width: 1px;
 	border-style: solid;
