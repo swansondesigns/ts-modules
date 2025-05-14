@@ -125,10 +125,43 @@ function scaleElementIn(selector) {
 		}
 	);
 }
+function initHeroAnimation() {
+	const timeline = gsap.timeline({
+		delay: 0.25 // small delay after load
+	});
+
+	timeline.fromTo(
+		'[animate-hero-coming-into]',
+		{
+			x: '-30%',
+			opacity: 0
+		},
+		{
+			x: '0%',
+			opacity: 1,
+			duration: 1,
+			ease: 'power2.out'
+		}
+	);
+
+	timeline.fromTo(
+		'[animate-hero-focus]',
+		{
+			opacity: 0
+		},
+		{
+			opacity: 1,
+			duration: 1.5,
+			ease: 'power2.out'
+		},
+		'-=0.5'
+	);
+}
 
 function initAnnualReport() {
 	console.log('initAnnualReport');
 	// setStatValueSize();
-	initScrollAnimations();
+	// initScrollAnimations();
+	initHeroAnimation();
 }
 window.addEventListener('load', initAnnualReport);
