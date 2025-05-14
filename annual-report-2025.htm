@@ -65,7 +65,9 @@
 		</div>
 		<div class="flex flex-col justify-center gap-4 px-4 md:py-16">
 			<div class="size-28 md:mx-0">
-				<img src="assets/images/annual-report/tsgt-appeture.svg" alt="TSGT" class="w-full h-auto" />
+				<!-- Inline styles required to override CWB and prevent FOUC. -->
+				<img src="assets/images/annual-report/tsgt-appeture.svg" alt="TSGT"
+					class="w-full h-auto transition-none" style="opacity: 0;" data-animate-tsgt-aperature />
 			</div>
 			<h2 class="m-0 text-2xl font-serif font-normal">Focused on Our Path Forward</h2>
 			<p class="text-base">
@@ -105,7 +107,7 @@
 					class="size-52 mx-auto md:size-auto md:order-last md:max-w-full lg:max-w-sm">
 				<div class="contents md:flex md:flex-col md:justify-center md:gap-8 lg:pl-8 xl:gap-12">
 					<img src="assets/images/annual-report/focused-on-reliability.png" alt="Focused on Reliability"
-						class="order-first" />
+						class="order-first transition-none" data-animate-heading-reliability />
 					<div class="relative pl-8 -mx-2">
 						<img src="assets/images/annual-report/quote-mark.svg" alt="" aria-hidden="true"
 							class="absolute -top-1 left-0 size-6" />
@@ -134,7 +136,7 @@
 				<div class="contents md:flex md:flex-col md:justify-center md:gap-8 lg:pr-8 xl:gap-12">
 
 					<img src="assets/images/annual-report/focused-on-financial-future.png" alt="Focused on Financial"
-						class="order-first xl:-ml-8" />
+						class="order-first xl:-ml-8 transition-none" data-animate-heading-future />
 
 					<div class="relative pl-8 -mx-2">
 						<img src="assets/images/annual-report/quote-mark.svg" alt="" aria-hidden="true"
@@ -154,7 +156,7 @@
 	</section>
 
 	<!-- Stats Block -->
-	<section class="px-4 py-16 bg-gray-100 text-center">
+	<section class="px-4 py-16 bg-gray-100 text-center" data-stats>
 		<h3 class="text-xl mb-6 uppercase md:text-2xl  lg:text-3xl "><span class="block font-semibold text-balance">70%
 				of our
 				members’ energy
@@ -199,7 +201,7 @@
 					class="relative z-10 flex flex-col items-start justify-end h-full px-4 pb-12 space-y-4 lg:contents">
 					<div class="ml-8 w-32 relative md:w-52 lg:col-start-1 lg:row-start-2 lg:self-center lg:ml-20">
 						<img src="assets/images/annual-report/better-together-rays.svg" alt="Logo rays"
-							class="absolute inset-0" />
+							class="absolute inset-0 animate-spin-slow" />
 						<img src="assets/images/annual-report/better-together-text.svg" alt="We are better together"
 							class="" />
 					</div>
@@ -229,7 +231,8 @@
 
 			<div class="md:relative md:pl-8 lg:pl-12">
 				<img src="assets/images/annual-report/cooperative-strength-line.svg"
-					class="absolute left-0 bottom-4 h-12 w-full pr-8 md:p-0 lg:h-16 lg:max-w-md lg:-bottom-8" />
+					class="absolute left-0 bottom-4 h-12 w-full pr-8 transition-none md:p-0 lg:h-16 lg:max-w-md lg:-bottom-8"
+					data-animate-flexing-line />
 				<div class="lg:max-w-sm">
 					<img src="assets/images/annual-report/flexing.svg" alt="Flexing Our Cooperative Strength"
 						class="mx-auto mb-4 w-full max-w-52 md:max-w-64 lg:max-w-72" />
@@ -239,7 +242,7 @@
 				</div>
 			</div>
 			<div>
-				<ul class="m-0 p-0 flex flex-col gap-4 overflow-hidden uppercase" data-animate-bullets>
+				<ul class="m-0 p-0 flex flex-col gap-4 overflow-hidden uppercase transition-none" data-animate-bullets>
 					<li class="flex items-start gap-2 transition-none">
 						<img src="assets/images/annual-report/plus-light.svg" alt="Plus Icon" class="size-3 mt-1.5">
 						Voluntary and Open Membership
