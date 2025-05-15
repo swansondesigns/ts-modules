@@ -87,13 +87,27 @@
 				</div>
 			</section>
 
-			<section class="px-8 py-16 text-center text-balance sm:grid sm:place-content-center">
-				<div class="mx-auto max-w-2xl space-y-4">
-					<div class="relative">
-						<canvas class="relative z-10" data-chart></canvas>
-						<div class="absolute z-20 inset-0 pointer-events-none grid place-content-center"><span
-								class="text-3xl">30</span>
+			<section class="px-8 py-16 sm:grid sm:place-content-center">
+				<div class="mx-auto max-w-2xl grid gap-8 md:grid-cols-2">
+					<div>
+						<div class="relative" data-chart>
+							<canvas class="relative z-10" data-chart></canvas>
+							<div class="absolute z-20 inset-0 pointer-events-none grid place-content-center"><span
+									class="text-3xl" data-chart-donut-hole aria-live="polite">36%</span>
+							</div>
 						</div>
+						<div class="text-center text-sm mt-4 lg:hideme">Click chart for details</div>
+						<div class="text-center text-sm mt-4 hideme lg:block">Hover on chart sections for details</div>
+					</div>
+					<div class="flex flex-col justify-center gap-1 text-base">
+						<h2 class="font-serif font-light m-0">Renewables</h2>
+						<div class="uppercase">Generation Capacity in 2024</div>
+						<div>We have over a dozen renewable projects in our portfolio with more on the way. This
+							includes
+							federal hydropower, which
+							Tri-State has used since our start in 1952. We're also adding utility-scale storage
+							batteries to our system, which will
+							help us use renewable energy more efficiently.</div>
 					</div>
 
 				</div>
