@@ -1,6 +1,15 @@
 function initScrollAnimations() {
-	// let mm = gsap.matchMedia();
-	// mm.add('(min-width: 768px', () => {});
+	let mm = gsap.matchMedia();
+
+	let preservingHistorySettings = {
+		dir: -1
+	};
+	mm.add('(min-width: 768px)', () => {
+		preservingHistorySettings.dir = 1;
+		preservingHistorySettings.scrollTrigger = {
+			start: 'bottom 60%'
+		};
+	});
 
 	gsap.registerPlugin(ScrollTrigger);
 
@@ -20,6 +29,9 @@ function initScrollAnimations() {
 	slideElementIn('[data-animate-heading-reliability]', -1);
 	slideElementIn('[data-animate-heading-future]', 1);
 	slideElementIn('[data-animate-flexing-line]', -1);
+
+	console.log(preservingHistorySettings);
+	slideElementIn('[data-animate-preserving-history]', preservingHistorySettings.dir, preservingHistorySettings.scrollTrigger);
 
 	/**
 	 * Scale animations
@@ -81,20 +93,25 @@ function setStatValueSize() {
 	});
 }
 
-function slideElementIn(selector, direction) {
+function slideElementIn(selector, direction, customScrollTrigger = {}) {
 	const element = document.querySelector(selector);
 	const elementContainer = element.closest('section');
 	const offsetWidth = elementContainer.offsetWidth * direction;
+
+	const defaultScrollTrigger = {
+		trigger: element,
+		start: 'bottom 70%',
+		markers: true,
+		id: 'slide'
+	};
 
 	gsap.from(element, {
 		x: offsetWidth,
 		duration: 1,
 		ease: 'back.out(1)',
 		scrollTrigger: {
-			trigger: element,
-			start: 'bottom 70%'
-			// markers: true,
-			// id: 'slide'
+			...defaultScrollTrigger,
+			...(customScrollTrigger || {})
 		}
 	});
 }
@@ -161,7 +178,7 @@ function initHeroAnimation() {
 function initAnnualReport() {
 	console.log('initAnnualReport');
 	// setStatValueSize();
-	// initScrollAnimations();
 	initHeroAnimation();
+	initScrollAnimations();
 }
 window.addEventListener('load', initAnnualReport);
