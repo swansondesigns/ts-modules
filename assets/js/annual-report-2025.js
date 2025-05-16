@@ -100,9 +100,9 @@ function slideElementIn(selector, direction, customScrollTrigger = {}) {
 
 	const defaultScrollTrigger = {
 		trigger: element,
-		start: 'bottom 70%',
-		markers: true,
-		id: 'slide'
+		start: 'bottom 70%'
+		// markers: true,
+		// id: 'slide'
 	};
 
 	gsap.from(element, {
@@ -175,10 +175,39 @@ function initHeroAnimation() {
 	);
 }
 
+function initMicrophoneAnimation() {
+	const timeline = gsap.timeline({
+		repeat: -1,
+		yoyo: true
+	});
+
+	timeline.to('[data-animate-mic]', {
+		scale: 1.1,
+		duration: 0.2,
+		ease: 'power1.out'
+	});
+	timeline.to('[data-animate-mic]', {
+		scale: 0.9,
+		duration: 0.2,
+		ease: 'power1.inOut'
+	});
+	timeline.to('[data-animate-mic]', {
+		scale: 1.05,
+		duration: 0.2,
+		ease: 'power1.out'
+	});
+	timeline.to('[data-animate-mic]', {
+		scale: 1,
+		duration: 0.4,
+		ease: 'power1.inOut'
+	});
+}
+
 function initAnnualReport() {
 	console.log('initAnnualReport');
 	// setStatValueSize();
 	initHeroAnimation();
 	initScrollAnimations();
+	initMicrophoneAnimation();
 }
 window.addEventListener('load', initAnnualReport);
