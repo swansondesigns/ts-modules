@@ -4,7 +4,7 @@ function initScrollAnimations() {
 	let preservingHistorySettings = {
 		dir: -1
 	};
-	mm.add('(min-width: 768px)', () => {
+	mm.add('(min-width: 1000px)', () => {
 		preservingHistorySettings.dir = 1;
 		preservingHistorySettings.scrollTrigger = {
 			start: 'bottom 60%'
