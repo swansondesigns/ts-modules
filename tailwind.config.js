@@ -28,7 +28,10 @@ module.exports = {
 				'connections-l-grey': "url('https://tristate.coop/sites/default/files/images/electrify-and-save/2023/left-electric-grey.svg')"
 			},
 
-			display: ['contents']
+			display: ['contents'],
+			gridTemplateColumns: {
+				16: 'repeat(16, minmax(0, 1fr))'
+			}
 		}
 	},
 	plugins: [
