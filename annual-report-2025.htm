@@ -201,14 +201,18 @@
 
 				<div
 					class="relative z-10 flex flex-col items-start justify-end h-full px-4 pb-12 space-y-4 lg:contents">
-					<div class="ml-8 w-32 relative md:w-52 lg:col-start-1 lg:row-start-2 lg:self-center lg:ml-20">
+					<!-- <div class="ml-8 w-32 relative md:w-52 lg:col-start-1 lg:row-start-2 lg:self-center lg:ml-20">
 						<img src="assets/images/annual-report/better-together-rays.svg" alt="Logo rays"
 							class="absolute inset-0 animate-spin-slow" />
 						<img src="assets/images/annual-report/better-together-text.svg" alt="We are better together"
 							class="" />
-					</div>
+					</div> -->
+					<img src="assets/images/annual-report/better-together-whole.svg" alt="We are better together (logo)"
+						srcset=""
+						class="ml-8 w-32 relative md:w-44 lg:col-start-1 lg:row-start-2 lg:self-center lg:ml-20">
 					<img src="assets/images/annual-report/preserving-history.svg" alt="Preserving History heading"
-						class="md:w-4/5 relative lg:col-start-2 lg:row-start-1 lg:self-center lg:z-10" />
+						class="relative transition-none md:w-4/5  lg:col-start-2 lg:row-start-1 lg:self-center lg:z-10"
+						data-animate-preserving-history />
 				</div>
 			</div>
 
@@ -228,48 +232,50 @@
 
 
 	<!-- Cooperative Principles -->
-	<section class="px-8 py-24 relative md:pl-0">
-		<div class="max-w-md mx-auto md:grid md:grid-cols-2 md:gap-8 md:max-w-full">
+	<section class="py-24 relative md:pl-0">
+		<div class="mx-auto md:grid md:grid-cols-2 md:gap-8 md:max-w-full">
 
-			<div class="md:relative md:pl-8 lg:pl-12">
-				<img src="assets/images/annual-report/cooperative-strength-line.svg"
-					class="absolute left-0 bottom-4 h-12 w-full pr-8 transition-none md:p-0 lg:h-16 lg:max-w-md lg:-bottom-8"
-					data-animate-flexing-line />
-				<div class="lg:max-w-sm">
+			<div class="relative flex flex-col">
+
+				<div class="px-8 sm:w-fit sm:place-self-center md:pl-8 lg:pl-12 lg:max-w-sm">
 					<img src="assets/images/annual-report/flexing.svg" alt="Flexing Our Cooperative Strength"
-						class="mx-auto mb-4 w-full max-w-52 md:max-w-64 lg:max-w-72" />
-					<p class="font-light text-balance mb-6 text-xl text-gray-700 lg:text-2xl">
+						class="mx-auto mb-4 w-full lg:max-w-96" />
+					<p class="font-light text-balance mb-6 text-2xl text-gray-700 lg:text-2xl">
 						Our actions are guided by our Cooperative Principles.
 					</p>
 				</div>
+				<img src="assets/images/annual-report/cooperative-strength-line.svg"
+					class="order-last w-full pb-8 transition-none sm:order-first lg:absolute lg:bottom-0 lg:p-0"
+					data-animate-flexing-line />
 			</div>
-			<div>
-				<ul class="m-0 p-0 flex flex-col gap-4 overflow-hidden uppercase transition-none" data-animate-bullets>
-					<li class="flex items-start gap-2 transition-none">
+			<div class="px-8 md:pl-0 lg:p-0 lg:px-auto lg:grid lg:place-content-center">
+				<ul class="m-0 p-0 flex flex-col gap-4 overflow-hidden w-fit uppercase transition-none"
+					data-animate-bullets>
+					<li class="flex items-start gap-2 transition-none tracking-widest track">
 						<img src="assets/images/annual-report/plus-light.svg" alt="Plus Icon" class="size-3 mt-1.5">
 						Voluntary and Open Membership
 					</li>
-					<li class="flex items-start gap-2 transition-none">
+					<li class="flex items-start gap-2 transition-none tracking-widest">
 						<img src="assets/images/annual-report/plus-light.svg" alt="Plus Icon" class="size-3 mt-1.5">
 						Members’ Economic Participation
 					</li>
-					<li class="flex items-start gap-2 transition-none">
+					<li class="flex items-start gap-2 transition-none tracking-widest">
 						<img src="assets/images/annual-report/plus-light.svg" alt="Plus Icon" class="size-3 mt-1.5">
 						Autonomy and Independence
 					</li>
-					<li class="flex items-start gap-2 transition-none">
+					<li class="flex items-start gap-2 transition-none tracking-widest">
 						<img src="assets/images/annual-report/plus-light.svg" alt="Plus Icon" class="size-3 mt-1.5">
 						Democratic Member Control
 					</li>
-					<li class="flex items-start gap-2 transition-none">
+					<li class="flex items-start gap-2 transition-none tracking-widest">
 						<img src="assets/images/annual-report/plus-light.svg" alt="Plus Icon" class="size-3 mt-1.5">
 						Education, Training and Information
 					</li>
-					<li class="flex items-start gap-2 transition-none">
+					<li class="flex items-start gap-2 transition-none tracking-widest">
 						<img src="assets/images/annual-report/plus-light.svg" alt="Plus Icon" class="size-3 mt-1.5">
 						Cooperation Among Cooperatives
 					</li>
-					<li class="flex items-start gap-2 transition-none">
+					<li class="flex items-start gap-2 transition-none tracking-widest">
 						<img src="assets/images/annual-report/plus-light.svg" alt="Plus Icon" class="size-3 mt-1.5">
 						Concern for Community
 					</li>
@@ -292,23 +298,30 @@
 		</div>
 
 		<!-- Content -->
-		<div class="bg-[#BDAD89] px-6 pt-12 p-16 flex flex-col justify-center text-white lg:px-16 lg:py-28">
-			<div class="flex items-start gap-4 mb-4">
+		<div class="bg-[#BDAD89] px-6 pt-12 p-16 flex flex-col gap-6 justify-center text-white lg:px-16 lg:py-28">
+			<div class="flex gap-4">
 
 				<h3 class="text-2xl font-semibold leading-tight m-0">
 					WHAT DOES IT<br />TAKE TO POWER<br />RURAL AMERICA?
 				</h3>
 
-				<div class="h-full flex items-stretch">
-					<img src="assets/images/annual-report/microphone.svg" alt="Microphone icon"
-						class="h-full object-contain" />
+				<div class="relative flex flex-grow">
+					<img src="assets/images/annual-report/microphone-sound-base.svg" alt="Microphone icon"
+						class="absolute bottom-0 w-24 object-contain" />
+					<img src="assets/images/annual-report/microphone-sound-waves.svg" alt="Microphone icon"
+						class="absolute bottom-0 w-24 object-contain transition-none" data-animate-mic />
+
 				</div>
 			</div>
-			<p class="mb-4 text-xl">
-				Join host Elizabeth Schilling as she uncovers bold ideas and personal stories at the Tri-State Annual
-				Meeting with cooperative leaders.
-			</p>
-			<a href="#" class="underline text-white">Listen to Western Watts here</a>
+			<div>
+
+				<p class="mb-4 text-xl">
+					Join host Elizabeth Schilling as she uncovers bold ideas and personal stories at the Tri-State
+					Annual
+					Meeting with cooperative leaders.
+				</p>
+				<a href="#" class="underline text-white">Listen to Western Watts here</a>
+			</div>
 		</div>
 	</section>
 
