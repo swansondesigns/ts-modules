@@ -5,13 +5,16 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "npx tailwindcss -i ./src/input.css -o ./assets/css/build.css --watch",
-		"build": "npx postcss ./src/input.css -o ./assets/css/build.css"
+		"build": "npx postcss ./src/input.css -o ./assets/css/build.css",
+		"devar": "cross-env TAILWIND_CONFIG=./tailwind.config.ar.js npx postcss ./src/input.css -o ./assets/css/annual-reports.css --watch",
+		"buildar": "cross-env TAILWIND_CONFIG=./tailwind.config.ar.js npx postcss ./src/input.css -o ./assets/css/annual-reports.css"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
 		"autoprefixer": "^10.4.7",
+		"cross-env": "^7.0.3",
 		"cssnano": "^7.0.4",
 		"postcss": "^8.4.16",
 		"postcss-cli": "^9.1.0",

@@ -1,7 +1,7 @@
 module.exports = {
 	plugins: {
 		'postcss-import': {},
-		tailwindcss: {},
+		tailwindcss: { config: process.env.TAILWIND_CONFIG || './tailwind.config.js' },
 		autoprefixer: {},
 		cssnano: {
 			preset: 'default'
