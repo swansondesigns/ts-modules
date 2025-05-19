@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+	font-size: 16px;
+}
+
 *,
 ::before,
 ::after {
@@ -43,9 +47,4 @@ nav .collapse {
 }
 #main .no-underline {
 	text-decoration: none;
-}
-
-.block-region-content p,
-.block-region-content ul {
-	font-size: 16px;
 }
