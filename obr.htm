@@ -37,17 +37,15 @@
 <body id="main" class="block-region-content">
 	<!-- Hero -->
 	<section class="bg-green flex flex-row">
-		<div class="bg-connections-l bg-repeat-y w-[15%] min-w-8 max-w-40"></div>
-		<div class="box-border flex-grow flex-shrink text-center min-h-60 px-8 py-12 md:py-16 md:text-balance">
+		<div class="bg-connections-l bg-cover bg-repeat-y w-[15%] min-w-8 max-w-40"></div>
+		<div class="box-border flex-grow flex-shrink text-center px-8 py-12 space-y-4 md:py-16 md:text-balance">
 
 			<img src="https://tristate.coop/sites/default/files/images/electrify-and-save/2025/E%26S_OBR_Horiz_White.png"
-				alt="" srcset="" class="md:max-w-sm m-auto"><br>
-			<h1 class="text-2xl md:text-4xl text-white my-4">Energy efficiency upgrades
-				everyone can get behind</h1>
-			<a class="block items-center gap-2 rounded-full border px-4 py-2 font-normal no-underline transition-transform text-white text-center max-w-sm mx-auto xl:hidden"
+				alt="" srcset="" class="md:max-w-sm m-auto"><br><a
+				class="block items-center gap-2 rounded-full border border-solid px-4 py-2 font-normal no-underline transition-transform text-white text-center max-w-sm mx-auto md:inline-block md:min-w-52 xl:hidden"
 				href="#apply">Apply Now</a>
 		</div>
-		<div class="bg-connections-r bg-repeat-y bg-right w-[15%] min-w-8 max-w-40"></div>
+		<div class="bg-connections-r bg-cover bg-repeat-y bg-right w-[15%] min-w-8 max-w-40"></div>
 	</section>
 
 	<template id="sticky-template">
@@ -55,6 +53,99 @@
 				class="items-center gap-2 rounded-full border px-4 py-2 font-normal no-underline transition-transform text-black text-center bg-white shadow-lg"
 				href="#apply">Apply Now</a></div>
 	</template>
+
+	<section>
+		<div class="mx-auto py-16 max-w-7xl">
+			<div
+				class="relative isolate overflow-hidden bg-gray-900 px-6 pt-16 sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
+
+				<div class="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:text-left">
+					<h2 class="font-serif text-4xl font-light text-wrap-balance">Update your home today
+					</h2>
+					<p class="mt-6 text-2xl text-pretty">Pay a little each month over time.</p>
+					<p class="mt-6 text-pretty">The On-Bill Repayment Program makes energy efficiency and
+						electrification upgrades more accessible for homeowners,
+						business owners, schools, and agricultural producers by connecting them to rebates, financing,
+						education, qualified
+						contractors, equipment, and energy audits.</p>
+					<div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
+						<a href="#"
+							class="rounded-md bg-green text-white  no-underline px-3.5 py-2.5 font-semibold shadow-xs hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"><span
+								class="text-lg">
+								Get started</span></a>
+						<a href="#" class="text-sm/6 font-semibold">Learn more <span aria-hidden="true">→</span></a>
+					</div>
+				</div>
+				<div class="relative w-full h-full" style="outline:0px solid red">
+					<img class="rounded-md bg-green h-96 object-cover ring-1 ring-white/10"
+						src="https://tristate.coop/sites/default/files/images/electrify-and-save/2024/man-working-on-energy-efficient-product-install.jpg"
+						alt="App screenshot">
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Form Intro -->
+	<section class="px-8 pb-4 pt-20 text-center sm:grid sm:place-content-center" style="background-color: #F5F5F5;">
+		<div class="max-w-2xl space-y-4">
+			<h2 class="ts-heading-2 font-serif text-2xl font-light text-wrap-balance">
+				Get started with On-Bill Repayment
+			</h2>
+			<p class="text-balance">
+				<span class="text-lg font-semibold font-serif text-wrap-balance">What is On-Bill Repayment and How to
+					Get Started</span><br>
+				The On-Bill Repayment Program makes energy efficiency and electrification upgrades more accessible for
+				homeowners,
+				business owners, schools, and agricultural producers by connecting them to rebates, financing,
+				education, qualified
+				contractors, equipment, and energy audits.
+			</p>
+			<p class="text-balance">
+				To get started, please review the table below to see whether you qualify for additional programs or
+				discounts based on
+				your income. We want to make sure we’re offering you the lowest cost option possible!
+			</p>
+		</div>
+	</section>
+
+
+
+
+
+
+	<section class="px-8 pb-20 text-center" style="background-color: #F5F5F5;" id="apply">
+		<p class="text-balance">
+			If you do not qualify, simply complete the interest form by selecting your co-op from the provided list
+			below.
+			After
+			submission, you'll receive communications primarily from the Collective Clean Energy Fund and Zero Homes—be
+			sure
+			to
+			check your email, including spam and junk folders, for important updates and next steps.
+		</p>
+		<p>Have questions? Call <span class="inline-block">720-263-2313</span></p>
+		<div class="grid place-items-center">
+			<div class="relative">
+				<select class="text-lg p-2 mt-8" data-coop-select>
+					<option value="0">Select Your Co-Op</option>
+				</select>
+				<div class="size-8 mt-8 loading-spinner hidden" data-loading>
+
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="">
+						<path class="fa-secondary" opacity=".4"
+							d="M65.6 414.4c0 8.2 3.1 16.4 9.4 22.6c12.5 12.5 32.8 12.5 45.3 0l45.3-45.3c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L75 391.8c-6.2 6.2-9.4 14.4-9.4 22.6zM224 416l0 64c0 17.7 14.3 32 32 32s32-14.3 32-32l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32zM346.5 120.2c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L437 120.2c12.5-12.5 12.5-32.8 0-45.3c-6.2-6.2-14.4-9.4-22.6-9.4s-16.4 3.1-22.6 9.4l-45.3 45.3zm0 226.3c-12.5 12.5-12.5 32.8 0 45.3L391.8 437c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-45.3-45.3c-12.5-12.5-32.8-12.5-45.3 0zM384 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32z" />
+						<path class="fa-primary"
+							d="M256 0c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32s32-14.3 32-32l0-64c0-17.7-14.3-32-32-32zM0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32zM120.2 75C107.7 62.5 87.5 62.5 75 75s-12.5 32.8 0 45.3l45.3 45.3c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L120.2 75z" />
+					</svg>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section style="background-color: #F5F5F5;">
+		<div data-zoho-container></div>
+	</section>
+
 
 	<!-- Highlights -->
 	<section class="pt-8 pb-12 md:py-8 relative">
@@ -114,63 +205,6 @@
 			}
 		</style>
 	</section>
-
-	<!-- Form Intro -->
-	<section class="px-8 pb-4 pt-20 text-center sm:grid sm:place-content-center" style="background-color: #F5F5F5;">
-		<div class="max-w-2xl space-y-4">
-			<h2 class="ts-heading-2 font-serif text-2xl font-light text-wrap-balance">
-				Get started with On-Bill Repayment
-			</h2>
-			<p class="text-balance">
-				<span class="text-lg font-semibold font-serif text-wrap-balance">What is On-Bill Repayment and How to
-					Get Started</span><br>
-				The On-Bill Repayment Program makes energy efficiency and electrification upgrades more accessible for
-				homeowners,
-				business owners, schools, and agricultural producers by connecting them to rebates, financing,
-				education, qualified
-				contractors, equipment, and energy audits.
-			</p>
-			<p class="text-balance">
-				To get started, please review the table below to see whether you qualify for additional programs or
-				discounts based on
-				your income. We want to make sure we’re offering you the lowest cost option possible!
-			</p>
-		</div>
-	</section>
-
-
-	<section class="px-8 pb-20 text-center" style="background-color: #F5F5F5;">
-		<p class="text-balance">
-			If you do not qualify, simply complete the interest form by selecting your co-op from the provided list
-			below.
-			After
-			submission, you'll receive communications primarily from the Collective Clean Energy Fund and Zero Homes—be
-			sure
-			to
-			check your email, including spam and junk folders, for important updates and next steps.
-		</p>
-		<p>Have questions? Call <span class="inline-block">720-263-2313</span></p>
-		<div class="grid place-items-center">
-			<div class="relative">
-				<select class="text-lg p-2 mt-8" data-coop-select>
-					<option value="0">Select Your Co-Op</option>
-				</select>
-				<div class="size-8 mt-8 loading-spinner hidden" data-loading>
-
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="">
-						<path class="fa-secondary" opacity=".4"
-							d="M65.6 414.4c0 8.2 3.1 16.4 9.4 22.6c12.5 12.5 32.8 12.5 45.3 0l45.3-45.3c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L75 391.8c-6.2 6.2-9.4 14.4-9.4 22.6zM224 416l0 64c0 17.7 14.3 32 32 32s32-14.3 32-32l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32zM346.5 120.2c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L437 120.2c12.5-12.5 12.5-32.8 0-45.3c-6.2-6.2-14.4-9.4-22.6-9.4s-16.4 3.1-22.6 9.4l-45.3 45.3zm0 226.3c-12.5 12.5-12.5 32.8 0 45.3L391.8 437c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-45.3-45.3c-12.5-12.5-32.8-12.5-45.3 0zM384 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32z" />
-						<path class="fa-primary"
-							d="M256 0c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32s32-14.3 32-32l0-64c0-17.7-14.3-32-32-32zM0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32zM120.2 75C107.7 62.5 87.5 62.5 75 75s-12.5 32.8 0 45.3l45.3 45.3c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L120.2 75z" />
-					</svg>
-				</div>
-			</div>
-		</div>
-	</section>
-	<section style="background-color: #F5F5F5;">
-		<div data-zoho-container></div>
-	</section>
-
 
 	<!-- Video Columns -->
 	<section class="min-h-96 bg-gray sm:grid sm:grid-cols-2">
