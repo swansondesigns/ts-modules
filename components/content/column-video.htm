@@ -1,0 +1,21 @@
+<!-- Video Column -->
+<!-- Dependencies: Tailwind CSS, Featherlight.js -->
+<!-- Usage: Video content for two-column grid -->
+
+<div class="relative grid aspect-video place-content-center sm:aspect-auto sm:h-full">
+	<img src="PATH_TO_THUMBNAIL" alt="Video thumbnail" class="absolute size-full object-cover" />
+	<a href="VIDEO_URL" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true"
+		data-featherlight-iframe-height="281" data-featherlight-iframe-width="500" class="relative">
+		<img src="PATH_TO_PLAY_BUTTON" alt="Play button" class="size-24 sm:size-44" />
+	</a>
+</div>
+
+<!-- 
+USAGE NOTES:
+1. Replace PATH_TO_THUMBNAIL with your video thumbnail image
+2. Replace VIDEO_URL with your video URL (typically YouTube embed URL)
+3. Replace PATH_TO_PLAY_BUTTON with path to play button overlay image
+4. Use within grid column div: <div class="h-full">[paste component here]</div>
+5. Thumbnail will be 16:9 on mobile, full-height on desktop
+6. Column ordering is handled by the parent grid component
+-->
