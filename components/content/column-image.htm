@@ -2,8 +2,19 @@
 <!-- Dependencies: Tailwind CSS -->
 <!-- Usage: Image content for two-column grid -->
 
+<!-- Basic Image Column -->
 <div class="relative aspect-video sm:aspect-auto sm:h-full">
 	<img src="PATH_TO_YOUR_IMAGE" alt="DESCRIBE_YOUR_IMAGE" class="absolute inset-0 w-full h-full object-cover" />
+</div>
+
+<!-- Captioned Variant -->
+<div class="relative aspect-video sm:aspect-auto sm:h-full">
+	<figure class="relative w-full h-full">
+		<img src="PATH_TO_YOUR_IMAGE" alt="DESCRIBE_YOUR_IMAGE" class="absolute h-full w-full object-cover">
+		<figcaption class="absolute box-border bottom-0 z-10 h-auto bg-black/50 w-full text-white text-center border-0">
+			YOUR_CAPTION_TEXT
+		</figcaption>
+	</figure>
 </div>
 
 <!-- 
@@ -14,4 +25,11 @@ USAGE NOTES:
 4. Use within grid column div: <div class="h-full">[paste component here]</div>
 5. Column ordering is handled by the parent grid component
 6. Optional: Add object-position class to control image focus (e.g., object-left-top)
+
+CAPTION VARIANT:
+- Use the captioned variant when you need to add descriptive text overlay
+- Caption uses semi-transparent black background (bg-black/50)
+- Caption is positioned at bottom of image
+- Text is centered and white for readability
+- Z-index ensures caption appears above image
 -->
