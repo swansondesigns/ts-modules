@@ -105,6 +105,7 @@ Our components use consistent color combinations for backgrounds and text:
 We follow the Conventional Commits specification for commit messages to maintain a clear, consistent history:
 
 ### Format
+
 ```
 <type>[optional scope]: <description>
 
@@ -114,16 +115,18 @@ We follow the Conventional Commits specification for commit messages to maintain
 ```
 
 ### Types
-- `feat`: A new feature
-- `fix`: A bug fix
-- `style`: Changes that don't affect the meaning of the code (white-space, formatting, etc.)
-- `refactor`: Code change that neither fixes a bug nor adds a feature
-- `docs`: Documentation only changes
-- `chore`: Other changes that don't modify src or test files
-- `wip`: Work in progress commits (to be squashed later)
-- `content`: Content updates like text changes, image additions, etc.
+
+-   `feat`: A new feature
+-   `fix`: A bug fix
+-   `style`: Changes that don't affect the meaning of the code (white-space, formatting, etc.)
+-   `refactor`: Code change that neither fixes a bug nor adds a feature
+-   `docs`: Documentation only changes
+-   `chore`: Other changes that don't modify src or test files
+-   `wip`: Work in progress commits (to be squashed later)
+-   `content`: Content updates like text changes, image additions, etc.
 
 ### Examples
+
 ```
 feat(battery): complete battery resource page layout
 fix(video): correct video lightbox dimensions
