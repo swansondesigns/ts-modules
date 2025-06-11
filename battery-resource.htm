@@ -28,12 +28,12 @@
 </head>
 
 <body id="main" class="block-region-content">
-	<section class="relative min-h-[50vh] z-0 lg:h-[500px] lg:min-h-0">
+	<section class="relative min-h-[50vh] sm:min-h-[400px] z-0 lg:h-[500px] lg:min-h-0">
 		<img src="assets/images/battery-hero.jpg" alt="Battery storage facility"
 			class="absolute inset-0 w-full h-full object-cover z-0" />
 	</section>
 
-	<section class="px-8 py-16 text-center text-balance sm:grid sm:place-content-center">
+	<section class="px-8 py-16 text-center text-balance sm:min-h-[400px] sm:grid sm:place-content-center">
 		<div class="mx-auto max-w-2xl space-y-4">
 			<h2 class="font-serif font-light text-3xl">
 				Good for the grid
@@ -49,14 +49,14 @@
 			</p>
 		</div>
 	</section>
-	<section class="grid sm:grid-cols-2">
-		<div class="h-full">
+	<section class="grid sm:grid-cols-2 sm:min-h-[400px]">
+		<div>
 			<div class="relative aspect-video sm:aspect-auto sm:h-full">
 				<img src="https://placehold.co/800x600/png?text=solar+array" alt="Solar array"
 					class="absolute inset-0 w-full h-full object-cover" />
 			</div>
 		</div>
-		<div class="h-full">
+		<div>
 			<div class="bg-gray text-black px-8 py-12 sm:text-left text-center flex items-center h-full">
 				<div class="space-y-4 max-w-md mx-auto">
 					<h2 class="font-serif font-light text-3xl text-balance">
@@ -84,7 +84,8 @@
 		</div>
 	</section>
 
-	<section class="bg-navy text-white px-8 py-16 text-center text-balance sm:grid sm:place-content-center">
+	<section
+		class="bg-navy text-white px-8 py-16 text-center text-balance sm:min-h-[400px] sm:grid sm:place-content-center">
 		<div class="mx-auto max-w-2xl space-y-4">
 			<h2 class="font-serif font-light text-3xl">
 				Types of batteries
@@ -94,17 +95,64 @@
 				improve performance, while
 				incorporating smart grid technologies and energy management systems will significantly enhance their
 				efficiency and reliability. These are
-				some common battery technologies that support utility-scale use. </p>
+				some common battery technologies that support utility-scale use.
+			</p>
+		</div>
+		<div class="flex flex-wrap justify-center text-center mt-8">
+			<div class="w-full sm:w-1/2 xl:w-1/4 px-4 pb-8 box-border">
+				<div class="text-lg font-semibold">Lithium</div>
+				<div>The most widely used type of
+					utility-scale battery, lithium
+					batteries, are known for their high
+					energy density, long cycle life and
+					efficiency. They are favored for
+					their responsiveness, making them
+					ideal for stabilizing power grids by
+					integrating stored renewable
+					energy sources.</div>
+			</div>
+			<div class="w-full sm:w-1/2 xl:w-1/4 px-4 pb-8 box-border">
+				<div class="text-lg font-semibold">Flow</div>
+				<div>A unique type of utility-scale
+					battery where energy is stored in
+					liquid electrolytes contained in
+					external tanks. Flow batteries are
+					known for their scalability, long
+					cycle life, and the ability to provide
+					consistent power over extended
+					periods oftime.</div>
+			</div>
+			<div class="w-full sm:w-1/2 xl:w-1/4 px-4 pb-8 box-border">
+				<div class="text-lg font-semibold">Lead-acid</div>
+				<div>Used for short-term energy storage
+					and backup power, these are one
+					of the oldest types of rechargeable
+					batteries. While they have lower
+					energy density compared to
+					lithium-ion batteries, they are still
+					used due to their costeffectiveness
+					and reliability.</div>
+			</div>
+			<div class="w-full sm:w-1/2 xl:w-1/4 px-4 pb-8 box-border">
+				<div class="text-lg font-semibold">Sodium-sulfur</div>
+				<div>High-temperature batteries that
+					have high energy density and
+					efficiency. These batteries are
+					known for their long discharge
+					times, making them suitable for
+					long-duration energy storage
+					applications.</div>
+			</div>
 		</div>
 	</section>
-	<section class="grid sm:grid-cols-2">
-		<div class="h-full">
+	<section class="grid sm:grid-cols-2 sm:min-h-[400px]">
+		<div>
 			<div class="relative aspect-video sm:aspect-auto sm:h-full">
 				<img src="assets/images/ts-line-repair.jpg" alt="Line repair work"
 					class="absolute inset-0 w-full h-full object-cover" />
 			</div>
 		</div>
-		<div class="h-full sm:order-first">
+		<div class="sm:order-first">
 			<div class="px-8 py-12 sm:text-left text-center flex items-center h-full">
 				<div class="space-y-4 max-w-md mx-auto">
 					<h2 class="font-serif font-light text-3xl text-balance">
@@ -123,8 +171,8 @@
 			</div>
 		</div>
 	</section>
-	<section class="grid sm:grid-cols-2">
-		<div class="h-full">
+	<section class="grid sm:grid-cols-2 sm:min-h-[400px]">
+		<div>
 			<div class="relative aspect-video sm:aspect-auto sm:h-full">
 				<img src="assets/images/red-feather-lakes.jpg" alt="Red Feather Lakes"
 					class="absolute inset-0 w-full h-full object-cover" /> <a
@@ -136,7 +184,7 @@
 				</a>
 			</div>
 		</div>
-		<div class="h-full">
+		<div>
 			<div class="bg-gray text-black px-8 py-12 sm:text-left text-center flex items-center h-full">
 				<div class="space-y-4 max-w-md mx-auto">
 					<h2 class="font-serif font-light text-3xl text-balance">
@@ -157,8 +205,8 @@
 			</div>
 		</div>
 	</section>
-	<section class="grid sm:grid-cols-2">
-		<div class="h-full">
+	<section class="grid sm:grid-cols-2 sm:min-h-[400px]">
+		<div>
 			<div class="px-8 py-12 sm:text-left text-center flex items-center h-full">
 				<div class="space-y-4 max-w-md mx-auto">
 					<p>
@@ -177,7 +225,7 @@
 			</div>
 
 		</div>
-		<div class="h-full sm:order-first">
+		<div class="sm:order-first">
 			<div class="bg-navy text-white px-8 py-12 sm:text-left text-center flex items-center h-full">
 				<div class="space-y-4 max-w-md mx-auto">
 					<h2 class="font-serif font-light text-3xl text-balance">
@@ -200,7 +248,7 @@
 			</div>
 		</div>
 	</section>
-	<section class="px-8 py-16 text-center text-balance sm:grid sm:place-content-center">
+	<section class="px-8 py-16 text-center text-balance sm:min-h-[400px] sm:grid sm:place-content-center">
 		<div class="mx-auto max-w-2xl space-y-4">
 			<h2 class="font-serif font-light text-3xl">
 				Increasing affordability
