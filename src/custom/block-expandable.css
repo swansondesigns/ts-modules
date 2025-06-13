@@ -11,7 +11,7 @@
 	}
 
 	.ts-expander {
-		min-height: 300px;
+		min-height: 30px;
 		overflow: hidden;
 		position: relative;
 	}

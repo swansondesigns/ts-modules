@@ -1,0 +1,47 @@
+<!-- Text Column -->
+<!-- Dependencies: Tailwind CSS -->
+<!-- Usage: Text content for two-column grid -->
+
+<div class="px-8 py-12 sm:text-left text-center flex items-center h-full">
+	<div class="space-y-4 max-w-md mx-auto">
+		<h2 class="font-serif font-light text-3xl text-balance">
+			<!-- Replace with your heading -->
+			Your Heading Here
+		</h2>
+		<p>
+			<!-- Replace with your content -->
+			Your content goes here
+		</p>
+
+		<!-- Optional CTA Button -->
+		<p>
+			<a href="/your-link"
+				class="inline-block rounded-full border px-4 py-2 font-normal no-underline transition-transform">
+				Your CTA Text
+			</a>
+		</p>
+	</div>
+</div>
+
+<!-- 
+USAGE NOTES:
+1. Replace placeholder text with your content
+2. Use within grid column div: <div class="h-full">[paste component here]</div>
+3. Add background color class to component div: 
+   - bg-navy text-white (high contrast)
+   - bg-gray text-black (subtle emphasis)
+   - no classes (default white/black)
+4. Style CTA button based on background:
+   - Navy bg: border-white text-white hover:text-gray
+   - Gray/white bg: border-black text-black hover:text-gray
+5. Remove CTA paragraph if not needed
+6. Column ordering is handled by the parent grid component
+-->
+
+EXAMPLE WITH ORDER AND STYLING:
+<div class="sm:order-1">
+	<div class="bg-navy text-white px-8 py-12 sm:text-left text-center flex items-center sm:min-h-[400px]">
+		[rest of component]
+	</div>
+</div>
+-->

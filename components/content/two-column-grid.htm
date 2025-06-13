@@ -1,0 +1,48 @@
+<!-- Two Column Grid Container -->
+<!-- Dependencies: Tailwind CSS -->
+<!-- Usage: Two column layouts with optional column reversal at sm: breakpoint -->
+
+<!-- Standard Layout (left content flows to right) -->
+<section class="grid sm:grid-cols-2">
+	<div class="h-full">
+		<!-- First column content -->
+		<!-- Mobile: Top, Desktop: Left -->
+	</div>
+	<div class="h-full">
+		<!-- Second column content -->
+		<!-- Mobile: Bottom, Desktop: Right -->
+	</div>
+</section>
+
+<!-- Reverse Layout (right content flows to left) -->
+<section class="grid sm:grid-cols-2">
+	<div class="h-full">
+		<!-- First column content -->
+		<!-- Mobile: Bottom, Desktop: Right -->
+	</div>
+	<div class="sm:order-first h-full">
+		<!-- Second column content -->
+		<!-- Mobile: Top, Desktop: Left -->
+	</div>
+</section>
+
+<!-- 
+USAGE NOTES:
+1. Container is content-agnostic - can hold any combination of image/text/video columns
+2. Natural flow (no sm:order-first):
+   - First column: top mobile → left desktop
+   - Second column: bottom mobile → right desktop
+3. Reverse flow (add sm:order-first to second column):
+   - First column: bottom mobile → right desktop
+   - Second column: top mobile → left desktop
+4. Always maintain h-full on columns for equal height
+
+<section class="grid sm:grid-cols-2">
+    <div class="sm:order-2">
+        [column-image content]
+    </div>
+    <div class="sm:order-1">
+        [column-text content]
+    </div>
+</section>
+-->

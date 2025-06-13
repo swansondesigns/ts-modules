@@ -1,6 +1,15 @@
 function initScrollAnimations() {
-	// let mm = gsap.matchMedia();
-	// mm.add('(min-width: 768px', () => {});
+	let mm = gsap.matchMedia();
+
+	let preservingHistorySettings = {
+		dir: -1
+	};
+	mm.add('(min-width: 1000px)', () => {
+		preservingHistorySettings.dir = 1;
+		preservingHistorySettings.scrollTrigger = {
+			start: 'bottom 60%'
+		};
+	});
 
 	gsap.registerPlugin(ScrollTrigger);
 
@@ -20,6 +29,9 @@ function initScrollAnimations() {
 	slideElementIn('[data-animate-heading-reliability]', -1);
 	slideElementIn('[data-animate-heading-future]', 1);
 	slideElementIn('[data-animate-flexing-line]', -1);
+
+	console.log(preservingHistorySettings);
+	slideElementIn('[data-animate-preserving-history]', preservingHistorySettings.dir, preservingHistorySettings.scrollTrigger);
 
 	/**
 	 * Scale animations
@@ -81,20 +93,25 @@ function setStatValueSize() {
 	});
 }
 
-function slideElementIn(selector, direction) {
+function slideElementIn(selector, direction, customScrollTrigger = {}) {
 	const element = document.querySelector(selector);
 	const elementContainer = element.closest('section');
 	const offsetWidth = elementContainer.offsetWidth * direction;
+
+	const defaultScrollTrigger = {
+		trigger: element,
+		start: 'bottom 70%'
+		// markers: true,
+		// id: 'slide'
+	};
 
 	gsap.from(element, {
 		x: offsetWidth,
 		duration: 1,
 		ease: 'back.out(1)',
 		scrollTrigger: {
-			trigger: element,
-			start: 'bottom 70%'
-			// markers: true,
-			// id: 'slide'
+			...defaultScrollTrigger,
+			...(customScrollTrigger || {})
 		}
 	});
 }
@@ -158,10 +175,39 @@ function initHeroAnimation() {
 	);
 }
 
+function initMicrophoneAnimation() {
+	const timeline = gsap.timeline({
+		repeat: -1,
+		yoyo: true
+	});
+
+	timeline.to('[data-animate-mic]', {
+		scale: 1.1,
+		duration: 0.2,
+		ease: 'power1.out'
+	});
+	timeline.to('[data-animate-mic]', {
+		scale: 0.9,
+		duration: 0.2,
+		ease: 'power1.inOut'
+	});
+	timeline.to('[data-animate-mic]', {
+		scale: 1.05,
+		duration: 0.2,
+		ease: 'power1.out'
+	});
+	timeline.to('[data-animate-mic]', {
+		scale: 1,
+		duration: 0.4,
+		ease: 'power1.inOut'
+	});
+}
+
 function initAnnualReport() {
 	console.log('initAnnualReport');
 	// setStatValueSize();
-	// initScrollAnimations();
 	initHeroAnimation();
+	initScrollAnimations();
+	initMicrophoneAnimation();
 }
 window.addEventListener('load', initAnnualReport);
