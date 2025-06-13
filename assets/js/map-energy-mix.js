@@ -16,11 +16,10 @@ function handleGroupLeave(e) {
 	// Only handle if the target is a dot (path or circle element)
 	if (!['path', 'circle'].includes(e.target.tagName)) return;
 
-	const dot = e.target;
-	dot.classList.remove('active');
+	e.target.closest('svg').classList.remove('active');
 
 	tooltipTimeout = setTimeout(function () {
-		document.getElementById('energy-tooltip').classList.remove('active');
+		document.getElementById('energy-tooltip').classList.replace('opacity-100', 'opacity-0');
 	}, 500);
 }
 
@@ -28,6 +27,7 @@ function handleGroupHover(e) {
 	// Only handle if the target is a dot (path or circle element)
 	if (!['path', 'circle'].includes(e.target.tagName)) return;
 
+	e.target.closest('svg').classList.add('active');
 	clearTimeout(tooltipTimeout);
 
 	const dot = e.target;
@@ -36,8 +36,7 @@ function handleGroupHover(e) {
 	const dotRect = dot.getBoundingClientRect();
 
 	const tooltip = document.getElementById('energy-tooltip');
-	tooltip.classList.add('active');
-	dot.classList.add('active');
+	tooltip.classList.replace('opacity-0', 'opacity-100');
 
 	// Position tooltip relative to the dot
 	tooltip.style.top = dotRect.top - mapRect.top + 10 + 'px';
@@ -50,10 +49,10 @@ function handleGroupHover(e) {
 
 function cleanFacilityName(name) {
 	return name
-		.replace(/_x2C_/g, ', ')  // Replace encoded comma
-		.replace(/_x28_/g, '(')   // Replace encoded open parenthesis
-		.replace(/_x29_/g, ')')   // Replace encoded close parenthesis
-		.replace(/_/g, ' ');      // Replace remaining underscores with spaces
+		.replace(/_x2C_/g, ', ') // Replace encoded comma
+		.replace(/_x28_/g, '(') // Replace encoded open parenthesis
+		.replace(/_x29_/g, ')') // Replace encoded close parenthesis
+		.replace(/_/g, ' '); // Replace remaining underscores with spaces
 }
 
 window.addEventListener('load', (event) => {
