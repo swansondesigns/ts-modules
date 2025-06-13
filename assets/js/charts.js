@@ -1,6 +1,19 @@
-const chart = document.querySelector('[data-chart]');
+const chartSection = document.querySelector('[data-chart-section]');
+const chart = chartSection.querySelector('[data-chart]');
+const chartContent = chartSection.querySelectorAll('[data-chart-content]');
 const canvas = chart.querySelector('canvas');
 const ctx = canvas.getContext('2d');
+
+const showChartContent = (contentId) => {
+    chartContent.forEach(content => {
+        content.classList.remove('opacity-100');
+        content.classList.add('opacity-0');
+        if (content.getAttribute('data-chart-content') === contentId) {
+            content.classList.remove('opacity-0');
+            content.classList.add('opacity-100');
+        }
+    });
+};
 
 // Config
 const CHART_SEGMENT_COLOR = '#cccccc';
@@ -9,9 +22,11 @@ const CHART_BORDER_WIDTH = 1;
 
 const labels = ['Renewables', 'Contracts', 'Natural gas/oil', 'Coal', 'Member renewables'];
 const dataValues = [36, 12, 17, 33, 2];
+const contentAttValues = ['renewables', 'contracts', 'natural-gas-oil', 'coal', 'member-renewables'];
 
 const data = {
 	labels,
+	contentAttValues,
 	datasets: [
 		{
 			data: dataValues,
@@ -28,16 +43,14 @@ const donutHole = chart.querySelector('[data-chart-donut-hole]');
 const onHoverFunction = (event, elements) => {
 	if (elements.length > 0) {
 		const index = elements[0].index;
-
 		if (index !== lastIndex) {
-			// Simulate onEnter
-			console.log(`Entered: ${data.labels[index]} val ${data.datasets[0].data[index]}`);
 			lastIndex = index;
 			donutHole.textContent = `${data.datasets[0].data[index]}%`;
+			showChartContent(data.contentAttValues[index]);
 		}
 	} else if (lastIndex !== null) {
 		// Simulate onLeave
-		console.log(`Left: ${data.labels[lastIndex]}`);
+		// console.log(`Left: ${data.labels[lastIndex]}`);
 		lastIndex = null;
 		donutHole.textContent = '';
 	}

@@ -96,7 +96,6 @@
 					</div>
 				</section>
 
-
 				<!-- Power when... -->
 				<section class="grid sm:min-h-[400px] sm:grid-cols-2">
 					<div class="relative aspect-video sm:aspect-auto">
@@ -209,11 +208,10 @@
 					</div>
 				</section>
 
-
 				<!-- Chart -->
-				<section class="px-8 py-16 sm:min-h-[400px] sm:grid sm:place-content-center">
-					<div class="mx-auto max-w-2xl grid gap-8 md:grid-cols-2">
-						<div>
+				<section class="px-8 py-16 sm:min-h-[400px] sm:grid sm:place-content-center" data-chart-section>
+					<div class="mx-auto max-w-4xl grid gap-8 md:grid-cols-7">
+						<div class="col-span-3">
 							<div class="relative" data-chart>
 								<canvas class="relative z-10" data-chart></canvas>
 								<div class="absolute z-20 inset-0 pointer-events-none grid place-content-center"><span
@@ -224,17 +222,70 @@
 							<div class="text-center text-sm mt-4 hideme lg:block">Hover on chart sections for details
 							</div>
 						</div>
-						<div class="flex flex-col justify-center gap-1 text-base">
-							<h2 class="font-serif font-light m-0">Renewables</h2>
-							<div class="uppercase">Generation Capacity in 2024</div>
-							<div>We have over a dozen renewable projects in our portfolio with more on the way. This
-								includes
-								federal hydropower, which
-								Tri-State has used since our start in 1952. We're also adding utility-scale storage
-								batteries to our system, which will
-								help us use renewable energy more efficiently.</div>
-						</div>
 
+						<div class="col-span-4 grid relative md:pt-8 lg:pt-12 xl:pt-16">
+							<div class="row-start-1 col-start-1 transition-opacity duration-300 opacity-100"
+								data-chart-content="renewables">
+								<h2 class="font-serif font-light m-0">Renewables</h2>
+								<div class="uppercase">Generation Capacity in 2024</div>
+								<div>We have over a dozen renewable projects in our portfolio with more on the way. This
+									includes
+									federal hydropower, which
+									Tri-State has used since our start in 1952. We're also adding utility-scale storage
+									batteries to our system, which will
+									help us use renewable energy more efficiently.</div>
+							</div>
+							<div class="row-start-1 col-start-1 transition-opacity duration-300 opacity-0 pointer-events-none"
+								data-chart-content="contracts">
+								<h2 class="font-serif font-light m-0">Contracts</h2>
+								<div class="uppercase">Generation Capacity in 2024</div>
+								<div>
+									We are longstanding members of the federal agency <a href="#">WAPA</a> (Western Area
+									Power Administration) and
+									not-for-profit electric cooperative <a href="#">Basin</a>. We have long term power
+									purchasing contracts with
+									them to help supply members with cost-effective electricity.
+								</div>
+							</div>
+							<div class="row-start-1 col-start-1 transition-opacity duration-300 opacity-0 pointer-events-none"
+								data-chart-content="natural-gas-oil">
+								<h2 class="font-serif font-light m-0">Natural gas/oil</h2>
+								<div class="uppercase">Generation Capacity in 2024</div>
+								<div>
+									Natural gas helps Tri-State maintain reliability. This type of generation operates
+									independently of weather or
+									time of day, and can be crucial during storms or extreme temperatures. We’re also
+									building next-gen
+									hydrogen-capable natural gas plants to further reduce emissions from our thermal
+									generation fleet.
+								</div>
+							</div>
+							<div class="row-start-1 col-start-1 transition-opacity duration-300 opacity-0 pointer-events-none"
+								data-chart-content="coal">
+								<h2 class="font-serif font-light m-0">Coal</h2>
+								<div class="uppercase">Generation Capacity in 2024</div>
+								<div>
+									Thermal generation, like coal, helps Tri-State maintain reliability. This type of
+									generation operates
+									independently of weather or time of day, and can be crucial during storms or extreme
+									temperatures. However, our
+									coal operations in Craig, CO are set to retire in 2028 to accommodate emissions and
+									economic goals.
+								</div>
+							</div>
+
+							<div class="row-start-1 col-start-1 transition-opacity duration-300 opacity-0 pointer-events-none"
+								data-chart-content="member-renewables">
+								<h2 class="font-serif font-light m-0">Member renewables</h2>
+								<div class="uppercase">Generation Capacity in 2024</div>
+								<div>
+									Members have an option to self-supply a portion of their own power, and some have
+									developed local renewable energy projects as a result. This percentage will grow as
+									members collaborate with each other to build even more renewable, as a part of our
+									<a href="#">Bring Your Own Resource</a> program.
+								</div>
+							</div>
+						</div>
 					</div>
 				</section>
 
@@ -691,9 +742,6 @@
 					</div>
 
 				</section>
-
-
-
 
 			</div>
 		</div>
