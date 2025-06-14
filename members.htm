@@ -85,7 +85,7 @@
 					<div id="map" class="relative cursor-pointer">
 
 						<div id="member-name"
-							class="px-4 py-2 absolute text-base bg-navy text-white transition-[opacity,top,left] duration-500 z-20 rounded-md">
+							class="px-4 py-2 absolute text-base bg-navy text-white transition-[opacity,top,left] duration-500 z-20 rounded-md opacity-0">
 						</div>
 						<svg style="enable-background:new 0 0 590.4 373.1;" version="1.1" viewBox="0 0 590.4 373.1"
 							x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
@@ -2129,12 +2129,14 @@
 						</svg>
 
 						<style>
-							#map svg.active #Members>g {
+							#map svg.active #Members>g polygon {
 								opacity: 0.3;
 							}
 
-							#map svg.active #Members>g:hover {
+							#map svg.active #Members>g:hover polygon {
 								opacity: 1;
+								fill: #db7447 !important;
+								transition: fill .3s;
 							}
 						</style>
 					</div>
@@ -2202,9 +2204,8 @@
 						</div>
 					</div>
 					<div class="relative aspect-video sm:aspect-auto">
-						<img src="https://tristate.coop/sites/default/files/images/wind-turbine-close-up-1.jpg"
-							alt="close-up of wind turbine" class="absolute inset-0 w-full h-full object-cover"
-							data-att-replace="Chairman" />
+						<img src="https://placehold.co/600x400?text=Chairman" alt="close-up of wind turbine"
+							class="absolute inset-0 w-full h-full object-cover" data-att-replace="Chairman" />
 					</div>
 				</section>
 
@@ -2244,11 +2245,12 @@
 				<!-- "Bridging..." -->
 				<section class="grid sm:min-h-[400px] sm:grid-cols-2">
 					<div class="relative grid aspect-video place-content-center sm:aspect-auto sm:h-full">
-						<img src="PATH_TO_THUMBNAIL" alt="Video thumbnail" class="absolute size-full object-cover"
-							data-att-replace="Harvester" />
+						<img src="https://placehold.co/600x400?text=Video+Thumb" alt="Video thumbnail"
+							class="absolute size-full object-cover" data-att-replace="Harvester" />
 						<a href="VIDEO_URL" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true"
 							data-featherlight-iframe-height="281" data-featherlight-iframe-width="500" class="relative">
-							<img src="PATH_TO_PLAY_BUTTON" alt="Play button" class="size-24 sm:size-44" />
+							<img src="https://tristate.coop/sites/default/files/images/esg/play-video-thumbnail-cover.svg"
+								alt="Play button" class="size-24 sm:size-44" />
 						</a>
 					</div>
 					<div

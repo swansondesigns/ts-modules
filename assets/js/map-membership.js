@@ -1,57 +1,52 @@
 function initMemberMap() {
-	console.log('jy');
 	const memberGroup = document.getElementById('Members');
-	console.log(memberGroup);
 	if (!memberGroup) return;
-	const memberList = memberGroup.querySelectorAll('g:scope > g');
 
+	const memberList = memberGroup.querySelectorAll('g:scope > g');
 	memberList.forEach((member) => {
-		// member.addEventListener("mouseenter", handleHover);
-		member.addEventListener('mouseenter', showDetail);
-		member.addEventListener('mouseleave', hideDetail);
+		member.addEventListener('mouseenter', handleMemberHover);
+		member.addEventListener('mouseleave', handleMemberLeave);
 	});
 }
 
-let mapNameTimeout = null;
-function hideDetail(e) {
-	e.target.closest('[id]').classList.remove('active');
-	mapNameTimeout = setTimeout(function () {
-		console.log('timer expired');
-		document.getElementById('member-name').classList.remove('active');
+let tooltipTimeout = null;
+
+function handleMemberLeave(e) {
+	const member = e.target.closest('[id]');
+	if (!member) return;
+
+	member.closest('svg').classList.remove('active');
+	tooltipTimeout = setTimeout(function () {
+		document.getElementById('member-name').classList.replace('opacity-100', 'opacity-0');
 	}, 500);
 }
-function showDetail(e) {
-	clearTimeout(mapNameTimeout);
 
-	const mapSection = e.target.closest('[id]');
+function handleMemberHover(e) {
+	const member = e.target.closest('[id]');
+	if (!member) return;
+
+	clearTimeout(tooltipTimeout);
+
 	const mapContainer = document.getElementById('map');
 	const mapRect = mapContainer.getBoundingClientRect();
-	const mapSectionRect = mapSection.getBoundingClientRect();
+	const memberRect = member.getBoundingClientRect();
 
-	// console.log(mapSectionRect.top, mapSectionRect.right, mapSectionRect.bottom, mapSectionRect.left);
-	console.log(mapRect.top);
-	console.log(mapSectionRect.top);
-	const memberName = document.getElementById('member-name');
-	memberName.classList.add('active');
-	mapSection.classList.add('active');
+	const tooltip = document.getElementById('member-name');
+	tooltip.classList.replace('opacity-0', 'opacity-100');
+	member.closest('svg').classList.add('active');
 
-	const mapSectionWidth = Math.round(mapSectionRect.right - mapSectionRect.left);
+	// Position tooltip relative to the member area
+	tooltip.style.top = memberRect.top - mapRect.top + 10 + 'px';
+	tooltip.style.left = memberRect.right - mapRect.left + 10 + 'px';
 
-	// memberName.style.top = getOffset(mapSection).top - mapRect.top + "px";
-	memberName.style.top = mapSectionRect.top - mapRect.top + 10 + 'px';
+	// Get and clean the member name
+	tooltip.innerHTML = cleanMemberName(member.id);
+}
 
-	memberName.style.left = mapSectionWidth - mapRect.left + getOffset(mapSection).left + 'px';
-	memberName.innerHTML = e.target.closest('[id]').id.replace(/_/g, ' ');
+function cleanMemberName(name) {
+	return name.replace(/_/g, ' ');
 }
 
 window.addEventListener('load', (event) => {
 	initMemberMap();
 });
-
-function getOffset(el) {
-	const rect = el.getBoundingClientRect();
-	return {
-		left: rect.left + window.scrollX,
-		top: rect.top + window.scrollY
-	};
-}
