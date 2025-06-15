@@ -31,6 +31,25 @@ function expandCard(button) {
 	}
 }
 
+function getCardIndex(card) {
+	// Only get elements that are actual cards
+	const allCards = [...card.parentElement.querySelectorAll('[data-card]')];
+	return allCards.indexOf(card);
+}
+
+function placeBio(gridPosition) {
+	const bioContainer = document.querySelector('[data-bio-container]');
+	console.log(bioContainer);
+	if (!bioContainer) return;
+
+	// For both layouts, we'll place the bio in the next column over
+	const targetColumn = gridPosition['grid column'] === 1 ? 2 : 1;
+
+	bioContainer.className = `absolute col-span-1 xl:col-span-2`;
+	bioContainer.className = `col-start-${targetColumn} row-start-${gridPosition['grid row']}`;
+	bioContainer.style.display = 'block';
+}
+
 document.addEventListener('DOMContentLoaded', function () {
 	const leadershipGrid = document.querySelector('[data-leadership]');
 
@@ -38,15 +57,23 @@ document.addEventListener('DOMContentLoaded', function () {
 		const button = e.target.closest('[data-expand]');
 		if (!button) return;
 
+		const card = button.closest('[data-card]');
 		const layout = getGridLayout();
-		console.log('Current layout:', layout);
+		const index = getCardIndex(card) + 1; // Convert to 1-based index
 
-		// Handle mobile layout differently
+		const gridPosition = {
+			layout: layout,
+			'card number': index,
+			'grid row': Math.floor((index - 1) / (layout === '4-col' ? 4 : 2)) + 1,
+			'grid column': ((index - 1) % (layout === '4-col' ? 4 : 2)) + 1
+		};
+
+		console.log(gridPosition);
+
 		if (layout === '1-col') {
 			expandCard(button);
 		} else {
-			// We'll handle multi-column layouts next
-			console.log('Multi-column layout handling coming soon');
+			placeBio(gridPosition);
 		}
 	});
 });

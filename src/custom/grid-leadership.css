@@ -14,4 +14,8 @@
 	[data-bio] > * {
 		@apply overflow-hidden;
 	}
+
+	[data-bio-container] {
+		@apply absolute col-span-1 xl:col-span-2;
+	}
 }
