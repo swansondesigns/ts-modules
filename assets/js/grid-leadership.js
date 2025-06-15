@@ -1,15 +1,20 @@
+const BUTTON_DEFAULT_TEXT = 'View full profile';
+const BUTTON_CLOSE_TEXT = 'Close profile';
 function getGridLayout() {
 	const width = window.innerWidth;
 
 	if (width >= 1280) {
-		// xl breakpoint (4 columns)
 		return '4-col';
 	} else if (width >= 640) {
-		// sm breakpoint (2 columns)
 		return '2-col';
 	} else {
-		return '1-col'; // mobile (1 column)
+		return '1-col';
 	}
+}
+
+function getCardIndex(card, gridLeadership) {
+	const allCards = [...gridLeadership.querySelectorAll('[data-card]')];
+	return allCards.indexOf(card);
 }
 
 function expandCard(button) {
@@ -21,45 +26,62 @@ function expandCard(button) {
 	document.querySelectorAll('[data-bio].open').forEach((openBio) => {
 		openBio.classList.remove('open');
 		const btn = openBio.closest('[data-card]').querySelector('[data-expand]');
-		btn.textContent = 'View full profile';
+		btn.textContent = BUTTON_DEFAULT_TEXT;
 	});
 
 	// Toggle the clicked card's bio
 	if (!wasOpen) {
 		bio.classList.add('open');
-		button.textContent = 'Close profile';
+		button.textContent = BUTTON_CLOSE_TEXT;
 	}
 }
 
-function getCardIndex(card) {
-	// Only get elements that are actual cards
-	const allCards = [...card.parentElement.querySelectorAll('[data-card]')];
-	return allCards.indexOf(card);
-}
-
-function placeBio(gridPosition) {
-	const bioContainer = document.querySelector('[data-bio-container]');
-	console.log(bioContainer);
-	if (!bioContainer) return;
-
-	// For both layouts, we'll place the bio in the next column over
-	const targetColumn = gridPosition['grid column'] === 1 ? 2 : 1;
-
-	bioContainer.className = `absolute col-span-1 xl:col-span-2`;
-	bioContainer.className = `col-start-${targetColumn} row-start-${gridPosition['grid row']}`;
-	bioContainer.style.display = 'block';
+function placeBio(gridPosition, button, gridLeadership) {
+    const template = document.querySelector('#bio-template');
+    const existingBio = gridLeadership.querySelector('[data-bio-container]');
+    
+    // Reset all buttons to default state
+    gridLeadership.querySelectorAll('[data-expand]').forEach(btn => {
+        btn.textContent = BUTTON_DEFAULT_TEXT;
+    });
+    
+    // Target position for new bio
+    const targetColumn = gridPosition['grid column'] === 1 ? 2 : 1;
+    const targetRow = gridPosition['grid row'];
+    
+    // If there's an existing bio in the same position, remove it
+    if (existingBio) {
+        const samePosition = existingBio.classList.contains(`col-start-${targetColumn}`) && 
+                           existingBio.classList.contains(`row-start-${targetRow}`);
+        
+        existingBio.remove();
+        
+        if (samePosition) {
+            return; // Button text is already reset
+        }
+    }
+    
+    // Create new bio panel
+    const newBio = template.content.firstElementChild.cloneNode(true);
+    newBio.classList.add(
+        `col-start-${targetColumn}`,
+        `row-start-${targetRow}`
+    );
+    
+    gridLeadership.appendChild(newBio);
+    button.textContent = BUTTON_CLOSE_TEXT;
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-	const leadershipGrid = document.querySelector('[data-leadership]');
+	const gridLeadership = document.querySelector('[data-leadership]');
 
-	leadershipGrid.addEventListener('click', (e) => {
+	gridLeadership.addEventListener('click', (e) => {
 		const button = e.target.closest('[data-expand]');
 		if (!button) return;
 
 		const card = button.closest('[data-card]');
 		const layout = getGridLayout();
-		const index = getCardIndex(card) + 1; // Convert to 1-based index
+		const index = getCardIndex(card, gridLeadership) + 1;
 
 		const gridPosition = {
 			layout: layout,
@@ -73,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		if (layout === '1-col') {
 			expandCard(button);
 		} else {
-			placeBio(gridPosition);
+			placeBio(gridPosition, button, gridLeadership);
 		}
 	});
 });
