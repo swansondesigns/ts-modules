@@ -1,0 +1,22 @@
+@layer components {
+	/* Grid layout configurations */
+	[data-leadership] {
+		@apply grid gap-y-12 sm:grid-cols-2 sm:gap-x-8 xl:grid-cols-4;
+	}
+
+	/* Bio expansion behavior */
+	[data-bio] {
+		display: grid;
+		grid-template-rows: 0fr;
+		transition: grid-template-rows 0.3s ease;
+	}
+
+	[data-bio].open {
+		grid-template-rows: 1fr;
+		padding: 2rem 0;
+	}
+
+	[data-bio] > * {
+		@apply overflow-hidden;
+	}
+}
