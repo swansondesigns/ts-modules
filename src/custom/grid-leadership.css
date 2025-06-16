@@ -16,6 +16,31 @@
 	}
 
 	[data-bio-container] {
-		@apply absolute col-span-1 xl:col-span-2;
+		@apply absolute z-30 col-span-1 xl:col-span-2;
+	}
+
+	/* Overlay and active state styling */
+	/* 
+		Could not get this to work for .grid-cover without using a class even though other stuff 
+		that is built the same way works fine. 
+	*/
+	.grid-cover {
+		@apply absolute inset-0 -z-10 bg-white opacity-0 transition-opacity duration-300;
+	}
+	[data-leadership].has-active .grid-cover {
+		z-index: 10;
+		opacity: 0.8;
+	}
+
+	[data-leadership].has-active [data-card] {
+		@apply transition-transform duration-300;
+	}
+
+	[data-leadership].has-active [data-card]:not(.active) {
+		@apply scale-[0.98] transform;
+	}
+
+	[data-leadership].has-active [data-card].active {
+		@apply relative z-20 scale-[1.02] transform;
 	}
 }

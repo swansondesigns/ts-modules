@@ -39,20 +39,17 @@ function expandCard(button) {
 function placeBio(gridPosition, button, gridLeadership) {
 	const template = document.querySelector('#bio-template');
 	const existingBio = gridLeadership.querySelector('[data-bio-container]');
+	const overlay = gridLeadership.querySelector('[data-cover]');
 
-	// Reset all buttons to default state
+	// Reset all buttons and active states
 	gridLeadership.querySelectorAll('[data-expand]').forEach((btn) => {
 		btn.textContent = BUTTON_DEFAULT_TEXT;
+		btn.closest('[data-card]').classList.remove('active');
 	});
 
 	// Calculate target column based on layout
 	let targetColumn;
 	if (gridPosition.layout === '4-col') {
-		// For 4-col layout:
-		// Card 1 (col 1) -> bio starts at col 2
-		// Card 2 (col 2) -> bio starts at col 3
-		// Card 3 (col 3) -> bio starts at col 1
-		// Card 4 (col 4) -> bio starts at col 2
 		const clickedColumn = gridPosition['grid column'];
 		switch (clickedColumn) {
 			case 1:
@@ -82,6 +79,7 @@ function placeBio(gridPosition, button, gridLeadership) {
 		existingBio.remove();
 
 		if (samePosition) {
+			gridLeadership.classList.remove('has-active');
 			return; // Button text is already reset
 		}
 	}
@@ -92,6 +90,10 @@ function placeBio(gridPosition, button, gridLeadership) {
 
 	gridLeadership.appendChild(newBio);
 	button.textContent = BUTTON_CLOSE_TEXT;
+
+	// Set active states
+	button.closest('[data-card]').classList.add('active');
+	gridLeadership.classList.add('has-active');
 }
 
 document.addEventListener('DOMContentLoaded', function () {
