@@ -30,17 +30,13 @@ function getCardIndex(card, gridLeadership) {
 function expandCard(button) {
 	const card = button.closest('[data-card]');
 	const bio = card.querySelector('[data-bio]');
-	const wasOpen = bio.classList.contains('open');
-
-	// Close all bios first
-	document.querySelectorAll('[data-bio].open').forEach((openBio) => {
-		openBio.classList.remove('open');
-		const btn = openBio.closest('[data-card]').querySelector('[data-expand]');
-		btn.textContent = BUTTON_DEFAULT_TEXT;
-	});
+	const isOpen = bio.classList.contains('open');
 
 	// Toggle the clicked card's bio
-	if (!wasOpen) {
+	if (isOpen) {
+		bio.classList.remove('open');
+		button.textContent = BUTTON_DEFAULT_TEXT;
+	} else {
 		bio.classList.add('open');
 		button.textContent = BUTTON_CLOSE_TEXT;
 	}
