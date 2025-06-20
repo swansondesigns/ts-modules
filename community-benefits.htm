@@ -110,10 +110,10 @@
 
 				<!-- SLIDER -->
 				<section class="min-h-96 sm:min-h-[400px]">
-					<div class="swiper max-w-[1200px] h-[400px]">
+					<div class="swiper w-[100vw] max-w-[1200px] h-[400px]">
 						<div class="swiper-wrapper">
 							<!-- SLIDE 1 : IMAGE WITH CAPTION -->
-							<div class="swiper-slide aspect-video sm:w-2/3">
+							<div class="swiper-slide sm:w-2/3">
 								<figure class="relative w-full h-full">
 									<img src="https://tristate.coop/sites/default/files/images/tristate-beneficial-electrification-truck-800x450.jpg"
 										alt="Tri-State Electrification Programs"
@@ -154,7 +154,7 @@
 							</div>
 
 							<!-- SLIDE 3 : IMAGE WITH CAPTION -->
-							<div class="swiper-slide aspect-video sm:w-2/3">
+							<div class="swiper-slide sm:w-2/3">
 								<figure class="relative w-full h-full">
 									<img src="https://tristate.coop/sites/default/files/images/trucks-on-dirt-road-near-transmission-lines-800x450.jpg"
 										alt="Community Benefits" class="absolute h-full w-full object-cover">
@@ -216,28 +216,9 @@
 	</main>
 	<script
 		src="https://tristate.coop/sites/default/files/asset_injector/js/swiper_9_3_2-36d6a8a781e73f708975edfc2809913b.js?sk35jq"></script>
-	<script>
-		const swiperConfig = {
-			slidesPerView: 'auto',
-			pagination: {
-				el: '.swiper-pagination',
-			},
-			navigation: {
-				nextEl: '.swiper-button-next',
-				prevEl: '.swiper-button-prev',
-			},
-			breakpoints: {
-				600: {
-					centeredSlides: true,
-					initialSlide: 1,
-				},
-			},
-		};
+	<script
+		src="https://tristate.coop/sites/default/files/asset_injector/js/swiper_tailwind-326cfbac0aac0a21b8bb152ff68ec3ef.js?sxfxx0"></script>
 
-		document.querySelectorAll('.swiper').forEach(swiper => {
-			new Swiper(swiper, swiperConfig);
-		});
-	</script>
 </body>
 
 </html>
