@@ -736,72 +736,74 @@
 
 				</section>
 
-				<!-- Slider -->
-				<section class="bg-white sm:grid sm:place-content-center" style="--swiper-theme-color: #3d4d55">
-					<!-- Slider main container -->
-					<div class="swiper p-0 pb-10 bg-white"><!-- Additional required wrapper -->
-						<div class="swiper-wrapper h-[220px] lg:h-[350px]"><!-- Placeholder slides -->
-							<div class="swiper-slide sm:w-[60%]">
+
+				<!-- SLIDER -->
+				<section style="--swiper-theme-color: #3d4d55; --swiper-pagination-bottom: auto">
+					<div class="swiper h-[432px] pb-8">
+						<div class="swiper-wrapper">
+							<!-- SLIDE 1 : QUOTE -->
+							<div class="swiper-slide sm:w-2/3">
 								<div
 									class="flex items-center justify-center relative h-full w-full text-[#3d4d55] bg-white overflow-hidden">
-									<figure class="w-3/4 relative z-10">
+									<span
+										class="absolute top-0 left-0 bg-[url('https://tristate.coop/sites/default/files/images/esg/quote.svg')] bg-contain bg-no-repeat bg-left-top -translate-y-1/4 z-0"
+										style="width:clamp(110px,25vw,220px); height:clamp(110px,25vw,220px)"></span>
+									<span
+										class="absolute bottom-0 right-0 bg-[url('https://tristate.coop/sites/default/files/images/esg/quote.svg')] bg-contain bg-no-repeat bg-left-top z-0"
+										style="width:clamp(110px,25vw,220px); height:clamp(110px,25vw,220px); transform: rotate(180deg) translate(0%, -25%)"></span>
+									<figure class="grid place-content-center p-6 relative z-10 min-h-[400px] lg:px-12">
 										<blockquote
-											class="m-0 p-0 border-0 lg:text-lg font-bold text-justify text-gray-900">
-											What we're
-											building now is going to serve our members into the 2060s. It's not just our
-											kids, but our
-											grandkids. They're going to benefit from what we're building today.
+											class="m-0 p-0 border-0 font-bold text-justify text-gray-900 lg:text-lg lg:leading-tight">
+											What we're building now is going to serve our members into the 2060s. It's
+											not just our kids, but our grandkids. They're going to benefit from what
+											we're building today.
 										</blockquote>
-
 										<figcaption
-											class="p-0 mt-5 border-0 text-[1.2rem] font-light text-[#719ab8] font-serif">
-											Duane
-											Highley, Tri-State CEO</figcaption>
+											class="p-0 mt-5 border-0 text-[1.2rem] font-light text-[#719ab8] font-serif leading-tight">
+											Duane Highley, Tri-State CEO
+										</figcaption>
 									</figure>
 								</div>
 							</div>
 
-							<div class="swiper-slide relative w-full box-border sm:w-[60%]">
-								<figure class="relative w-full h-full"><img alt=""
-										class="absolute h-full w-full object-cover"
-										src="https://tristate.coop/sites/default/files/images/escalante-solar-800x485.jpg" />
+							<!-- SLIDE 2 : IMAGE WITH CAPTION -->
+							<div class="swiper-slide sm:w-2/3">
+								<figure class="relative w-full h-full">
+									<img src="https://tristate.coop/sites/default/files/images/escalante-solar-800x485.jpg"
+										alt="Escalante Solar Project" class="absolute h-full w-full object-cover">
 									<figcaption
-										class="absolute box-border bottom-0 z-[1] h-auto bg-black/50 w-full text-white text-center border-0">
-										200 MW Escalante Solar Project near Grants, New Mexico</figcaption>
+										class="absolute box-border bottom-0 z-10 h-auto bg-black/50 w-full text-white text-center border-0">
+										200 MW Escalante Solar Project near Grants, New Mexico
+									</figcaption>
 								</figure>
 							</div>
 
-							<div class="swiper-slide relative w-full sm:w-[60%]">
-								<figure class="relative w-full h-full"><a class="absolute h-full w-full"
-										href="https://tristate.coop/susan-hunter-annual-report-2023"><img alt=""
-											class="absolute h-full w-full object-cover"
-											src="https://tristate.coop/sites/default/files/blog/content-images/0524%20Susan%20Hunter_Blog1_1200x628.jpg" />
-									</a>
-
+							<!-- SLIDE 3 : IMAGE WITH CAPTION -->
+							<div class="swiper-slide sm:w-2/3">
+								<figure class="relative w-full h-full">
+									<img src="https://tristate.coop/sites/default/files/blog/content-images/0524%20Susan%20Hunter_Blog1_1200x628.jpg"
+										alt="Diversifying Our Portfolio" class="absolute h-full w-full object-cover">
 									<figcaption
-										class="absolute box-border bottom-0 z-[1] h-auto bg-black/50 w-full text-white text-center border-0">
-										<a class="absolute h-full w-full"
-											href="https://tristate.coop/susan-hunter-annual-report-2023">Diversifying
-											Our Portfolio -
-											<u>Learn More</u> </a>
+										class="absolute box-border bottom-0 z-10 h-auto bg-black/50 w-full text-white text-center border-0">
+										<a href="https://tristate.coop/susan-hunter-annual-report-2023"
+											class="text-white hover:text-white">
+											Diversifying Our Portfolio - <u>Learn More</u>
+										</a>
 									</figcaption>
-									<a class="absolute h-full w-full"
-										href="https://tristate.coop/susan-hunter-annual-report-2023"> </a>
 								</figure>
 							</div>
 						</div>
-						<!-- If we need pagination -->
 
-						<div class="swiper-pagination">&nbsp;</div>
-						<!-- If we need navigation buttons -->
-
+						<div class="swiper-pagination h-8">&nbsp;</div>
 						<div class="swiper-button-prev">&nbsp;</div>
-
 						<div class="swiper-button-next">&nbsp;</div>
 					</div>
 				</section>
-
+				<!-- /SLIDER -->
 			</div>
+			</section>
+
+		</div>
 		</div>
 	</main>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
