@@ -38,27 +38,64 @@
 	<!-- Hero -->
 	<section class="bg-green flex flex-row">
 		<div class="bg-connections-l bg-repeat-y w-[15%] min-w-8 max-w-40"></div>
-		<div class="box-border flex-grow flex-shrink text-center min-h-60 px-8 py-12 md:py-16 md:text-balance">
+		<div class="box-border flex-grow flex-shrink text-center px-8 py-12 md:py-16 md:text-balance">
 
 			<img src="https://tristate.coop/sites/default/files/images/electrify-and-save/2025/E%26S_OBR_Horiz_White.png"
 				alt="" srcset="" class="md:max-w-sm m-auto"><br>
-			<h1 class="text-2xl md:text-4xl text-white my-4">Energy efficiency upgrades
-				everyone can get behind</h1>
-			<a class="block items-center gap-2 rounded-full border px-4 py-2 font-normal no-underline transition-transform text-white text-center max-w-sm mx-auto xl:hidden"
-				href="#apply">Apply Now</a>
+
+			<div class="text-navy space-y-2">
+
+				<span>HAVE A QUESTION? CALL US:</span>
+				<span class="font-serif text-xl">720-263-2313</span>
+			</div>
 		</div>
 		<div class="bg-connections-r bg-repeat-y bg-right w-[15%] min-w-8 max-w-40"></div>
 	</section>
 
-	<template id="sticky-template">
+	<!-- <template id="sticky-template">
 		<div class="fixed z-0 xl:z-10 top-52 right-6 2xl"><a
 				class="items-center gap-2 rounded-full border px-4 py-2 font-normal no-underline transition-transform text-black text-center bg-white shadow-lg"
 				href="#apply">Apply Now</a></div>
-	</template>
+	</template> -->
+
+	<!-- Pitch -->
+	<section class="relative p-6 text-center grid place-items-center md:py-8">
+
+		<div class="px-auto max-w-4xl md:grid md:grid-cols-2 md:gap-x-24 md:text-left">
+
+			<!-- Text Block 1 -->
+			<div class="mb-4 md:col-start-1 md:row-start-1">
+				<div class="font-xs font-semibold text-navy">EASY FINANCING FOR HOME & BUSINESS OWNERS</div>
+				<div class="text-gray-dark font-serif text-4xl">Save Today on High-Efficiency Energy Upgrades</div>
+			</div>
+
+			<!-- Image -->
+			<div class=" md:col-start-2 md:row-start-1 md:row-span-2">
+				<div class="relative mb-6 h-44 rounded-lg border border-gray md:h-full">
+					<img src="https://placehold.co/600x400/transparent/333?text=Install+Pic" alt=""
+						class="absolute inset-0 object-cover object-center w-full h-full rounded-lg">
+				</div>
+			</div>
+
+			<!-- Text Block 2 -->
+			<div class="md:col-start-1 md:row-start-2">
+				<div class="mb-4">Our On-Bill Repayment Program (OBR) makes energy efficiency and electrification
+					upgrades
+					more
+					accessible for homeowners, businesses, and agricultural producers. <strong>Repay gradually, right on
+						your
+						monthly utility bill.</strong></div>
+				<div><a href="#" class="inline-block rounded-full py-3 px-5 bg-green text-white no-underline ">APPLY
+						TODAY <span>K</span></a>
+				</div>
+			</div>
+		</div>
+	</section>
+
 
 	<!-- Highlights -->
-	<section class="pt-8 pb-12 md:py-8 relative">
-		<div class="swiper-key-points md:grid md:gap-4 md:grid-cols-3 md:place-content-center overflow-visible">
+	<section class="pt-8 pb-6 bg-[#E1E9BC] md:py-8 relative">
+		<div class="swiper swiper-key-points pb-12 md:grid md:gap-4 md:grid-cols-3 md:place-content-center">
 			<div class="swiper-wrapper md:contents">
 
 				<div class="swiper-slide flex flex-col items-center">
@@ -105,7 +142,7 @@
 
 				</div>
 			</div>
-			<div class="swiper-pagination md:hidden"></div>
+			<div class="swiper-pagination h-6 md:hidden"></div>
 		</div>
 		<style>
 			:root {
@@ -485,9 +522,9 @@
 
 
 
-	<div class="fixed top-72 right-6 z-10" data-sticky><a href="#"
+	<!-- <div class="fixed top-72 right-6 z-10" data-sticky><a href="#"
 			class="block items-center gap-2 rounded-full border px-4 py-2 font-normal no-underline transition-transform text-black text-center md:inline-flex">Apply
-			Now</a></div>
+			Now</a></div> -->
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
 	integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
@@ -585,9 +622,6 @@
 
 <script
 	src="https://tristate.coop/sites/default/files/asset_injector/js/swiper_9_3_2-36d6a8a781e73f708975edfc2809913b.js?sk35jq"></script>
-<!-- <script	src="https://tristate.coop/sites/default/files/asset_injector/js/swiper_init_esg-a83e35073610fcf52f6729c0735ad90e.js?sk35jq"></script> -->
-<!-- <script
-	src="https://tristate.coop/sites/default/files/asset_injector/js/swiper_init_electrify_and_save_es_2023_-fa998f91dfc31de0d71fbaf9b20f07ae.js?sk35jq"></script> -->
 <script
 	src="https://tristate.coop/sites/default/files/asset_injector/js/gsap_animation_platform-57397ff5d3b9ddc9453b16048c1221e4.js?sk35jq"></script>
 
@@ -607,6 +641,7 @@
 						clickable: true,
 					},
 				});
+				console.log(swiperInstance);
 			}
 		} else {
 			if (swiperInstance) {
@@ -615,7 +650,6 @@
 			}
 		}
 	}
-	console.log({ swiperInstance });
 
 	// Run on load
 	toggleSwiper();
