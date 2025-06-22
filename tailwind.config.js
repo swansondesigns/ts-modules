@@ -11,6 +11,7 @@ module.exports = {
 			...defaultColors,
 			navy: '#004a76',
 			gray: '#dedcd7',
+			'gray-dark': '#404040',
 			'gray-light': '#f5f5f5',
 			green: '#b4c757'
 		},
