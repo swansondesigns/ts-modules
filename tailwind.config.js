@@ -44,6 +44,9 @@ module.exports = {
 					},
 					'.hideme': {
 						display: 'none'
+					},
+					'.loading-spinner': {
+						animation: 'spin 1s ease-in-out infinite'
 					}
 				},
 				['responsive']

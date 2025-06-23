@@ -1,7 +1,6 @@
 // Helper function to create and configure the GSAP timeline
 function helperObrCreateTimeline(zohoContainer, peek) {
 	// DOM element selections using data attributes (optional elements)
-	const screenshots = peek.querySelectorAll('[data-screenshot]'); // Animate to: transform: translateY(100%);
 	const triangles = peek.querySelectorAll('[data-triangle]'); // Animate to: clip-path: polygon(100% 100%, 100% 0%, 100% 100%, 0% 100%);
 	const ctaBadge = peek.querySelector('[data-cta-badge]'); // Animate to: scale to 0
 	const ctaText = peek.querySelector('[data-cta-text]'); // Animate to: transform: translateY(200%);
@@ -16,22 +15,12 @@ function helperObrCreateTimeline(zohoContainer, peek) {
 			duration: baseDuration
 		}
 	});
-
 	// Build the animation timeline with staggered overlapping animations
-	tl.to(screenshots, {
-		y: '100%',
-		duration: baseDuration * 1.2,
-		ease: 'power2.inOut'
+	tl.to(ctaBadge, {
+		scale: 0.001,
+		duration: baseDuration * 0.8,
+		ease: 'back.in(1.7)'
 	})
-		.to(
-			ctaBadge,
-			{
-				scale: 0.001,
-				duration: baseDuration * 0.8,
-				ease: 'back.in(1.7)'
-			},
-			'-=0.9'
-		)
 		.to(
 			triangles,
 			{
@@ -142,6 +131,15 @@ function helperObrHandleMemberButtonClick(e, timeline, zohoContainer, peek) {
 
 		// Get the URL from the clicked button
 		const formUrl = e.target.href;
+
+		// Immediately animate screenshots down
+		const screenshots = peek.querySelectorAll('[data-screenshot]');
+		gsap.to(screenshots, {
+			y: '100%',
+			duration: 0.48,
+			ease: 'power2.inOut'
+		});
+
 		// Load the form first, then animate
 		helperObrCreateAndAppendForm(formUrl, null, zohoContainer)
 			.then((iframe) => {
