@@ -165,24 +165,12 @@
 				about the
 				personalized financing opportunities available to you. <strong>Am I eligible?</strong></p>
 
-			<div class="flex flex-wrap justify-center gap-2">
-				<a href="#"
-					class="inline-block rounded-full py-2 px-3 border border-solid border-green no-underline leading-none hover:bg-green/70 hover:text-black ">Gunnison
-					County</a>
-				<a href="#"
-					class="inline-block rounded-full py-2 px-3 border border-solid border-green no-underline leading-none hover:bg-green/70 hover:text-black ">Highline</a>
-				<a href="#"
-					class="inline-block rounded-full py-2 px-3 border border-solid border-green no-underline leading-none hover:bg-green/70 hover:text-black ">Mountain
-					View</a>
-				<a href="#"
-					class="inline-block rounded-full py-2 px-3 border border-solid border-green no-underline leading-none hover:bg-green/70 hover:text-black ">San
-					Luis Valley</a>
-				<a href="#"
-					class="inline-block rounded-full py-2 px-3 border border-solid border-green no-underline leading-none hover:bg-green/70 hover:text-black ">Sangre
-					de Cristo</a>
-				<a href="#"
-					class="inline-block rounded-full py-2 px-3 border border-solid border-green no-underline leading-none hover:bg-green/70 hover:text-black ">White
-					River</a>
+			<div class="flex flex-wrap justify-center gap-2" data-member-buttons>
+				<template>
+					<a href="#"
+						class="inline-block rounded-full py-2 px-3 border border-solid border-green no-underline leading-none hover:bg-green/70 hover:text-black "></a>
+				</template>
+
 			</div>
 		</div>
 	</section>
@@ -553,95 +541,20 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
 	integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
 	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
 	integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
-	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-	// Dynamically add options to the existing select element
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+<script>	// Dynamically add options to the existing select element
 	const obrFormOptions = [
-		{ label: 'Gunnison County Electric Assoc.', url: 'https://forms.zohopublic.com/dave77/form/CCEFOnBillElectrifyandSaveInterestFormGunnisonCoun/formperma/eaL0vRpEvSxnZ0SfUkbvcwk455RufgurFBcYNNdmFrI?zf_rszfm=1' },
-		{ label: 'Mountain View Electric Assoc.', url: 'https://forms.zohopublic.com/dave77/form/CCEFOnBillElectrifyandSaveInterestFormMountainView/formperma/JFmZ7-sYFbED03cidPhkJF2Xg6pGwaaELrG-VROL8Qs?zf_rszfm=1' },
-		{ label: 'San Luis Valley REC', url: 'https://forms.zohopublic.com/dave77/form/CCEFOnBillElectrifyandSaveInterestForm/formperma/O0v_a4kTLqUVhif9bTmfrYo5gk9MxQAjIf0nGZp2e08?zf_rszfm=1' },
-		{ label: 'Sangre de Cristo', url: 'https://forms.zohopublic.com/dave77/form/CCEFOnBillElectrifyandSaveInterestFormSangredeCris/formperma/a32FoQiHZJ3JGfZytyiSadMLVC4T41tZraNq3niYC6w?zf_rszfm=1' }
+		{ label: 'Gunnison County', url: 'https://forms.zohopublic.com/dave77/form/CCEFOnBillElectrifyandSaveInterestFormGunnisonCoun/formperma/eaL0vRpEvSxnZ0SfUkbvcwk455RufgurFBcYNNdmFrI?zf_rszfm=1' },
+		{ label: 'Highline', url: 'https://forms.zohopublic.com/dave77/form/HighlineCCEFOnBillElectrifyandSaveInterestForm/formperma/1-oZDDD2WhuaR1zTbh3RHA4_mBYlUJIQm0l0VuwBXlQ?zf_rszfm=1' },
+		{ label: 'Mountain View', url: 'https://forms.zohopublic.com/dave77/form/CCEFOnBillElectrifyandSaveInterestFormMountainView/formperma/JFmZ7-sYFbED03cidPhkJF2Xg6pGwaaELrG-VROL8Qs?zf_rszfm=1' },
+		{ label: 'San Luis Valley', url: 'https://forms.zohopublic.com/dave77/form/CCEFOnBillElectrifyandSaveInterestForm/formperma/O0v_a4kTLqUVhif9bTmfrYo5gk9MxQAjIf0nGZp2e08?zf_rszfm=1' },
+		{ label: 'Sangre de Cristo', url: 'https://forms.zohopublic.com/dave77/form/CCEFOnBillElectrifyandSaveInterestFormSangredeCris/formperma/a32FoQiHZJ3JGfZytyiSadMLVC4T41tZraNq3niYC6w?zf_rszfm=1' },
+		{ label: 'White River', url: 'https://forms.zohopublic.com/dave77/form/WhiteRiverCCEFOnBillElectrifyandSaveInterestForm/formperma/CAglIyJlSRGIsYCsWPeoY21MW1qJZCszYL7rA3V3v0Y?zf_rszfm=1' }
 	];
-</script>
-<script>
-	window.addEventListener('load', () => {
-		const select = document.querySelector('[data-coop-select]');
-		if (!select) return;
-		const spinner = document.querySelector('[data-loading]');
 
-		obrFormOptions.forEach(option => {
-			const opt = document.createElement('option');
-			opt.value = option.url;
-			opt.textContent = option.label;
-			select.appendChild(opt);
 
-		});
-
-		// Add event listener to log the selected option's value
-		select.addEventListener('change', (e) => {
-			if (e.target.value === '0') return;
-			spinner?.classList.remove('hidden');
-			select.remove();
-			createAndAppendIframe(e.target.value, spinner)
-		});
-
-		// Helper function to create and append iframe
-		function createAndAppendIframe(src, spinner) {
-
-			const container = document.querySelector('[data-zoho-container]');
-			if (!container) {
-				console.error('Container with data-zoho-container not found.');
-				return;
-			}
-
-			// Clear container contents
-			container.innerHTML = '';
-
-			// Create iframe
-			const iframe = document.createElement('iframe');
-			iframe.src = src;
-			iframe.classList.add('w-full', 'hidden'); // Use Tailwind classes
-
-			// Append iframe
-			container.appendChild(iframe);
-
-			// Wait for iframe to load before making it visible
-			iframe.onload = () => {
-				iframe.classList.remove('hidden');
-				spinner.remove();
-			};
-			window.addEventListener('message', function () {
-				var evntData = event.data;
-				if (evntData && evntData.constructor == String) {
-					var zf_ifrm_data = evntData.split("|");
-					if (zf_ifrm_data.length == 2 || zf_ifrm_data.length == 3) {
-						var zf_perma = zf_ifrm_data[0];
-						var zf_ifrm_ht_nw = (parseInt(zf_ifrm_data[1], 10) + 15) + "px";
-
-						if ((iframe.src).indexOf('formperma') > 0 && (iframe.src).indexOf(zf_perma) > 0) {
-							var prevIframeHeight = iframe.style.height;
-							var zf_tout = false;
-							if (zf_ifrm_data.length == 3) {
-								iframe.scrollIntoView();
-								zf_tout = true;
-							}
-							if (prevIframeHeight != zf_ifrm_ht_nw) {
-								if (zf_tout) {
-									setTimeout(function () {
-										iframe.style.height = zf_ifrm_ht_nw;
-									}, 500);
-								} else {
-									iframe.style.height = zf_ifrm_ht_nw;
-								}
-							}
-						}
-					}
-				}
-			}, false);
-		}
-	});
 </script>
 
 <script
@@ -704,6 +617,7 @@
 
 	}
 </script>
+
 <script src="assets/js/obr-form-reveal.js"></script>
 <script>
 	console.log(gsap);
