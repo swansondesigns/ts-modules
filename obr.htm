@@ -62,7 +62,7 @@
 	<!-- Pitch -->
 	<section class="relative p-6 text-center grid place-items-center md:py-8">
 
-		<div class="px-auto max-w-4xl md:grid md:grid-cols-2 md:gap-x-24 md:text-left">
+		<div class="px-auto max-w-3xl md:grid md:grid-cols-2 md:gap-x-24 md:text-left">
 
 			<!-- Text Block 1 -->
 			<div class="mb-4 md:col-start-1 md:row-start-1">
@@ -182,9 +182,46 @@
 					River</a>
 			</div>
 		</div>
-
-
 	</section>
+	<section class="grid" style="background-color: #F5F5F5;"> <!-- Background Layer: Form screenshot -->
+		<div class="relative col-start-1 row-start-1 flex justify-center overflow-hidden">
+			<img src="assets/images/form-desktop.png" alt="" class="absolute w-4/5 h-auto max-w-3xl hideme md:block" />
+			<img src="assets/images/form-mobile.png" alt="" class="absolute w-4/5 h-auto md:hideme" />
+		</div>
+
+		<!-- Middle Layer: Green triangle -->
+		<div class="col-start-1 row-start-1 relative">
+			<div class="md:hideme absolute inset-0 bg-green opacity-90"
+				style="clip-path: polygon(100% 50%, 100% 0%, 100% 100%, 0% 100%);">
+				<div
+					class="bg-connections-l h-2/3 w-full bg-no-repeat absolute bottom-0 left-full origin-bottom-left -rotate-90 opacity-45">
+				</div>
+			</div>
+			<div class="hideme md:block absolute inset-0 bg-green opacity-90"
+				style="clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 0% 100%);">
+				<div
+					class="bg-connections-l h-96 w-full bg-no-repeat absolute bottom-0 left-full origin-bottom-left -rotate-90 opacity-45">
+				</div>
+			</div>
+
+			<!-- Top Layer: Content that sets height -->
+			<div class="col-start-1 row-start-1 flex justify-end relative">
+				<div class="w-1/2 py-8 pr-8 flex flex-col justify-center items-end text-center space-y-6 md:w-3/5">
+					<!-- Blue badge -->
+					<div class=" flex-shrink-0">
+						<img src="assets/images/obr-badge.svg" alt="" class="size-52 mr-12" />
+					</div>
+
+					<!-- Phone CTA -->
+					<div class="text-navy text-center hideme md:flex md:items-center md:gap-2">
+						<div class="text-xs font-semibold uppercase tracking-wide">HAVE A QUESTION? CALL US:</div>
+						<div class="font-serif text-xl font-bold mt-1">720-263-2313</div>
+					</div>
+				</div>
+			</div>
+	</section>
+
+
 	<section style="background-color: #F5F5F5;">
 		<div data-zoho-container></div>
 	</section>
@@ -202,7 +239,7 @@
 					src="https://tristate.coop/sites/default/files/images/esg/play-video-thumbnail-cover.svg" /> </a>
 		</div>
 
-		<div class="gap-4 px-8 py-16 grid place-content-center sm:p-16 sm:order-1">
+		<div class="gap-4 px-8 py-16 grid place-content-center sm:py-16 sm:px-6 sm:order-1 lg:p-16">
 			<p><strong>HOME UPGRADES WITH NO UPFRONT COST</strong><br />
 				From windows, doors, and insulation to heat pumps, there are tons of affordable upgrades available for
 				your
