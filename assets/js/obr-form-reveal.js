@@ -1,10 +1,10 @@
 // Helper function to create and configure the GSAP timeline
-function helperObrCreateTimeline() {
+function helperObrCreateTimeline(zohoContainer, peek) {
 	// DOM element selections using data attributes (optional elements)
-	const screenshots = document.querySelectorAll('[data-screenshot]'); // Animate to: transform: translateY(100%);
-	const triangles = document.querySelectorAll('[data-triangle]'); // Animate to: clip-path: polygon(100% 100%, 100% 0%, 100% 100%, 0% 100%);
-	const ctaBadge = document.querySelector('[data-cta-badge]'); // Animate to: scale to 0
-	const ctaText = document.querySelector('[data-cta-text]'); // Animate to: transform: translateY(200%);
+	const screenshots = peek.querySelectorAll('[data-screenshot]'); // Animate to: transform: translateY(100%);
+	const triangles = peek.querySelectorAll('[data-triangle]'); // Animate to: clip-path: polygon(100% 100%, 100% 0%, 100% 100%, 0% 100%);
+	const ctaBadge = peek.querySelector('[data-cta-badge]'); // Animate to: scale to 0
+	const ctaText = peek.querySelector('[data-cta-text]'); // Animate to: transform: translateY(200%);
 
 	// Duration variables for easy experimentation
 	const baseDuration = 0.4;
@@ -47,65 +47,78 @@ function helperObrCreateTimeline() {
 				ease: 'power2.in'
 			},
 			'-=0.8'
-		);
+		)
+		.to(zohoContainer, {
+			top: '0%',
+			ease: 'power2.out'
+		});
 
 	return tl;
 }
 
 // Helper function to create and append iframe
 function helperObrCreateAndAppendForm(src, spinner, zohoContainer) {
-	if (!zohoContainer) {
-		console.error('Container with data-zoho-container not found.');
-		return;
-	}
-	// Clear container contents
-	zohoContainer.innerHTML = '';
+	return new Promise((resolve, reject) => {
+		if (!zohoContainer) {
+			console.error('Container with data-zoho-container not found.');
+			reject(new Error('Container not found'));
+			return;
+		}
 
-	// Create iframe
-	const iframe = document.createElement('iframe');
-	iframe.src = src;
-	iframe.classList.add('w-full', 'hidden'); // Use Tailwind classes
+		// Clear container contents
+		zohoContainer.innerHTML = '';
 
-	// Append iframe
-	zohoContainer.appendChild(iframe);
+		// Create iframe
+		const iframe = document.createElement('iframe');
+		iframe.src = src;
+		iframe.classList.add('w-full', 'hidden'); // Use Tailwind classes
 
-	// Wait for iframe to load before making it visible
-	iframe.onload = () => {
-		iframe.classList.remove('hidden');
-		// spinner.remove();
-	};
-	window.addEventListener(
-		'message',
-		function () {
-			var evntData = event.data;
-			if (evntData && evntData.constructor == String) {
-				var zf_ifrm_data = evntData.split('|');
-				if (zf_ifrm_data.length == 2 || zf_ifrm_data.length == 3) {
-					var zf_perma = zf_ifrm_data[0];
-					var zf_ifrm_ht_nw = parseInt(zf_ifrm_data[1], 10) + 15 + 'px';
+		// Append iframe
+		zohoContainer.appendChild(iframe);
 
-					if (iframe.src.indexOf('formperma') > 0 && iframe.src.indexOf(zf_perma) > 0) {
-						var prevIframeHeight = iframe.style.height;
-						var zf_tout = false;
-						if (zf_ifrm_data.length == 3) {
-							iframe.scrollIntoView();
-							zf_tout = true;
-						}
-						if (prevIframeHeight != zf_ifrm_ht_nw) {
-							if (zf_tout) {
-								setTimeout(function () {
+		// Wait for iframe to load before making it visible
+		iframe.onload = () => {
+			iframe.classList.remove('hidden');
+			resolve(iframe); // Resolve with the iframe element
+		};
+
+		iframe.onerror = () => {
+			reject(new Error('Iframe failed to load'));
+		};
+
+		window.addEventListener(
+			'message',
+			function () {
+				var evntData = event.data;
+				if (evntData && evntData.constructor == String) {
+					var zf_ifrm_data = evntData.split('|');
+					if (zf_ifrm_data.length == 2 || zf_ifrm_data.length == 3) {
+						var zf_perma = zf_ifrm_data[0];
+						var zf_ifrm_ht_nw = parseInt(zf_ifrm_data[1], 10) + 15 + 'px';
+
+						if (iframe.src.indexOf('formperma') > 0 && iframe.src.indexOf(zf_perma) > 0) {
+							var prevIframeHeight = iframe.style.height;
+							var zf_tout = false;
+							if (zf_ifrm_data.length == 3) {
+								iframe.scrollIntoView();
+								zf_tout = true;
+							}
+							if (prevIframeHeight != zf_ifrm_ht_nw) {
+								if (zf_tout) {
+									setTimeout(function () {
+										iframe.style.height = zf_ifrm_ht_nw;
+									}, 500);
+								} else {
 									iframe.style.height = zf_ifrm_ht_nw;
-								}, 500);
-							} else {
-								iframe.style.height = zf_ifrm_ht_nw;
+								}
 							}
 						}
 					}
 				}
-			}
-		},
-		false
-	);
+			},
+			false
+		);
+	});
 }
 
 // Helper function to populate member buttons from template
@@ -122,11 +135,45 @@ function helperObrPopulateMemberButtons(memberButtonsContainer, template, obrFor
 }
 
 // Helper function to handle member button clicks
-function helperObrHandleMemberButtonClick(e, timeline) {
+function helperObrHandleMemberButtonClick(e, timeline, zohoContainer, peek) {
 	// Check if clicked element is a link
 	if (e.target.tagName === 'A') {
 		e.preventDefault(); // Kill default link behavior
-		timeline.restart();
+
+		// Get the URL from the clicked button
+		const formUrl = e.target.href;
+		// Load the form first, then animate
+		helperObrCreateAndAppendForm(formUrl, null, zohoContainer)
+			.then((iframe) => {
+				// Set up observer to watch for iframe height changes
+				const observer = new MutationObserver(() => {
+					const iframeHeight = iframe.style.height;
+					if (iframeHeight) {
+						// Start the main timeline
+						timeline.restart();
+
+						// When timeline completes, animate peek height
+						timeline.then(() => {
+							gsap.to(peek, {
+								height: iframeHeight,
+								duration: 1.5,
+								ease: 'power2.out'
+							});
+						});
+
+						// Disconnect observer after first height change
+						observer.disconnect();
+					}
+				});
+
+				observer.observe(iframe, {
+					attributes: true,
+					attributeFilter: ['style']
+				});
+			})
+			.catch((error) => {
+				console.error('Failed to load form:', error);
+			});
 	}
 }
 
@@ -159,16 +206,22 @@ function initFormReveal() {
 	// Check for absolute necessities first
 	const memberButtons = document.querySelector('[data-member-buttons]');
 	const zohoContainer = document.querySelector('[data-zoho-container]');
+	const peek = document.querySelector('[data-peek]');
 	const template = memberButtons?.querySelector('template');
+
 	if (!helperObrConfirmRequiredDOM(memberButtons, zohoContainer, template)) return;
 
+	// Set initial position for zoho container
+	gsap.set(zohoContainer, { top: '100%' });
+
 	// Create the animation timeline
-	const tl = helperObrCreateTimeline();
+	const tl = helperObrCreateTimeline(zohoContainer, peek);
 	// Populate member buttons from template
 	helperObrPopulateMemberButtons(memberButtons, template, obrFormOptions);
+
 	// Add event delegation for member buttons
 	memberButtons.addEventListener('click', (e) => {
-		helperObrHandleMemberButtonClick(e, tl);
+		helperObrHandleMemberButtonClick(e, tl, zohoContainer, peek);
 	});
 }
 

@@ -176,7 +176,8 @@
 	</section>
 
 	<!-- Peek -->
-	<section class="grid" style="background-color: #F5F5F5;" data-peek> <!-- Background Layer: Form screenshot -->
+	<section class="grid overflow-hidden" style="background-color: #F5F5F5;" data-peek>
+		<!-- Background Layer: Form screenshot -->
 		<div class="relative col-start-1 row-start-1 flex justify-center overflow-hidden">
 			<img src="assets/images/form-desktop.png" alt="" class="absolute w-4/5 h-auto max-w-3xl hideme md:block"
 				data-screenshot />
@@ -199,7 +200,7 @@
 			</div>
 
 			<!-- Top Layer: Content that sets height -->
-			<div class="col-start-1 row-start-1 flex justify-end relative">
+			<div class="col-start-1 row-start-1 flex justify-end relative overflow-hidden">
 				<div class="w-1/2 py-8 pr-8 flex flex-col justify-center items-end text-center space-y-6 md:w-3/5">
 					<!-- Blue badge -->
 					<div class=" flex-shrink-0">
@@ -213,12 +214,13 @@
 					</div>
 				</div>
 			</div>
+			<div class="absolute w-full top-full" style="background-color: #F5F5F5;" data-zoho-container></div>
 	</section>
 
 	<!-- Form container -->
-	<section style="background-color: #F5F5F5;">
+	<!-- <section style="background-color: #F5F5F5;">
 		<div data-zoho-container></div>
-	</section>
+	</section> -->
 
 
 	<!-- Video Columns -->
