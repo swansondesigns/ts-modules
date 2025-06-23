@@ -39,14 +39,22 @@ function helperObrCreateTimeline(zohoContainer, peek) {
 		)
 		.to(zohoContainer, {
 			top: '0%',
-			ease: 'power2.out'
+			ease: 'power2.out',
+			onComplete: () => {
+				// Cleanup: Hide then remove animated content elements during animation completion
+				const peekContentElements = peek.querySelectorAll('[data-peek-content]');
+				peekContentElements.forEach((element) => {
+					element.style.display = 'none'; // Hide immediately to prevent flash
+					element.remove(); // Then remove from DOM
+				});
+			}
 		});
 
 	return tl;
 }
 
 // Helper function to create and append iframe
-function helperObrCreateAndAppendForm(src, spinner, zohoContainer) {
+function helperObrCreateAndAppendForm(src, zohoContainer) {
 	return new Promise((resolve, reject) => {
 		if (!zohoContainer) {
 			console.error('Container with data-zoho-container not found.');
@@ -128,46 +136,75 @@ function helperObrHandleMemberButtonClick(e, timeline, zohoContainer, peek) {
 	// Check if clicked element is a link
 	if (e.target.tagName === 'A') {
 		e.preventDefault(); // Kill default link behavior
-
 		// Get the URL from the clicked button
 		const formUrl = e.target.href;
 
-		// Immediately animate screenshots down
-		const screenshots = peek.querySelectorAll('[data-screenshot]');
-		gsap.to(screenshots, {
-			y: '100%',
-			duration: 0.48,
-			ease: 'power2.inOut'
-		});
+		// Check if form is already open (zoho container has an iframe)
+		const existingIframe = zohoContainer.querySelector('iframe');
+		const isFormAlreadyOpen = existingIframe !== null;
+		if (!isFormAlreadyOpen) {
+			// First time opening - capture current height to prevent flash and run full animation sequence
+			const currentHeight = peek.offsetHeight;
+			gsap.set(peek, { height: currentHeight });
+			
+			// Immediately animate screenshots down
+			const screenshots = peek.querySelectorAll('[data-screenshot]');
+			gsap.to(screenshots, {
+				y: '100%',
+				duration: 0.48,
+				ease: 'power2.inOut'
+			});
+		}
 
-		// Load the form first, then animate
-		helperObrCreateAndAppendForm(formUrl, null, zohoContainer)
+		// Load the form (works whether first time or switching forms)
+		helperObrCreateAndAppendForm(formUrl, zohoContainer)
 			.then((iframe) => {
-				// Set up observer to watch for iframe height changes
-				const observer = new MutationObserver(() => {
-					const iframeHeight = iframe.style.height;
-					if (iframeHeight) {
-						// Start the main timeline
-						timeline.restart();
+				if (!isFormAlreadyOpen) {
+					// Only run the main timeline animation if this is the first form load
+					// Set up observer to watch for iframe height changes
+					const observer = new MutationObserver(() => {
+						const iframeHeight = iframe.style.height;
+						if (iframeHeight) {
+							// Start the main timeline
+							timeline.restart();
 
-						// When timeline completes, animate peek height
-						timeline.then(() => {
+							// When timeline completes, animate peek height
+							timeline.then(() => {
+								gsap.to(peek, {
+									height: iframeHeight,
+									duration: 1.5,
+									ease: 'power2.out'
+								});
+							});
+
+							// Disconnect observer after first height change
+							observer.disconnect();
+						}
+					});
+
+					observer.observe(iframe, {
+						attributes: true,
+						attributeFilter: ['style']
+					});
+				} else {
+					// Form is already open, just adjust peek height when new form loads
+					const observer = new MutationObserver(() => {
+						const iframeHeight = iframe.style.height;
+						if (iframeHeight) {
 							gsap.to(peek, {
 								height: iframeHeight,
-								duration: 1.5,
+								duration: 0.3,
 								ease: 'power2.out'
 							});
-						});
+							observer.disconnect();
+						}
+					});
 
-						// Disconnect observer after first height change
-						observer.disconnect();
-					}
-				});
-
-				observer.observe(iframe, {
-					attributes: true,
-					attributeFilter: ['style']
-				});
+					observer.observe(iframe, {
+						attributes: true,
+						attributeFilter: ['style']
+					});
+				}
 			})
 			.catch((error) => {
 				console.error('Failed to load form:', error);

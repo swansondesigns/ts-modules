@@ -178,7 +178,7 @@
 	<!-- Peek -->
 	<section class="grid overflow-hidden" style="background-color: #F5F5F5;" data-peek>
 		<!-- Background Layer: Form screenshot -->
-		<div class="relative col-start-1 row-start-1 flex justify-center overflow-hidden">
+		<div class="relative col-start-1 row-start-1 flex justify-center overflow-hidden" data-peek-content>
 			<div class="size-8 mt-8 loading-spinner" data-loading=""><svg viewBox="0 0 512 512"
 					xmlns="http://www.w3.org/2000/svg">
 					<path class="fa-secondary"
@@ -192,9 +192,8 @@
 				data-screenshot />
 			<img src="assets/images/form-mobile.png" alt="" class="absolute w-4/5 h-auto md:hideme" data-screenshot />
 		</div>
-
 		<!-- Middle Layer: Green triangle -->
-		<div class="col-start-1 row-start-1 relative">
+		<div class="col-start-1 row-start-1 relative" data-peek-content>
 			<div class="absolute h-full w-full bottom-0 bg-green opacity-90 md:hideme"
 				style="clip-path: polygon(100% 50%, 100% 0%, 100% 100%, 0% 100%);" data-triangle>
 				<div
@@ -207,23 +206,26 @@
 					class="bg-connections-l h-96 w-full bg-no-repeat absolute bottom-0 left-full origin-bottom-left -rotate-90 opacity-45">
 				</div>
 			</div>
+		</div>
 
-			<!-- Top Layer: Content that sets height -->
-			<div class="col-start-1 row-start-1 flex justify-end relative overflow-hidden">
-				<div class="w-1/2 py-8 pr-8 flex flex-col justify-center items-end text-center space-y-6 md:w-3/5">
-					<!-- Blue badge -->
-					<div class=" flex-shrink-0">
-						<img src="assets/images/obr-badge.svg" alt="" class="size-52 mr-12" data-cta-badge />
-					</div>
+		<!-- Top Layer: Content that sets height -->
+		<div class="col-start-1 row-start-1 flex justify-end relative overflow-hidden" data-peek-content>
+			<div class="w-1/2 py-8 pr-8 flex flex-col justify-center items-end text-center space-y-6 md:w-3/5">
+				<!-- Blue badge -->
+				<div class=" flex-shrink-0">
+					<img src="assets/images/obr-badge.svg" alt="" class="size-52 mr-12" data-cta-badge />
+				</div>
 
-					<!-- Phone CTA -->
-					<div class="text-navy text-center hideme md:flex md:items-center md:gap-2" data-cta-text>
-						<div class="text-xs font-semibold uppercase tracking-wide">HAVE A QUESTION? CALL US:</div>
-						<div class="font-serif text-xl font-bold mt-1">720-263-2313</div>
-					</div>
+				<!-- Phone CTA -->
+				<div class="text-navy text-center hideme md:flex md:items-center md:gap-2" data-cta-text>
+					<div class="text-xs font-semibold uppercase tracking-wide">HAVE A QUESTION? CALL US:</div>
+					<div class="font-serif text-xl font-bold mt-1">720-263-2313</div>
 				</div>
 			</div>
+		</div>
+		<div class="col-start-1 row-start-1 relative">
 			<div class="absolute w-full top-full" style="background-color: #F5F5F5;" data-zoho-container></div>
+		</div>
 	</section>
 
 	<!-- Form container -->
@@ -549,12 +551,6 @@
 			class="block items-center gap-2 rounded-full border px-4 py-2 font-normal no-underline transition-transform text-black text-center md:inline-flex">Apply
 			Now</a></div> -->
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-	integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
-	integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
-	crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 <script>	// Dynamically add options to the existing select element
 	const obrFormOptions = [
 		{ label: 'Gunnison County', url: 'https://forms.zohopublic.com/dave77/form/CCEFOnBillElectrifyandSaveInterestFormGunnisonCoun/formperma/eaL0vRpEvSxnZ0SfUkbvcwk455RufgurFBcYNNdmFrI?zf_rszfm=1' },
@@ -630,18 +626,5 @@
 </script>
 
 <script src="assets/js/obr-form-reveal.js"></script>
-<script>
-	console.log(gsap);
-	// gsap.to("[data-sticky]", {
-	// 	scrollTrigger: {
-	// 		// trigger: "#wrapper",
-	// 		trigger: "#main",
-	// 		start: "top+=100 top",
-	// 		pin: true,
-	// 		pinSpacing: false
-	// 	}
-	// });
-</script>
-
 
 </html>
