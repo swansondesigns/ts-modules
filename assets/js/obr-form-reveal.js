@@ -1,3 +1,9 @@
+// Helper functiont to determine mobile or not
+function isMobile() {
+	// Need a function that returns boolean for whether or not the device is smaller than the sm: tailwind breakpoint
+	return window.matchMedia('(max-width: 639px)').matches;
+}
+
 // Helper function to create and configure the GSAP timeline
 function helperObrCreateTimeline(zohoContainer, peek) {
 	// DOM element selections using data attributes (optional elements)
@@ -146,7 +152,7 @@ function helperObrHandleMemberButtonClick(e, timeline, zohoContainer, peek) {
 			// First time opening - capture current height to prevent flash and run full animation sequence
 			const currentHeight = peek.offsetHeight;
 			gsap.set(peek, { height: currentHeight });
-			
+
 			// Immediately animate screenshots down
 			const screenshots = peek.querySelectorAll('[data-screenshot]');
 			gsap.to(screenshots, {
@@ -260,5 +266,56 @@ function initFormReveal() {
 	});
 }
 
+function initEligibilityModal() {
+	const modalLink = document.querySelector('[data-eligible]');
+	const modalMessage = document.querySelector('[data-eligible-modal]');
+	if (!modalLink || !modalMessage) return;
+
+	modalLink.classList.add('cursor-pointer');
+	modalLink.classList.remove('hideme');
+
+	modalLink.addEventListener('click', (e) => {
+		const animationProps = {
+			duration: 0.4,
+			ease: 'back.inOut(1.7)'
+		};
+
+		if (isMobile()) {
+			animationProps.x = '-100%';
+		} else {
+			animationProps.y = '-100%';
+		}
+
+		gsap.to(modalMessage, animationProps);
+	});
+
+	const closeButton = modalMessage.querySelector('button');
+	console.log(closeButton);
+	if (!closeButton) return;
+
+	closeButton.addEventListener('click', (e) => {
+		console.log('click button');
+
+		const animationProps = {
+			duration: 0.2,
+			ease: 'power2.inOut'
+		};
+		animationProps.x = null;
+		animationProps.y = null;
+
+		if (isMobile()) {
+			animationProps.x = '0%';
+		} else {
+			animationProps.y = '0%';
+		}
+
+		gsap.to(modalMessage, animationProps);
+	});
+}
+
+function initOBR() {
+	initFormReveal();
+	initEligibilityModal();
+}
 // Initialize on window load
-window.addEventListener('load', initFormReveal);
+window.addEventListener('load', initOBR);

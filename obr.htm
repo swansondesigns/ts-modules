@@ -163,7 +163,9 @@
 				from the provided list. After
 				submission, you'll receive communications primarily from the Collective Clean Energy Fund and Zero Homes
 				about the
-				personalized financing opportunities available to you. <strong>Am I eligible?</strong></p>
+				personalized financing opportunities available to you. <strong class="hideme cursor-pointer"
+					data-eligible>Am I
+					eligible?</strong></p>
 
 			<div class="flex flex-wrap justify-center gap-2" data-member-buttons>
 				<template>
@@ -228,6 +230,27 @@
 		</div>
 	</section>
 
+	<section
+		class="fixed z-50 top-1/4 left-full w-11/12 bg-green p-8 pr-12 ml-4 rounded-l-xl transition-none sm:w-auto sm:top-full sm:left-4 sm:pr-8 sm:pb-12 sm:mt-4 sm:mx-auto sm:max-w-4xl sm:right-4 sm:rounded-b-none sm:rounded-t-xl "
+		data-eligible-modal>
+		<div
+			class="absolute z-0 bg-connections-l h-96 w-24 bg-no-repeat origin-top-left top-full left-0 opacity-45 -rotate-90">
+		</div>
+		<!-- close button -->
+		<button type="button" aria-label="Close"
+			class="absolute size-8 -top-2 -left-2 text-navy bg-white rounded-full p-2 leading-none shadow hover:bg-gray-200 focus:outline-none">
+			<span aria-hidden="true">&times;</span>
+		</button>
+		<div class="relative z-10 sm:grid sm:grid-cols-4 sm:gap-4">
+			<p class="font-serif text-xl text-navy">Am I <strong>eligible</strong> for the program?</p>
+			<p>Be the owner of a property in a participating Co-Op service territory with a valid account</p>
+			<p>Have 12 consecutive months of payments without a shut off notice</p>
+			<p>Have no late penalties for the previous 6 consecutive months, unless member agrees to enroll in autopay
+			</p>
+		</div>
+
+		</div>
+	</section>
 	<!-- Form container -->
 	<!-- <section style="background-color: #F5F5F5;">
 		<div data-zoho-container></div>
