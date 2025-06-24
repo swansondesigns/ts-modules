@@ -42,4 +42,17 @@
 		transform: scale(0);
 		opacity: 0;
 	}
+	.ts-grid-reveal {
+		display: grid;
+		grid-template-rows: 0fr;
+		padding: 0;
+		transition:
+			grid-template-rows 0.7s ease,
+			padding 0.7s ease;
+	} /* revealed */
+	.ts-grid-reveal.revealed {
+		grid-template-rows: 1fr;
+		padding-top: var(--reveal-padding-y, 0);
+		padding-bottom: var(--reveal-padding-y, 0);
+	}
 }
