@@ -73,10 +73,8 @@
 			<!-- Image -->
 			<div class=" md:col-start-2 md:row-start-1 md:row-span-2">
 				<div class="relative mb-6 h-44 rounded-lg border border-gray md:h-full">
-					<img src="https://placehold.co/600x400/transparent/333?text=Install+Pic" alt=""
-						class="absolute inset-0 object-cover object-center w-full h-full rounded-lg">
-					<img src="assets/images/fpo-solar-panel-installer.jpg" alt=""
-						class="absolute inset-0 object-cover object-center w-full h-full rounded-lg">
+					<img src="assets/images/ts-bighorn-rea-4804-800x800.jpg" alt=""
+						class="absolute inset-0 object-cover object-top w-full h-full rounded-lg">
 				</div>
 			</div>
 
@@ -88,8 +86,13 @@
 					accessible for homeowners, businesses, and agricultural producers. <strong>Repay gradually, right on
 						your
 						monthly utility bill.</strong></div>
-				<div><a href="#" class="inline-block rounded-full py-3 px-5 bg-green text-white no-underline ">APPLY
-						TODAY <span>K</span></a>
+				<div><button
+						class="flex gap-2 mx-auto bg-green rounded-full px-4 py-2 leading-none font-normal no-underline transition-transform text-white text-center cursor-pointer sm:ml-0"
+						data-scrollto="form-intro">
+						Apply today
+						<img src="https://tristate.coop/sites/default/files/images/icons/button-arrow-right-regular-white.svg"
+							alt="arrow right" class="h-4 -mb-1 ">
+					</button>
 				</div>
 			</div>
 		</div>
@@ -99,7 +102,7 @@
 	<!-- Highlights -->
 	<section class="pt-8 pb-6 bg-[#E1E9BC] md:py-8 relative">
 		<div class="swiper swiper-key-points">
-			<div class="swiper-wrapper md:grid md:gap-4 md:grid-cols-3 md:place-content-center">
+			<div class="swiper-wrapper md:grid md:gap-4 md:grid-cols-3 md:place-content-center lg:max-w-5xl lg:mx-auto">
 				<div class="swiper-slide flex flex-col items-center">
 					<div
 						class="mx-8 flex gap-4 items-center h-full md:flex-col md:text-center lg:flex-row lg:text-left">
@@ -108,8 +111,8 @@
 								alt="" class="w-24 md:w-auto md:h-24 lg:w-24 lg:h-auto">
 						</div>
 						<div class="text-balance">
-							NO MONEY DOWN,
-							NO CREDIT CHECK,
+							NO MONEY DOWN,<br>
+							NO CREDIT CHECK,<br>
 							NO LOANS
 						</div>
 					</div>
@@ -152,7 +155,8 @@
 	</section>
 
 	<!-- Form Intro -->
-	<section class="px-8 pb-4 pt-20 text-center sm:grid sm:place-content-center" style="background-color: #F5F5F5;">
+	<section class="px-8 pb-4 pt-20 text-center sm:grid sm:place-content-center" style="background-color: #F5F5F5;"
+		id="form-intro">
 		<div class="max-w-xl space-y-4">
 			<div class="mb-4 md:col-start-1 md:row-start-1">
 				<div class="font-xs font-semibold text-navy uppercase">How to apply</div>
@@ -170,7 +174,7 @@
 			<div class="flex flex-wrap justify-center gap-2" data-member-buttons>
 				<template>
 					<a href="#"
-						class="inline-block rounded-full py-2 px-3 border border-solid border-green no-underline leading-none hover:bg-green/70 hover:text-black "></a>
+						class="inline-block rounded-full py-2 px-3 border border-solid border-green no-underline leading-none transition-none hover:bg-green/70 hover:text-black "></a>
 				</template>
 
 			</div>
@@ -215,7 +219,7 @@
 			<div class="w-1/2 py-8 pr-8 flex flex-col justify-center items-end text-center space-y-6 md:w-3/5">
 				<!-- Blue badge -->
 				<div class=" flex-shrink-0">
-					<img src="assets/images/obr-badge.svg" alt="" class="size-52 mr-12" data-cta-badge />
+					<img src="assets/images/obr-badge-full.svg" alt="" class="size-52 mr-12" data-cta-badge />
 				</div>
 
 				<!-- Phone CTA -->
@@ -230,6 +234,7 @@
 		</div>
 	</section>
 
+	<!-- Modal -->
 	<section
 		class="fixed z-50 top-1/4 left-full w-11/12 bg-green p-8 pr-12 ml-4 rounded-l-xl transition-none sm:w-auto sm:top-full sm:left-4 sm:pr-8 sm:pb-12 sm:mt-4 sm:mx-auto sm:max-w-4xl sm:right-4 sm:rounded-b-none sm:rounded-t-xl "
 		data-eligible-modal>
@@ -283,24 +288,35 @@
 
 
 
-			<div><a class="block items-center gap-2 border border-solid rounded-full px-4 py-2 leading-none font-normal no-underline transition-transform text-black text-center md:inline-flex"
+			<div class="flex flex-col gap-4 sm:flex-row">
+				<a class="flex justify-between items-center gap-2 border border-solid border-green rounded-full px-4 py-2 leading-none font-normal no-underline transition-transform text-black text-center md:inline-flex"
 					href="https://tristate.coop/sites/default/files/PDF/electrify-and-save/E%26S%20OBR%20FAQ.pdf"
-					target="_blank">Learn More </a></div>
+					target="_blank">Learn More <img
+						src="https://tristate.coop/sites/default/files/images/icons/button-arrow-right-regular-green.svg"
+						alt="arrow right" class="h-4"></a>
+
+				<button
+					class="flex justify-between items-center gap-2 border border-solid border-green bg-transparent rounded-full px-4 py-2 leading-none font-normal no-underline transition-transform text-black text-center cursor-pointer md:inline-flex"
+					data-scrollto="form-intro">Start your OBR application<img
+						src="https://tristate.coop/sites/default/files/images/icons/button-arrow-right-regular-green.svg"
+						alt="arrow right" class="h-4"></button>
+			</div>
 		</div>
 	</section>
 
 
 	<!-- No cost -->
-	<section class="min-h-96 bg-gray sm:grid sm:grid-cols-5">
+	<section class="min-h-96 sm:grid sm:grid-cols-5">
 
 		<div class="relative aspect-video sm:aspect-auto sm:h-full sm:col-span-2 sm:order-last">
-			<img src="assets/images/fpo-solar-in-field.jpg" alt="FPO"
+			<img src="assets/images/fpo-solar-in-field-700x500.jpg" alt="FPO"
 				class="absolute inset-0 w-full h-full object-cover" />
 		</div>
 
 		<div class="gap-4 px-8 py-16 grid place-content-center sm:col-span-3 sm:py-16 sm:px-6 lg:p-16">
 
-			<div class="text-3xl font-serif">See if you qualify for a <strong>no-cost</strong> option.</div>
+			<div class="text-3xl font-serif">See if you qualify for a <strong class="inline-block">no-cost</strong>
+				option.</div>
 
 			<div>We’re glad you’re interested in the Electrify & Save On-Bill Repayment Program—however, you may qualify
 				for free energy
@@ -312,14 +328,18 @@
 
 
 
-			<div><a class="block items-center gap-2 border border-solid rounded-full px-4 py-2 leading-none font-normal no-underline transition-transform text-black text-center md:inline-flex"
-					href="https://tristate.coop/sites/default/files/PDF/electrify-and-save/E%26S%20OBR%20FAQ.pdf"
-					target="_blank">Review income chart </a></div>
+			<div><button
+					class="flex cursor-pointer bg-transparent items-center gap-2 border border-solid border-green rounded-full px-4 py-2 leading-none font-normal no-underline text-black text-center md:inline-flex"
+					href="" target="_blank" data-revealer="nocost" style="display: none;">Review income chart <img
+						src="https://tristate.coop/sites/default/files/images/icons/button-chevron-up-regular.svg"
+						alt="arrow right" class="size-4 opacity-90 -mb-1 transition-none"
+						data-animate-icon="rotate-180"></button>
+			</div>
 		</div>
 	</section>
 
 	<!-- No cost expanded -->
-	<section class="ts-grid-reveal [--reveal-padding-y:3rem]">
+	<section class="ts-grid-reveal revealed [--reveal-padding-y:3rem] bg-gray" data-reveal="nocost">
 		<div class="px-8 overflow-hidden">
 			<p>
 				We’re glad you’re interested in the Electrify & Save On-Bill Repayment Program. However, you may
@@ -410,11 +430,6 @@
 					</tr>
 				</tbody>
 			</table>
-
-
-
-
-
 			<p>
 				Keep in mind that income thresholds are higher in some areas. If you live in a higher-income
 				area—like
@@ -622,7 +637,7 @@
 	src="https://tristate.coop/sites/default/files/asset_injector/js/swiper_9_3_2-36d6a8a781e73f708975edfc2809913b.js?sk35jq"></script>
 <script
 	src="https://tristate.coop/sites/default/files/asset_injector/js/gsap_animation_platform-57397ff5d3b9ddc9453b16048c1221e4.js?sk35jq"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
 <script>
 	let swiperInstance = null;
 
@@ -679,6 +694,6 @@
 	}
 </script>
 
-<script src="assets/js/obr-form-reveal.js"></script>
+<script src="assets/js/obr-interactivity.js"></script>
 
 </html>
