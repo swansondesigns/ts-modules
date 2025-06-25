@@ -1,4 +1,5 @@
 @import './custom/block-expandable.css';
+@import './custom/featherlight.css';
 @import './custom/grid-leadership.css';
 @tailwind base;
 @tailwind components;
@@ -6,6 +7,14 @@
 
 body {
 	font-size: 16px;
+}
+
+* {
+	transition: none;
+	transition-duration: 0s;
+	transition-property: none;
+	transition-timing-function: ease;
+	transition-delay: 0s;
 }
 
 *,
