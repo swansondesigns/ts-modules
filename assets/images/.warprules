@@ -1,0 +1,37 @@
+# Warp Agent Rules - Image Processing Folder
+
+## Default Image Processing Settings
+Unless specified otherwise:
+
+- **Crop anchor:** Center
+- **Output location:** Same folder as source
+- **Compression:** 80% quality
+- **File extension:** Maintain original extension
+- **Dimensions:** REQUIRED - Must specify at least one dimension or aspect ratio
+- **Naming convention:** kebab-case of original filename with:
+  - All punctuation removed
+  - Extraneous suffixes like "(1)", "(2)", etc. removed
+  - File dimensions appended (WordPress style)
+  - Example: "TS BigHorn REA 4804.jpg" → "ts-bighorn-rea-4804-1200x800.jpg"
+
+## Override Format
+Commands can override defaults using natural language:
+- "crop [filename] from [position]" - overrides crop anchor
+- "crop [filename] to [dimensions]" - specifies exact dimensions
+- "crop [filename] at [quality]%" - overrides compression quality
+- "save [filename] as [name]" - overrides naming convention
+
+## Dimension Formats (REQUIRED)
+- **Exact dimensions:** "800x600", "1920x1080"
+- **Width + aspect ratio:** "800 wide video aspect" (16:9), "600 wide square"
+- **Height + aspect ratio:** "400 tall video aspect", "300px square"
+- **Single dimension:** "800px wide", "600 tall" (maintains original aspect ratio)
+
+## Common Override Examples
+- "crop bighorn from bottom" - crops from bottom-center instead of center
+- "crop bighorn from top-left" - crops from top-left corner
+- "crop bighorn to 800x600" - crops to exact dimensions
+- "crop bighorn at 90%" - uses 90% quality instead of 80%
+
+## Context
+This folder contains images for: Tri-State Generation and Transmission website modules
