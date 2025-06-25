@@ -25,6 +25,7 @@ module.exports = {
 			backgroundImage: {
 				'connections-r': "url('https://tristate.coop/sites/default/files/images/electrify-and-save/2023/right-electric-white.svg')",
 				'connections-l': "url('https://tristate.coop/sites/default/files/images/electrify-and-save/2023/left-electric-white.svg')",
+				'connections-h': "url('https://tristate.coop/sites/default/files/images/electrify-and-save/electric-white.svg')",
 				'connections-r-grey': "url('https://tristate.coop/sites/default/files/images/electrify-and-save/2023/right-electric-grey.svg')",
 				'connections-l-grey': "url('https://tristate.coop/sites/default/files/images/electrify-and-save/2023/left-electric-grey.svg')"
 			},

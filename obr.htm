@@ -35,22 +35,25 @@
 
 </head>
 
-<body id="main" class="block-region-content">
-	<!-- Hero -->
-	<section class="bg-green flex flex-row">
-		<div class="bg-connections-l bg-repeat-y w-[15%] min-w-8 max-w-40"></div>
-		<div class="box-border flex-grow flex-shrink text-center px-8 py-12 md:py-16 md:text-balance">
+<body id="main" class="block-region-content"> <!-- Hero -->
+	<section class="relative bg-green">
 
-			<img src="https://tristate.coop/sites/default/files/images/electrify-and-save/2025/E%26S_OBR_Horiz_White.png"
-				alt="" srcset="" class="md:max-w-sm m-auto"><br>
+		<div
+			class="relative flex flex-col items-center gap-4 px-8 py-6 text-center sm:flex-row sm:justify-between lg:grid lg:grid-cols-8 lg:p-0">
+			<div class="hideme bg-connections-h bg-repeat-x bg-bottom h-full lg:block lg:col-span-2"></div>
+			<div class="relative z-10 flex justify-center lg:col-span-4 lg:py-6">
+				<img src="https://tristate.coop/sites/default/files/images/electrify-and-save/2025/E%26S_OBR_Horiz_White.png"
+					alt="Electrify and Save On-Bill Repayment" class="sm:max-w-sm lg:max-w-sm">
+			</div>
 
-			<div class="text-navy space-y-2">
-
-				<span>HAVE A QUESTION? CALL US:</span>
-				<span class="font-serif text-xl">720-263-2313</span>
+			<div class="relative z-10 space-y-2 lg:col-span-2 lg:py-6">
+				<div class="leading-none lg:text-xs font-semibold">HAVE A QUESTION? CALL US:</div>
+				<div class="leading-none font-serif font-semibold text-xl">720-263-2313</div>
+			</div>
+			<div
+				class="absolute z-0 bottom-0 left-0 bg-connections-h bg-repeat-x bg-bottom h-24 w-full sm:left-auto sm:w-2/5 sm:right-0 lg:w-1/4">
 			</div>
 		</div>
-		<div class="bg-connections-r bg-repeat-y bg-right w-[15%] min-w-8 max-w-40"></div>
 	</section>
 
 	<!-- <template id="sticky-template">
@@ -67,7 +70,8 @@
 			<!-- Text Block 1 -->
 			<div class="mb-4 md:col-start-1 md:row-start-1">
 				<div class="font-xs font-semibold text-navy uppercase">Easy financing for home & business owners</div>
-				<div class="text-gray-dark font-serif text-4xl">Save Today on High-Efficiency Energy Upgrades</div>
+				<div class="text-gray-dark font-serif text-4xl">Save Today on <span
+						class="inline-block">High-Efficiency</span> Energy Upgrades</div>
 			</div>
 
 			<!-- Image -->
@@ -223,7 +227,7 @@
 				</div>
 
 				<!-- Phone CTA -->
-				<div class="text-navy text-center hideme md:flex md:items-center md:gap-2" data-cta-text>
+				<div class="text-center hideme md:flex md:items-center md:gap-2" data-cta-text>
 					<div class="text-xs font-semibold uppercase tracking-wide">HAVE A QUESTION? CALL US:</div>
 					<div class="font-serif text-xl font-bold mt-1">720-263-2313</div>
 				</div>
@@ -289,15 +293,15 @@
 
 
 			<div class="flex flex-col gap-4 sm:flex-row">
-				<a class="flex justify-between items-center gap-2 border border-solid border-green rounded-full px-4 py-2 leading-none font-normal no-underline transition-transform text-black text-center md:inline-flex"
-					href="https://tristate.coop/sites/default/files/PDF/electrify-and-save/E%26S%20OBR%20FAQ.pdf"
-					target="_blank">Learn More <img
-						src="https://tristate.coop/sites/default/files/images/icons/button-arrow-right-regular-green.svg"
-						alt="arrow right" class="h-4"></a>
+				<button
+					class="flex justify-between items-center gap-2 bg-green rounded-full px-4 py-2 leading-none font-normal no-underline transition-transform text-white text-center cursor-pointer md:inline-flex"
+					data-scrollto="form-intro">Start your OBR application<img
+						src="https://tristate.coop/sites/default/files/images/icons/button-arrow-right-regular-white.svg"
+						alt="arrow right" class="h-4"></button>
 
 				<button
-					class="flex justify-between items-center gap-2 border border-solid border-green bg-transparent rounded-full px-4 py-2 leading-none font-normal no-underline transition-transform text-black text-center cursor-pointer md:inline-flex"
-					data-scrollto="form-intro">Start your OBR application<img
+					class="flex justify-between items-center gap-2 bg-transparent border border-solid border-green rounded-full px-4 py-2 leading-none font-normal no-underline transition-transform text-black text-center md:inline-flex"
+					data-scrollto="faq">Learn More <img
 						src="https://tristate.coop/sites/default/files/images/icons/button-arrow-right-regular-green.svg"
 						alt="arrow right" class="h-4"></button>
 			</div>
@@ -539,27 +543,12 @@
 
 
 	<!-- FAQ -->
-	<section class="px-8 pt-8 text-center">
+	<section class="px-8 pt-8 text-center" id="faq">
 		<h2 class="ts-heading-2 font-serif text-2xl font-light text-wrap-balance" style="margin-bottom: 0;">
 			Additional Information and FAQs
 		</h2>
-		<div class="cwb-accordion">
-			<ol class="list-decimal grid gap-4 ml-4">
-				<li>Be named on the account and receive electric service from a participating co-op (see list of
-					partners below).
-				</li>
-				<li>Meet the bill-pay history criteria of the program:
-					<ul class="list-disc pl-6 grid gap-2">
-						<li>No shutoff notices for the previous 12 consecutive months.</li>
-						<li>No late penalties for the previous 6 consecutive months.</li>
-					</ul>
-				</li>
-				<li>Your proposed project must have a Scope of Work from a contractor authorized in the program and the
-					measures
-					must be on the eligible measures list.</li>
-			</ol>
-
-
+		<div class="min-h-96 grid place-content-center">
+			<div>[Accordin built in CWB]</div>
 		</div>
 	</section>
 	<section class="px-8 pt-8 text-center">
