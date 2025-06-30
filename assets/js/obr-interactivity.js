@@ -74,7 +74,7 @@ function helperObrCreateAndAppendForm(src, zohoContainer) {
 		// Create iframe
 		const iframe = document.createElement('iframe');
 		iframe.src = src;
-		iframe.classList.add('w-full', 'hidden'); // Use Tailwind classes
+		iframe.classList.add('w-full', 'hidden');
 
 		// Append iframe
 		zohoContainer.appendChild(iframe);
@@ -82,45 +82,12 @@ function helperObrCreateAndAppendForm(src, zohoContainer) {
 		// Wait for iframe to load before making it visible
 		iframe.onload = () => {
 			iframe.classList.remove('hidden');
-			resolve(iframe); // Resolve with the iframe element
+			resolve(iframe);
 		};
 
 		iframe.onerror = () => {
 			reject(new Error('Iframe failed to load'));
 		};
-
-		window.addEventListener(
-			'message',
-			function () {
-				var evntData = event.data;
-				if (evntData && evntData.constructor == String) {
-					var zf_ifrm_data = evntData.split('|');
-					if (zf_ifrm_data.length == 2 || zf_ifrm_data.length == 3) {
-						var zf_perma = zf_ifrm_data[0];
-						var zf_ifrm_ht_nw = parseInt(zf_ifrm_data[1], 10) + 15 + 'px';
-
-						if (iframe.src.indexOf('formperma') > 0 && iframe.src.indexOf(zf_perma) > 0) {
-							var prevIframeHeight = iframe.style.height;
-							var zf_tout = false;
-							if (zf_ifrm_data.length == 3) {
-								iframe.scrollIntoView();
-								zf_tout = true;
-							}
-							if (prevIframeHeight != zf_ifrm_ht_nw) {
-								if (zf_tout) {
-									setTimeout(function () {
-										iframe.style.height = zf_ifrm_ht_nw;
-									}, 500);
-								} else {
-									iframe.style.height = zf_ifrm_ht_nw;
-								}
-							}
-						}
-					}
-				}
-			},
-			false
-		);
 	});
 }
 
@@ -145,76 +112,51 @@ function helperObrHandleMemberButtonClick(e, timeline, zohoContainer, peek) {
 		// Get the URL from the clicked button
 		const formUrl = e.target.href;
 
-		// Check if form is already open (zoho container has an iframe)
-		const existingIframe = zohoContainer.querySelector('iframe');
-		const isFormAlreadyOpen = existingIframe !== null;
-		if (!isFormAlreadyOpen) {
-			// First time opening - capture current height to prevent flash and run full animation sequence
-			const currentHeight = peek.offsetHeight;
-			gsap.set(peek, { height: currentHeight });
+		createZohoForm(formUrl);
 
-			// Immediately animate screenshots down
-			const screenshots = peek.querySelectorAll('[data-screenshot]');
-			gsap.to(screenshots, {
-				y: '100%',
-				duration: 0.48,
-				ease: 'power2.inOut'
-			});
-		}
+		// // Check if form is already open (zoho container has an iframe)
+		// const existingIframe = zohoContainer.querySelector('iframe');
+		// const isFormAlreadyOpen = existingIframe !== null;
+		// console.log({ isFormAlreadyOpen });
 
-		// Load the form (works whether first time or switching forms)
-		helperObrCreateAndAppendForm(formUrl, zohoContainer)
-			.then((iframe) => {
-				if (!isFormAlreadyOpen) {
-					// Only run the main timeline animation if this is the first form load
-					// Set up observer to watch for iframe height changes
-					const observer = new MutationObserver(() => {
-						const iframeHeight = iframe.style.height;
-						if (iframeHeight) {
-							// Start the main timeline
-							timeline.restart();
+		// if (!isFormAlreadyOpen) {
+		// 	// First time opening - capture current height to prevent flash and run full animation sequence
+		// 	const currentHeight = peek.offsetHeight;
+		// 	gsap.set(peek, { height: currentHeight });
 
-							// When timeline completes, animate peek height
-							timeline.then(() => {
-								gsap.to(peek, {
-									height: iframeHeight,
-									duration: 1.5,
-									ease: 'power2.out'
-								});
-							});
+		// 	// Immediately animate screenshots down
+		// 	const screenshots = peek.querySelectorAll('[data-screenshot]');
+		// 	gsap.to(screenshots, {
+		// 		y: '100%',
+		// 		duration: 0.48,
+		// 		ease: 'power2.inOut'
+		// 	});
 
-							// Disconnect observer after first height change
-							observer.disconnect();
-						}
-					});
+		// 	// Store animation state for the global postMessage handler
+		// 	window.obrAnimationState = {
+		// 		isFirstForm: true,
+		// 		timeline: timeline,
+		// 		peek: peek,
+		// 		zohoContainer: zohoContainer
+		// 	};
+		// } else {
+		// 	// Switching forms - prepare for height adjustment only
+		// 	window.obrAnimationState = {
+		// 		isFirstForm: false,
+		// 		timeline: timeline,
+		// 		peek: peek,
+		// 		zohoContainer: zohoContainer
+		// 	};
+		// }
 
-					observer.observe(iframe, {
-						attributes: true,
-						attributeFilter: ['style']
-					});
-				} else {
-					// Form is already open, just adjust peek height when new form loads
-					const observer = new MutationObserver(() => {
-						const iframeHeight = iframe.style.height;
-						if (iframeHeight) {
-							gsap.to(peek, {
-								height: iframeHeight,
-								duration: 0.3,
-								ease: 'power2.out'
-							});
-							observer.disconnect();
-						}
-					});
-
-					observer.observe(iframe, {
-						attributes: true,
-						attributeFilter: ['style']
-					});
-				}
-			})
-			.catch((error) => {
-				console.error('Failed to load form:', error);
-			});
+		// // Load the form (works whether first time or switching forms)
+		// helperObrCreateAndAppendForm(formUrl, zohoContainer)
+		// 	.then((iframe) => {
+		// 		console.log('Form loaded successfully');
+		// 	})
+		// 	.catch((error) => {
+		// 		console.error('Failed to load form:', error);
+		// 	});
 	}
 }
 
@@ -431,12 +373,9 @@ function initScrollTo() {
 	gsap.registerPlugin(ScrollToPlugin);
 	// Initialize all buttons with data-scrollto attribute
 	const scrollToButtons = document.querySelectorAll('[data-scrollto]');
-	console.log(scrollToButtons);
 	scrollToButtons.forEach((button) => {
 		const targetId = button.getAttribute('data-scrollto');
-		console.log(targetId);
 		const target = document.getElementById(targetId);
-		console.log(target);
 		if (!target) return;
 		button.addEventListener('click', (e) => {
 			e.preventDefault();
@@ -454,11 +393,68 @@ function initScrollTo() {
 	});
 }
 
-function initOBR() {
+function createZohoEventHandler() {
+	window.addEventListener(
+		'message',
+		function () {
+			console.log('Post message');
+			var evntData = event.data;
+			console.log({ evntData });
+			if (evntData && evntData.constructor == String) {
+				var zf_ifrm_data = evntData.split('|');
+				if (zf_ifrm_data.length == 2 || zf_ifrm_data.length == 3) {
+					var zf_perma = zf_ifrm_data[0];
+					console.log(zf_perma);
+					var zf_ifrm_ht_nw = parseInt(zf_ifrm_data[1], 10) + 15 + 'px';
+					// var iframe = document.getElementById('zf_div_KRdI9uti9zRAmnfb5q0ls_C5zisyjDj6G2Ni8eeOKYM').getElementsByTagName('iframe')[0];
+					var iframe = document.querySelector('[data-zoho-container]').getElementsByTagName('iframe')[0];
+					if (iframe.src.indexOf('formperma') > 0 && iframe.src.indexOf(zf_perma) > 0) {
+						var prevIframeHeight = iframe.style.height;
+						var zf_tout = false;
+						if (zf_ifrm_data.length == 3) {
+							iframe.scrollIntoView();
+							zf_tout = true;
+						}
+						if (prevIframeHeight != zf_ifrm_ht_nw) {
+							if (zf_tout) {
+								setTimeout(function () {
+									iframe.style.height = zf_ifrm_ht_nw;
+								}, 500);
+							} else {
+								iframe.style.height = zf_ifrm_ht_nw;
+							}
+						}
+					}
+				}
+			}
+		},
+		false
+	);
+}
+
+function createZohoForm(src) {
+	var f = document.createElement('iframe');
+	f.src = src;
+	f.style.border = 'none';
+	f.style.height = '1000px';
+	f.style.width = '100%';
+	f.setAttribute('aria-label', 'CCEF\x20\x2D\x20On\x2DBill\x20Electrify\x20and\x20Save\x20Contractor\x20Interest\x20Form');
+
+	var d = document.querySelector('[data-zoho-container]');
+	d.appendChild(f);
+}
+
+function initOBR2() {
+	createZohoEventHandler();
+	// setTimeout(createZohoForm, 2000);
 	initFormReveal();
-	initRevealer();
-	initEligibilityModal();
-	initScrollTo();
+}
+function initOBR() {
+	// createZohoEventHandler();
+	initFormReveal();
+	// initRevealer();
+	// initEligibilityModal();
+	// initScrollTo();
 }
 // Initialize on window load
-window.addEventListener('load', initOBR);
+window.addEventListener('load', initOBR2);
