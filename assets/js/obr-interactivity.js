@@ -45,7 +45,10 @@ function helperObrCreateTimeline(zohoContainer, peek) {
 		)
 		.to(zohoContainer, {
 			top: '0%',
-			ease: 'power2.out'
+			ease: 'power2.out',
+			onComplete: () => {
+				animatePeekHeight();
+			}
 		});
 
 	return tl;
@@ -133,6 +136,9 @@ function helperObrHandleMemberButtonClick(e, timeline, zohoContainer, peek) {
 				if (!isFormAlreadyOpen) {
 					console.log('run animation timeline');
 					timeline.play();
+				} else {
+					// Subsequent clicks - animate peek to current iframe height immediately
+					animatePeekHeight();
 				}
 			})
 			.catch((error) => {
@@ -371,6 +377,18 @@ function initScrollTo() {
 				}
 			});
 		});
+	});
+}
+
+// Animate peek section to match iframe height
+function animatePeekHeight(iframeHeight) {
+	const peek = document.querySelector('[data-peek]');
+	const iframe = peek.querySelector('iframe');
+	const currentHeight = iframe.style.height || '2000px';
+	gsap.to('[data-peek]', {
+		height: currentHeight,
+		duration: 1.5,
+		ease: 'power2.out'
 	});
 }
 
