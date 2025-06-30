@@ -45,15 +45,7 @@ function helperObrCreateTimeline(zohoContainer, peek) {
 		)
 		.to(zohoContainer, {
 			top: '0%',
-			ease: 'power2.out',
-			onComplete: () => {
-				// Cleanup: Hide then remove animated content elements during animation completion
-				const peekContentElements = peek.querySelectorAll('[data-peek-content]');
-				peekContentElements.forEach((element) => {
-					element.style.display = 'none'; // Hide immediately to prevent flash
-					element.remove(); // Then remove from DOM
-				});
-			}
+			ease: 'power2.out'
 		});
 
 	return tl;
@@ -74,14 +66,16 @@ function helperObrCreateAndAppendForm(src, zohoContainer) {
 		// Create iframe
 		const iframe = document.createElement('iframe');
 		iframe.src = src;
-		iframe.classList.add('w-full', 'hidden');
+		iframe.classList.add('w-full');
+		iframe.style.border = 'none';
+		iframe.style.width = '100%';
+		iframe.setAttribute('aria-label', 'CCEF On-Bill Electrify and Save Contractor Interest Form');
 
 		// Append iframe
 		zohoContainer.appendChild(iframe);
 
-		// Wait for iframe to load before making it visible
+		// Wait for iframe to load
 		iframe.onload = () => {
-			iframe.classList.remove('hidden');
 			resolve(iframe);
 		};
 
@@ -117,9 +111,6 @@ function helperObrHandleMemberButtonClick(e, timeline, zohoContainer, peek) {
 		const isFormAlreadyOpen = existingIframe !== null;
 		console.log({ isFormAlreadyOpen });
 
-		const zohoIframe = createZohoForm(formUrl);
-		zohoContainer.appendChild(zohoIframe);
-
 		if (!isFormAlreadyOpen) {
 			console.log('run manual animations');
 			// First time opening - capture current height to prevent flash and run full animation sequence
@@ -135,10 +126,18 @@ function helperObrHandleMemberButtonClick(e, timeline, zohoContainer, peek) {
 			});
 		}
 
-		zohoIframe.onload = function () {
-			console.log('Iframe loaded successfully');
-			console.log('run animation timeline');
-		};
+		// Use Promise approach for iframe loading
+		helperObrCreateAndAppendForm(formUrl, zohoContainer)
+			.then((iframe) => {
+				console.log('Iframe loaded successfully');
+				if (!isFormAlreadyOpen) {
+					console.log('run animation timeline');
+					timeline.play();
+				}
+			})
+			.catch((error) => {
+				console.error('Failed to load form:', error);
+			});
 	}
 }
 
