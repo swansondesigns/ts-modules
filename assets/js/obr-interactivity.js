@@ -439,17 +439,12 @@ function createZohoForm(src) {
 	return iframe;
 }
 
-function initOBR2() {
-	createZohoEventHandler();
-	// setTimeout(createZohoForm, 2000);
-	initFormReveal();
-}
 function initOBR() {
-	// createZohoEventHandler();
+	createZohoEventHandler();
 	initFormReveal();
-	// initRevealer();
-	// initEligibilityModal();
-	// initScrollTo();
+	initRevealer();
+	initEligibilityModal();
+	initScrollTo();
 }
 // Initialize on window load
-window.addEventListener('load', initOBR2);
+window.addEventListener('load', initOBR);
