@@ -112,51 +112,33 @@ function helperObrHandleMemberButtonClick(e, timeline, zohoContainer, peek) {
 		// Get the URL from the clicked button
 		const formUrl = e.target.href;
 
-		createZohoForm(formUrl);
+		// Check if form is already open (zoho container has an iframe)
+		const existingIframe = zohoContainer.querySelector('iframe');
+		const isFormAlreadyOpen = existingIframe !== null;
+		console.log({ isFormAlreadyOpen });
 
-		// // Check if form is already open (zoho container has an iframe)
-		// const existingIframe = zohoContainer.querySelector('iframe');
-		// const isFormAlreadyOpen = existingIframe !== null;
-		// console.log({ isFormAlreadyOpen });
+		const zohoIframe = createZohoForm(formUrl);
+		zohoContainer.appendChild(zohoIframe);
 
-		// if (!isFormAlreadyOpen) {
-		// 	// First time opening - capture current height to prevent flash and run full animation sequence
-		// 	const currentHeight = peek.offsetHeight;
-		// 	gsap.set(peek, { height: currentHeight });
+		if (!isFormAlreadyOpen) {
+			console.log('run manual animations');
+			// First time opening - capture current height to prevent flash and run full animation sequence
+			const currentHeight = peek.offsetHeight;
+			gsap.set(peek, { height: currentHeight });
 
-		// 	// Immediately animate screenshots down
-		// 	const screenshots = peek.querySelectorAll('[data-screenshot]');
-		// 	gsap.to(screenshots, {
-		// 		y: '100%',
-		// 		duration: 0.48,
-		// 		ease: 'power2.inOut'
-		// 	});
+			// Immediately animate screenshots down
+			const screenshots = peek.querySelectorAll('[data-screenshot]');
+			gsap.to(screenshots, {
+				y: '100%',
+				duration: 0.48,
+				ease: 'power2.inOut'
+			});
+		}
 
-		// 	// Store animation state for the global postMessage handler
-		// 	window.obrAnimationState = {
-		// 		isFirstForm: true,
-		// 		timeline: timeline,
-		// 		peek: peek,
-		// 		zohoContainer: zohoContainer
-		// 	};
-		// } else {
-		// 	// Switching forms - prepare for height adjustment only
-		// 	window.obrAnimationState = {
-		// 		isFirstForm: false,
-		// 		timeline: timeline,
-		// 		peek: peek,
-		// 		zohoContainer: zohoContainer
-		// 	};
-		// }
-
-		// // Load the form (works whether first time or switching forms)
-		// helperObrCreateAndAppendForm(formUrl, zohoContainer)
-		// 	.then((iframe) => {
-		// 		console.log('Form loaded successfully');
-		// 	})
-		// 	.catch((error) => {
-		// 		console.error('Failed to load form:', error);
-		// 	});
+		zohoIframe.onload = function () {
+			console.log('Iframe loaded successfully');
+			console.log('run animation timeline');
+		};
 	}
 }
 
@@ -397,14 +379,11 @@ function createZohoEventHandler() {
 	window.addEventListener(
 		'message',
 		function () {
-			console.log('Post message');
 			var evntData = event.data;
-			console.log({ evntData });
 			if (evntData && evntData.constructor == String) {
 				var zf_ifrm_data = evntData.split('|');
 				if (zf_ifrm_data.length == 2 || zf_ifrm_data.length == 3) {
 					var zf_perma = zf_ifrm_data[0];
-					console.log(zf_perma);
 					var zf_ifrm_ht_nw = parseInt(zf_ifrm_data[1], 10) + 15 + 'px';
 					// var iframe = document.getElementById('zf_div_KRdI9uti9zRAmnfb5q0ls_C5zisyjDj6G2Ni8eeOKYM').getElementsByTagName('iframe')[0];
 					var iframe = document.querySelector('[data-zoho-container]').getElementsByTagName('iframe')[0];
@@ -433,15 +412,14 @@ function createZohoEventHandler() {
 }
 
 function createZohoForm(src) {
-	var f = document.createElement('iframe');
-	f.src = src;
-	f.style.border = 'none';
-	f.style.height = '1000px';
-	f.style.width = '100%';
-	f.setAttribute('aria-label', 'CCEF\x20\x2D\x20On\x2DBill\x20Electrify\x20and\x20Save\x20Contractor\x20Interest\x20Form');
+	var iframe = document.createElement('iframe');
+	iframe.src = src;
+	iframe.style.border = 'none';
+	iframe.style.height = '1000px';
+	iframe.style.width = '100%';
+	iframe.setAttribute('aria-label', 'CCEF\x20\x2D\x20On\x2DBill\x20Electrify\x20and\x20Save\x20Contractor\x20Interest\x20Form');
 
-	var d = document.querySelector('[data-zoho-container]');
-	d.appendChild(f);
+	return iframe;
 }
 
 function initOBR2() {
