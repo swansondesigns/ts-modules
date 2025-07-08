@@ -224,9 +224,8 @@
 		<!-- Middle Layer: Green triangle -->
 		<div class="col-start-1 row-start-1 relative" data-peek-content>
 			<div class="absolute h-full w-full bottom-0 bg-green opacity-90 md:hideme"
-				style="clip-path: polygon(100% 50%, 100% 0%, 100% 100%, 0% 100%);" data-triangle>
-				<div
-					class="bg-connections-l h-2/3 w-full bg-no-repeat absolute bottom-0 left-full origin-bottom-left -rotate-90 opacity-45">
+				style="clip-path: polygon(0% 100%, 60% 0%, 100% 0%, 100% 100%, 0% 100%);" data-triangle>
+				<div class="absolute top-0 right-0 bg-connections-r bg-right w-6 h-full bg-repeat-y opacity-45">
 				</div>
 			</div>
 			<div class="hideme absolute h-full w-full bottom-0 bg-green opacity-90 md:block"
@@ -239,10 +238,10 @@
 
 		<!-- Top Layer: Content that sets height -->
 		<div class="col-start-1 row-start-1 flex justify-end relative overflow-hidden" data-peek-content>
-			<div class="w-1/2 py-8 pr-8 flex flex-col justify-center items-end text-center space-y-6 md:w-3/5">
+			<div class="w-1/2 pr-8 flex flex-col justify-center items-end text-center space-y-6 md:w-3/5">
 				<!-- Blue badge -->
-				<div class=" flex-shrink-0">
-					<img src="assets/images/obr-badge-full-white.svg" alt="" class="size-52 mr-12" data-cta-badge />
+				<div class="my-4 flex-shrink-0">
+					<img src="assets/images/obr-badge-full-white.svg" alt="" class=" mr-12" data-cta-badge />
 				</div>
 
 				<!-- Phone CTA -->
@@ -615,12 +614,14 @@
 
 <script>	// Dynamically add options to the existing select element
 	const obrFormOptions = [
-		{ label: 'Gunnison County', url: 'https://forms.zohopublic.com/dave77/form/CCEFOnBillElectrifyandSaveInterestFormGunnisonCoun/formperma/eaL0vRpEvSxnZ0SfUkbvcwk455RufgurFBcYNNdmFrI?zf_rszfm=1' },
-		{ label: 'Highline', url: 'https://forms.zohopublic.com/dave77/form/HighlineCCEFOnBillElectrifyandSaveInterestForm/formperma/1-oZDDD2WhuaR1zTbh3RHA4_mBYlUJIQm0l0VuwBXlQ?zf_rszfm=1' },
+		{ label: 'GCEA', url: 'https://forms.zohopublic.com/dave77/form/CCEFOnBillElectrifyandSaveInterestFormGunnisonCoun/formperma/eaL0vRpEvSxnZ0SfUkbvcwk455RufgurFBcYNNdmFrI?zf_rszfm=1' },
+		{ label: 'Highline Electric', url: 'https://forms.zohopublic.com/dave77/form/HighlineCCEFOnBillElectrifyandSaveInterestForm/formperma/1-oZDDD2WhuaR1zTbh3RHA4_mBYlUJIQm0l0VuwBXlQ?zf_rszfm=1' },
 		{ label: 'Mountain View', url: 'https://forms.zohopublic.com/dave77/form/CCEFOnBillElectrifyandSaveInterestFormMountainView/formperma/JFmZ7-sYFbED03cidPhkJF2Xg6pGwaaELrG-VROL8Qs?zf_rszfm=1' },
-		{ label: 'San Luis Valley', url: 'https://forms.zohopublic.com/dave77/form/CCEFOnBillElectrifyandSaveInterestForm/formperma/O0v_a4kTLqUVhif9bTmfrYo5gk9MxQAjIf0nGZp2e08?zf_rszfm=1' },
-		{ label: 'Sangre de Cristo', url: 'https://forms.zohopublic.com/dave77/form/CCEFOnBillElectrifyandSaveInterestFormSangredeCris/formperma/a32FoQiHZJ3JGfZytyiSadMLVC4T41tZraNq3niYC6w?zf_rszfm=1' },
-		{ label: 'White River', url: 'https://forms.zohopublic.com/dave77/form/WhiteRiverCCEFOnBillElectrifyandSaveInterestForm/formperma/CAglIyJlSRGIsYCsWPeoY21MW1qJZCszYL7rA3V3v0Y?zf_rszfm=1' }
+		{ label: 'San Luis Valley REC', url: 'https://forms.zohopublic.com/dave77/form/CCEFOnBillElectrifyandSaveInterestForm/formperma/O0v_a4kTLqUVhif9bTmfrYo5gk9MxQAjIf0nGZp2e08?zf_rszfm=1' },
+		{ label: 'San Miguel Power Assoc.', url: 'https://forms.zohopublic.com/dave77/form/WhiteRiverCCEFOnBillElectrifyandSaveInterestForm/formperma/CAglIyJlSRGIsYCsWPeoY21MW1qJZCszYL7rA3V3v0Y?zf_rszfm=1' },
+		{ label: 'SDCEA', url: 'https://forms.zohopublic.com/dave77/form/CCEFOnBillElectrifyandSaveInterestFormSangredeCris/formperma/a32FoQiHZJ3JGfZytyiSadMLVC4T41tZraNq3niYC6w?zf_rszfm=1' },
+		{ label: 'White River Electric', url: 'https://forms.zohopublic.com/dave77/form/WhiteRiverCCEFOnBillElectrifyandSaveInterestForm/formperma/CAglIyJlSRGIsYCsWPeoY21MW1qJZCszYL7rA3V3v0Y?zf_rszfm=1' }
+
 	];
 
 
