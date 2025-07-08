@@ -7,6 +7,8 @@ Unless specified otherwise:
 - **Output location:** Same folder as source
 - **Compression:** 80% quality
 - **File extension:** Maintain original extension
+- **Metadata:** Strip EXIF data (use -strip option)
+- **Processing:** Single-step operation (resize/fit and crop in one ImageMagick command)
 - **Dimensions:** REQUIRED - Must specify at least one dimension or aspect ratio
 - **Naming convention:** kebab-case of original filename with:
   - All punctuation removed
