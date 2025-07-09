@@ -169,7 +169,8 @@
 		<div class="max-w-xl space-y-4">
 			<div class="mb-4 md:col-start-1 md:row-start-1">
 				<div class="font-xs font-semibold uppercase" style="color: #7d8d2f;">How to apply</div>
-				<p class="text-gray-dark font-serif text-4xl">See what energy upgrades are available to you, today.
+				<p class="text-gray-dark font-serif text-4xl" style="font-size: 2.25rem;">See what energy upgrades are
+					available to you, today.
 				</p>
 			</div>
 			<p class="mb-4">Complete our interest form by selecting your co-op service territory
@@ -181,9 +182,10 @@
 					eligible?</button></p>
 
 			<div class="flex flex-wrap justify-center gap-2" data-member-buttons>
-				<template>
+				<template id="member-button">
 					<a href="#"
-						class="inline-block rounded-full py-2 px-3 border border-solid border-green no-underline leading-none transition-none hover:bg-green/70 hover:text-black "></a>
+						class="inline-block rounded-full py-2 px-3 border border-solid border-green no-underline leading-none transition-none hover:bg-green/70 hover:text-black"
+						style="font-weight: normal; color: #000"></a>
 				</template>
 
 			</div>
@@ -224,13 +226,11 @@
 		</div>
 		<!-- Middle Layer: Green triangle -->
 		<div class="col-start-1 row-start-1 relative" data-peek-content>
-			<div class="absolute h-full w-full bottom-0 bg-green opacity-90 md:hideme"
-				style="clip-path: polygon(0% 100%, 60% 0%, 100% 0%, 100% 100%, 0% 100%);" data-triangle>
+			<div class="absolute h-full w-full bottom-0 bg-green opacity-90 md:hideme" data-triangle>
 				<div class="absolute top-0 right-0 bg-connections-r bg-right w-6 h-full bg-repeat-y opacity-45">
 				</div>
 			</div>
-			<div class="hideme absolute h-full w-full bottom-0 bg-green opacity-90 md:block"
-				style="clip-path: polygon(100% 0%, 100% 0%, 100% 100%, 0% 100%);" data-triangle>
+			<div class="hideme absolute h-full w-full bottom-0 bg-green opacity-90 md:block" data-triangle>
 				<div class="absolute top-0 right-0 bg-connections-r bg-right w-32 h-full bg-repeat-y opacity-45"
 					style="background-size: 100%; auto;">
 				</div>

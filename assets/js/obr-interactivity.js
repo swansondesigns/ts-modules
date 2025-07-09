@@ -30,7 +30,7 @@ function helperObrCreateTimeline(zohoContainer, peek) {
 		.to(
 			triangles,
 			{
-				clipPath: 'polygon(100% 100%, 100% 0%, 100% 100%, 0% 100%)',
+				clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
 				ease: 'power2.inOut'
 			},
 			'-=0.6'
@@ -102,7 +102,7 @@ function helperObrPopulateMemberButtons(memberButtonsContainer, template, obrFor
 }
 
 // Helper function to handle member button clicks
-function helperObrHandleMemberButtonClick(e, timeline, zohoContainer, peek) {
+function helperObrHandleMemberButtonClick(e, zohoContainer, peek) {
 	// Check if clicked element is a link
 	if (e.target.tagName === 'A') {
 		e.preventDefault(); // Kill default link behavior
@@ -135,6 +135,8 @@ function helperObrHandleMemberButtonClick(e, timeline, zohoContainer, peek) {
 				console.log('Iframe loaded successfully');
 				if (!isFormAlreadyOpen) {
 					console.log('run animation timeline');
+					// Create timeline only when we need it
+					const timeline = helperObrCreateTimeline(zohoContainer, peek);
 					timeline.play();
 				} else {
 					// Subsequent clicks - animate peek to current iframe height immediately
@@ -177,21 +179,25 @@ function initFormReveal() {
 	const memberButtons = document.querySelector('[data-member-buttons]');
 	const zohoContainer = document.querySelector('[data-zoho-container]');
 	const peek = document.querySelector('[data-peek]');
-	const template = memberButtons?.querySelector('template');
+	const template = memberButtons?.querySelector('template#member-button');
 
 	if (!helperObrConfirmRequiredDOM(memberButtons, zohoContainer, template)) return;
 
-	// Set initial position for zoho container
+	// Set initial position for zoho container only
 	gsap.set(zohoContainer, { top: '100%' });
 
-	// Create the animation timeline
-	const tl = helperObrCreateTimeline(zohoContainer, peek);
+	// Ensure triangles start with correct clip-path (in case CSS isn't applied yet)
+	const triangles = peek.querySelectorAll('[data-triangle]');
+	if (triangles.length > 0) {
+		gsap.set(triangles, { clipPath: 'polygon(0% 100%, 100% 0%, 100% 100%, 0% 100%)' });
+	}
+
 	// Populate member buttons from template
 	helperObrPopulateMemberButtons(memberButtons, template, obrFormOptions);
 
 	// Add event delegation for member buttons
 	memberButtons.addEventListener('click', (e) => {
-		helperObrHandleMemberButtonClick(e, tl, zohoContainer, peek);
+		helperObrHandleMemberButtonClick(e, zohoContainer, peek);
 	});
 }
 
