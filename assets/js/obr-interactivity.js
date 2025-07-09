@@ -112,10 +112,8 @@ function helperObrHandleMemberButtonClick(e, zohoContainer, peek) {
 		// Check if form is already open (zoho container has an iframe)
 		const existingIframe = zohoContainer.querySelector('iframe');
 		const isFormAlreadyOpen = existingIframe !== null;
-		console.log({ isFormAlreadyOpen });
 
 		if (!isFormAlreadyOpen) {
-			console.log('run manual animations');
 			// First time opening - capture current height to prevent flash and run full animation sequence
 			const currentHeight = peek.offsetHeight;
 			gsap.set(peek, { height: currentHeight });
@@ -132,9 +130,7 @@ function helperObrHandleMemberButtonClick(e, zohoContainer, peek) {
 		// Use Promise approach for iframe loading
 		helperObrCreateAndAppendForm(formUrl, zohoContainer)
 			.then((iframe) => {
-				console.log('Iframe loaded successfully');
 				if (!isFormAlreadyOpen) {
-					console.log('run animation timeline');
 					// Create timeline only when we need it
 					const timeline = helperObrCreateTimeline(zohoContainer, peek);
 					timeline.play();
@@ -225,12 +221,9 @@ function initEligibilityModal() {
 	});
 
 	const closeButton = modalMessage.querySelector('button');
-	console.log(closeButton);
 	if (!closeButton) return;
 
 	closeButton.addEventListener('click', (e) => {
-		console.log('click button');
-
 		const animationProps = {
 			duration: 0.2,
 			ease: 'power2.inOut'
@@ -364,26 +357,37 @@ function animateIcon(iconElement, animationType, isActive = false) {
 }
 function initScrollTo() {
 	gsap.registerPlugin(ScrollToPlugin);
-	// Initialize all buttons with data-scrollto attribute
-	const scrollToButtons = document.querySelectorAll('[data-scrollto]');
-	scrollToButtons.forEach((button) => {
-		const targetId = button.getAttribute('data-scrollto');
+	// Use event delegation to catch all clicks on elements with data-scrollto attribute
+	// This works for elements added to DOM both before AND after this function runs
+	document.addEventListener('click', (e) => {
+		// Check if the clicked element (or a parent) has data-scrollto attribute
+		const scrollButton = e.target.closest('[data-scrollto]');
+		if (!scrollButton) return;
+
+		e.preventDefault();
+
+		const targetId = scrollButton.getAttribute('data-scrollto');
 		const target = document.getElementById(targetId);
 		if (!target) return;
-		button.addEventListener('click', (e) => {
-			e.preventDefault();
 
-			gsap.to(window, {
-				duration: 1,
-				scrollTo: target,
-				ease: 'power2.inOut',
-				onComplete: () => {
-					// Animate button group after scroll completes
-					animateButtonGroup();
-				}
-			});
+		gsap.to(window, {
+			duration: 1,
+			scrollTo: target,
+			ease: 'power2.inOut',
+			onComplete: () => {
+				// Animate button group after scroll completes
+				animateButtonGroup();
+			}
 		});
 	});
+}
+
+function initStickyTemplate() {
+	const template = document.getElementById('sticky-template');
+	console.log(template);
+	if (!template) return;
+	const clone = template.content.cloneNode(true);
+	document.body.appendChild(clone);
 }
 
 // Animate peek section to match iframe height
@@ -447,6 +451,7 @@ function createZohoForm(src) {
 
 function initOBR() {
 	createZohoEventHandler();
+	initStickyTemplate();
 	initFormReveal();
 	initRevealer();
 	initEligibilityModal();

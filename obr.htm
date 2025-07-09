@@ -60,12 +60,6 @@
 		</div>
 	</section>
 
-	<!-- <template id="sticky-template">
-		<div class="fixed z-0 xl:z-10 top-52 right-6 2xl"><a
-				class="items-center gap-2 rounded-full border px-4 py-2 font-normal no-underline transition-transform text-black text-center bg-white shadow-lg"
-				href="#apply">Apply Now</a></div>
-	</template> -->
-
 	<!-- Pitch -->
 	<section class="relative p-6 text-center grid place-items-center md:py-8">
 
@@ -178,8 +172,8 @@
 				submission, you'll receive communications primarily from the Collective Clean Energy Fund and Zero Homes
 				about the
 				personalized financing opportunities available to you. <button
-					class="cursor-pointer bg-transparent underline" data-featherlight="#eligibility">Am I
-					eligible?</button></p>
+					class="cursor-pointer bg-transparent underline" data-featherlight="#eligibility">Check your
+					eligibility.</button></p>
 
 			<div class="flex flex-wrap justify-center gap-2" data-member-buttons>
 				<template id="member-button">
@@ -190,21 +184,28 @@
 
 			</div>
 		</div>
-	</section>
-	<!-- Modal -->
-	<div class="hideme">
-		<section class="relative bg-green p-8 mx-4 mt-2 rounded-xl overflow-hidden sm:max-w-4xl sm:pb-12"
-			id="eligibility">
-			<div class="relative z-10 sm:grid sm:grid-cols-4 sm:gap-4">
-				<p class="font-serif text-xl">Am I <strong>eligible</strong> for the program?</p>
-				<p>Be the owner of a property in a participating Co-Op service territory with a valid account</p>
-				<p>Have 12 consecutive months of payments without a shut off notice</p>
-				<p>Have no late penalties for the previous 6 consecutive months, unless member agrees to enroll in
-					autopay
-				</p>
+		<!-- Modal -->
+		<div class="hideme">
+			<section class="relative bg-green p-8 mx-4 mt-2 rounded-xl overflow-hidden sm:max-w-4xl sm:pb-12"
+				id="eligibility">
+				<div class="relative z-10 sm:grid sm:grid-cols-4 sm:gap-4">
+					<p class="font-serif text-xl">Am I <strong>eligible</strong> for the program?</p>
+					<p>Be the owner of a property in a participating Co-Op service territory with a valid account</p>
+					<p>Have 12 consecutive months of payments without a shut off notice</p>
+					<p>Have no late penalties for the previous 6 consecutive months, unless member agrees to enroll in
+						autopay
+					</p>
+				</div>
+			</section>
+		</div>
+		<template id="sticky-template">
+			<div class="fixed z-0 xl:z-10 top-52 right-6 2xl"><button
+					class="inline-block rounded-full py-2 px-3 border border-solid border-green bg-white no-underline leading-none transition-none hover:bg-green/70 hover:text-black"
+					data-scrollto="form-intro">Apply Now</button>
 			</div>
-		</section>
-	</div>
+		</template>
+	</section>
+
 
 	<!-- Peek -->
 	<section class="grid overflow-hidden" style="background-color: #F5F5F5;" data-peek>
