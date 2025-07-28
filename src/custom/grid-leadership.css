@@ -8,7 +8,7 @@
 
 	[data-bio].open {
 		grid-template-rows: 1fr;
-		padding: 2rem 0;
+		padding: 0 0 2rem;
 	}
 
 	[data-bio] > * {
@@ -42,5 +42,11 @@
 
 	[data-leadership].has-active [data-card].active {
 		@apply relative z-20 scale-[1.02] transform;
+	}
+
+	@media screen and (min-width: 480px) {
+		[data-bio].open {
+			padding: 2rem 0;
+		}
 	}
 }
