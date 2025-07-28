@@ -51,22 +51,32 @@ function placeBio(gridPosition, button, gridLeadership) {
 
 	// Calculate target column based on layout
 	const targetColumn = determineTargetColumn(gridPosition);
-
 	const targetRow = gridPosition['grid row'];
 
 	// If there's an existing bio in the same position, remove it
 	if (existingBio) {
 		const samePosition = existingBio.classList.contains(`col-start-${targetColumn}`) && existingBio.classList.contains(`row-start-${targetRow}`);
-
 		existingBio.remove();
-
 		if (samePosition) {
 			gridLeadership.classList.remove('has-active');
 			return; // Button text is already reset
 		}
-	} // Create new bio panel
+	}
+
+	// Create new bio panel
 	const newBio = template.content.firstElementChild.cloneNode(true);
 	newBio.classList.add(`col-start-${targetColumn}`, `row-start-${targetRow}`);
+
+	// Get the bio content from the clicked card
+	const card = button.closest('[data-card]');
+	const cardBio = card.querySelector('[data-bio]');
+	if (cardBio) {
+		// Only replace the content inside [data-bio-content]
+		const newBioContent = newBio.querySelector('[data-bio-content]');
+		if (newBioContent) {
+			newBioContent.innerHTML = cardBio.innerHTML;
+		}
+	}
 
 	gridLeadership.appendChild(newBio);
 	button.textContent = BUTTON_CLOSE_TEXT;

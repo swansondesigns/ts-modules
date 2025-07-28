@@ -32,16 +32,17 @@
 		opacity: 0.8;
 	}
 
-	[data-leadership].has-active [data-card] {
+	[data-leadership] [data-card] {
 		@apply transition-transform duration-300;
 	}
 
-	[data-leadership].has-active [data-card]:not(.active) {
-		@apply scale-[0.98] transform;
-	}
+	/* Same oddity here.  This should work but doesn't. */
+	/* [data-leadership].has-active [data-card]:not(.active) {
+		@apply opacity-30;
+	} */
 
 	[data-leadership].has-active [data-card].active {
-		@apply relative z-20 scale-[1.02] transform;
+		@apply relative z-20 scale-[1.04] transform;
 	}
 
 	@media screen and (min-width: 480px) {
