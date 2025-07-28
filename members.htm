@@ -15,7 +15,7 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-	<link href="https://fonts.googleapis.com/css2?family=Aleo:wght@300;@400;700&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Aleo:wght@300;400;700&display=swap" rel="stylesheet" />
 
 	<!-- Global Styles -->
 	<link rel="stylesheet"
@@ -70,7 +70,7 @@
 					</div>
 
 
-					<div id="map" class="relative cursor-pointer">
+					<div id="map" class="relative cursor-pointer my-8 lg:mt-0 lg:mb-12">
 
 						<div id="member-name"
 							class="px-4 py-2 absolute text-base bg-navy text-white transition-[opacity,top,left] duration-500 z-20 rounded-md opacity-0">
@@ -2128,13 +2128,19 @@
 							}
 						</style>
 					</div>
+					<div>
+						<a href="https://tristate.coop/member-list"
+							class="inline-block rounded-full border border-black px-6 py-2 font-normal no-underline text-black">
+							Member List
+						</a>
+					</div>
 				</section>
 
 				<!-- Stats -->
-				<section class="min-h-96 bg-navy px-8 py-16 text-center text-white sm:min-h-[400px] lg:px-16 lg:py-24">
+				<section class="bg-navy px-8 py-16 text-center text-white lg:px-16 lg:py-24">
 					<div class="grid gap-y-12 sm:grid-cols-2 sm:gap-x-8 md:grid-cols-3 md:px-4">
 						<div class="space-y-2">
-							<p class="text-2xl font-bold">70+</p>
+							<p class="text-3xl font-serif font-light sm:text-4xl">70+</p>
 							<p>
 								Tri-State was founded in 1952, which
 								means we’ve been supplying
@@ -2144,7 +2150,7 @@
 						</div>
 
 						<div class="space-y-2">
-							<p class="text-2xl font-bold">1M</p>
+							<p class="text-3xl font-serif font-light sm:text-4xl">1M</p>
 							<p>
 								Together with our members, we
 								serve nearly one million people
@@ -2154,7 +2160,7 @@
 						</div>
 
 						<div class="space-y-2">
-							<p class="text-2xl font-bold">5.32</p>
+							<p class="text-3xl font-serif font-light sm:text-4xl">5.32</p>
 							<p>
 								We average 5.32 consumers per mile,
 								vs. the national average of 32.4. We
@@ -2170,7 +2176,11 @@
 
 				<!-- Chairman -->
 				<section class="grid sm:min-h-[400px] sm:grid-cols-2">
-					<div class="px-8 py-12 sm:text-left text-center flex items-center sm:min-h-[400px]">
+					<div class="relative aspect-[5/4] sm:aspect-auto">
+						<img src="assets/images/tim-rabon-stump-wall-800x600.jpg" alt="close-up of wind turbine"
+							class="absolute inset-0 w-full h-full object-cover" data-att-replace="Tim Rabon" />
+					</div>
+					<div class="px-8 py-12 sm:text-left text-center flex items-center sm:min-h-[400px] sm:order-first">
 						<div class="space-y-4 max-w-md mx-auto">
 							<h2 class="font-serif font-light text-3xl text-balance">
 								Meet the board chairman at
@@ -2191,10 +2201,7 @@
 							</p>
 						</div>
 					</div>
-					<div class="relative aspect-video sm:aspect-auto">
-						<img src="assets/images/tim-rabon-stump-wall-800x600.jpg" alt="close-up of wind turbine"
-							class="absolute inset-0 w-full h-full object-cover" data-att-replace="Tim Rabon" />
-					</div>
+
 				</section>
 
 
