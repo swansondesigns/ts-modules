@@ -385,7 +385,6 @@ function initScrollTo() {
 
 function initStickyTemplate() {
 	const template = document.getElementById('sticky-template');
-	console.log(template);
 	if (!template) return;
 	const clone = template.content.cloneNode(true);
 	document.body.appendChild(clone);
