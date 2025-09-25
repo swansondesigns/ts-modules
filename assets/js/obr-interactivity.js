@@ -72,6 +72,7 @@ function helperObrCreateAndAppendForm(src, zohoContainer) {
 		iframe.classList.add('w-full');
 		iframe.style.border = 'none';
 		iframe.style.width = '100%';
+		iframe.style.height = '100%';
 		iframe.setAttribute('aria-label', 'CCEF On-Bill Electrify and Save Contractor Interest Form');
 
 		// Append iframe
@@ -390,67 +391,20 @@ function initStickyTemplate() {
 	document.body.appendChild(clone);
 }
 
-// Animate peek section to match iframe height
-function animatePeekHeight(iframeHeight) {
+// Animate peek section to accommodate form content with a reasonable fixed height
+function animatePeekHeight() {
 	const peek = document.querySelector('[data-peek]');
-	const iframe = peek.querySelector('iframe');
-	const currentHeight = iframe.style.height || '2000px';
-	gsap.to('[data-peek]', {
-		height: currentHeight,
+	// Use a reasonable fixed height that should accommodate most forms
+	const targetHeight = '1200px';
+
+	gsap.to(peek, {
+		height: targetHeight,
 		duration: 1.5,
 		ease: 'power2.out'
 	});
 }
 
-function createZohoEventHandler() {
-	window.addEventListener(
-		'message',
-		function () {
-			var evntData = event.data;
-			if (evntData && evntData.constructor == String) {
-				var zf_ifrm_data = evntData.split('|');
-				if (zf_ifrm_data.length == 2 || zf_ifrm_data.length == 3) {
-					var zf_perma = zf_ifrm_data[0];
-					var zf_ifrm_ht_nw = parseInt(zf_ifrm_data[1], 10) + 15 + 'px';
-					// var iframe = document.getElementById('zf_div_KRdI9uti9zRAmnfb5q0ls_C5zisyjDj6G2Ni8eeOKYM').getElementsByTagName('iframe')[0];
-					var iframe = document.querySelector('[data-zoho-container]').getElementsByTagName('iframe')[0];
-					if (iframe.src.indexOf('formperma') > 0 && iframe.src.indexOf(zf_perma) > 0) {
-						var prevIframeHeight = iframe.style.height;
-						var zf_tout = false;
-						if (zf_ifrm_data.length == 3) {
-							iframe.scrollIntoView();
-							zf_tout = true;
-						}
-						if (prevIframeHeight != zf_ifrm_ht_nw) {
-							if (zf_tout) {
-								setTimeout(function () {
-									iframe.style.height = zf_ifrm_ht_nw;
-								}, 500);
-							} else {
-								iframe.style.height = zf_ifrm_ht_nw;
-							}
-						}
-					}
-				}
-			}
-		},
-		false
-	);
-}
-
-function createZohoForm(src) {
-	var iframe = document.createElement('iframe');
-	iframe.src = src;
-	iframe.style.border = 'none';
-	iframe.style.height = '1000px';
-	iframe.style.width = '100%';
-	iframe.setAttribute('aria-label', 'CCEF\x20\x2D\x20On\x2DBill\x20Electrify\x20and\x20Save\x20Contractor\x20Interest\x20Form');
-
-	return iframe;
-}
-
 function initOBR() {
-	createZohoEventHandler();
 	initStickyTemplate();
 	initFormReveal();
 	initRevealer();
