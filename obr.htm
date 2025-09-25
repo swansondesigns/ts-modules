@@ -607,6 +607,40 @@
 
 
 
+	<!-- OBR Form Modal -->
+	<dialog id="obr-modal"
+		class="backdrop:bg-black/75 bg-white rounded-lg shadow-xl max-w-5xl max-h-[90vh] w-[90vw] h-[80vh] p-0 m-auto">
+		<div class="relative w-full h-full">
+			<!-- Close button -->
+			<button id="obr-modal-close"
+				class="absolute top-4 right-4 z-10 bg-lime-600 hover:bg-lime-600/90 text-white hover:text-white rounded-full p-2 shadow-lg transition-all duration-200 grid place-content-center cursor-pointer"
+				aria-label="Close form">
+				<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+				</svg>
+			</button>
+
+			<!-- Loading spinner -->
+			<div id="obr-modal-loading" class="absolute inset-0 flex items-center justify-center bg-white rounded-lg">
+				<div class="size-8 loading-spinner">
+					<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+						<path class="fa-secondary"
+							d="M65.6 414.4c0 8.2 3.1 16.4 9.4 22.6c12.5 12.5 32.8 12.5 45.3 0l45.3-45.3c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L75 391.8c-6.2 6.2-9.4 14.4-9.4 22.6zM224 416l0 64c0 17.7 14.3 32 32 32s32-14.3 32-32l0-64c0-17.7-14.3-32-32-32s-32 14.3-32 32zM346.5 120.2c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L437 120.2c12.5-12.5 12.5-32.8 0-45.3c-6.2-6.2-14.4-9.4-22.6-9.4s-16.4 3.1-22.6 9.4l-45.3 45.3zm0 226.3c-12.5 12.5-12.5 32.8 0 45.3L391.8 437c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-45.3-45.3c-12.5-12.5-32.8-12.5-45.3 0zM384 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32z"
+							opacity=".4"></path>
+						<path class="fa-primary"
+							d="M256 0c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32s32-14.3 32-32l0-64c0-17.7-14.3-32-32-32zM0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32zM120.2 75C107.7 62.5 87.5 62.5 75 75s-12.5 32.8 0 45.3l45.3 45.3c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L120.2 75z">
+						</path>
+					</svg>
+				</div>
+			</div>
+
+			<!-- Form container -->
+			<div id="obr-modal-content" class="w-full h-full rounded-lg overflow-hidden" style="display: none;">
+				<!-- Iframe will be inserted here -->
+			</div>
+		</div>
+	</dialog>
+
 	<!-- <div class="fixed top-72 right-6 z-10" data-sticky><a href="#"
 			class="block items-center gap-2 rounded-full border px-4 py-2 font-normal no-underline transition-transform text-black text-center md:inline-flex">Apply
 			Now</a></div> -->
@@ -632,9 +666,7 @@
 
 <script
 	src="https://tristate.coop/sites/default/files/asset_injector/js/swiper_9_3_2-36d6a8a781e73f708975edfc2809913b.js?sk35jq"></script>
-<script
-	src="https://tristate.coop/sites/default/files/asset_injector/js/gsap_animation_platform-57397ff5d3b9ddc9453b16048c1221e4.js?sk35jq"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
+
 <script>
 	let swiperInstance = null;
 

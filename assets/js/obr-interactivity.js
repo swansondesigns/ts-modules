@@ -1,82 +1,29 @@
-// Helper functiont to determine mobile or not
+// Helper function to determine mobile or not
 function isMobile() {
-	// Need a function that returns boolean for whether or not the device is smaller than the sm: tailwind breakpoint
 	return window.matchMedia('(max-width: 639px)').matches;
 }
 
-// Helper function to create and configure the GSAP timeline
-function helperObrCreateTimeline(zohoContainer, peek) {
-	// DOM element selections using data attributes (optional elements)
-	const triangles = peek.querySelectorAll('[data-triangle]'); // Animate to: clip-path: polygon(100% 100%, 100% 0%, 100% 100%, 0% 100%);
-	const ctaBadge = peek.querySelector('[data-cta-badge]'); // Animate to: scale to 0
-	const ctaText = peek.querySelector('[data-cta-text]'); // Animate to: transform: translateY(200%);
-
-	// Duration variables for easy experimentation
-	const baseDuration = 0.4;
-	// Initialize GSAP timeline
-	const tl = gsap.timeline({
-		paused: true,
-		defaults: {
-			ease: 'power2.out',
-			duration: baseDuration
-		}
-	});
-	// Build the animation timeline with staggered overlapping animations
-	tl.to(ctaBadge, {
-		scale: 0.001,
-		duration: baseDuration * 0.8,
-		ease: 'back.in(1.7)'
-	})
-		.to(
-			triangles,
-			{
-				clipPath: 'polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)',
-				ease: 'power2.inOut'
-			},
-			'-=0.6'
-		)
-		.to(
-			ctaText,
-			{
-				y: '200%',
-				ease: 'power2.in'
-			},
-			'-=0.8'
-		)
-		.to(zohoContainer, {
-			top: '0%',
-			ease: 'power2.out',
-			onComplete: () => {
-				animatePeekHeight();
-			}
-		});
-
-	return tl;
-}
-
-// Helper function to create and append iframe
-function helperObrCreateAndAppendForm(src, zohoContainer) {
+// Helper function to create and append form iframe to modal
+function helperObrCreateAndAppendForm(src, container) {
 	return new Promise((resolve, reject) => {
-		if (!zohoContainer) {
-			console.error('Container with data-zoho-container not found.');
+		if (!container) {
+			console.error('Container not found.');
 			reject(new Error('Container not found'));
 			return;
 		}
 
 		// Clear container contents
-		zohoContainer.innerHTML = '';
+		container.innerHTML = '';
 
 		// Create iframe
 		const iframe = document.createElement('iframe');
 		iframe.src = src;
-		iframe.classList.add('w-full');
+		iframe.classList.add('w-full', 'h-full');
 		iframe.style.border = 'none';
-		iframe.style.width = '100%';
-		iframe.style.height = '100%';
 		iframe.setAttribute('aria-label', 'CCEF On-Bill Electrify and Save Contractor Interest Form');
 
 		// Append iframe
-		zohoContainer.appendChild(iframe);
+		container.appendChild(iframe);
 
 		// Wait for iframe to load
 		iframe.onload = () => {
@@ -98,55 +45,78 @@ function helperObrPopulateMemberButtons(memberButtonsContainer, template, obrFor
 		link.textContent = option.label;
 		memberButtonsContainer.appendChild(clone);
 	});
-
-	return true;
 }
 
 // Helper function to handle member button clicks
-function helperObrHandleMemberButtonClick(e, zohoContainer, peek) {
+function helperObrHandleMemberButtonClick(e) {
 	// Check if clicked element is a link
 	if (e.target.tagName === 'A') {
 		e.preventDefault(); // Kill default link behavior
+
 		// Get the URL from the clicked button
 		const formUrl = e.target.href;
 
-		// Check if form is already open (zoho container has an iframe)
-		const existingIframe = zohoContainer.querySelector('iframe');
-		const isFormAlreadyOpen = existingIframe !== null;
-
-		if (!isFormAlreadyOpen) {
-			// First time opening - capture current height to prevent flash and run full animation sequence
-			const currentHeight = peek.offsetHeight;
-			gsap.set(peek, { height: currentHeight });
-
-			// Immediately animate screenshots down
-			const screenshots = peek.querySelectorAll('[data-screenshot]');
-			gsap.to(screenshots, {
-				y: '100%',
-				duration: 0.48,
-				ease: 'power2.inOut'
-			});
-		}
-
-		// Use Promise approach for iframe loading
-		helperObrCreateAndAppendForm(formUrl, zohoContainer)
-			.then((iframe) => {
-				if (!isFormAlreadyOpen) {
-					// Create timeline only when we need it
-					const timeline = helperObrCreateTimeline(zohoContainer, peek);
-					timeline.play();
-				} else {
-					// Subsequent clicks - animate peek to current iframe height immediately
-					animatePeekHeight();
-				}
-			})
-			.catch((error) => {
-				console.error('Failed to load form:', error);
-			});
+		// Open modal with form
+		openObrModal(formUrl);
 	}
 }
 
-function helperObrConfirmRequiredDOM(memberButtons, zohoContainer, template) {
+// Function to open the OBR modal
+function openObrModal(formUrl) {
+	const modal = document.getElementById('obr-modal');
+	const loading = document.getElementById('obr-modal-loading');
+	const content = document.getElementById('obr-modal-content');
+
+	if (!modal || !loading || !content) {
+		console.error('Modal elements not found');
+		return;
+	}
+
+	// Disable body scrolling
+	document.body.style.overflow = 'hidden';
+
+	// Reset modal state
+	loading.style.display = 'flex';
+	content.style.display = 'none';
+
+	// Open modal
+	modal.showModal();
+
+	// Load form
+	helperObrCreateAndAppendForm(formUrl, content)
+		.then((iframe) => {
+			// Hide loading, show content
+			loading.style.display = 'none';
+			content.style.display = 'block';
+		})
+		.catch((error) => {
+			console.error('Failed to load form:', error);
+			// Restore body scrolling before closing
+			document.body.style.overflow = '';
+			// Could show an error message here
+			modal.close();
+		});
+}
+
+// Function to close the OBR modal
+function closeObrModal() {
+	const modal = document.getElementById('obr-modal');
+	const content = document.getElementById('obr-modal-content');
+
+	if (modal) {
+		modal.close();
+
+		// Restore body scrolling
+		document.body.style.overflow = '';
+
+		// Clear the iframe to stop any ongoing processes
+		if (content) {
+			content.innerHTML = '';
+		}
+	}
+}
+
+function helperObrConfirmRequiredDOM(memberButtons, template) {
 	// Guard clause - exit early if essential elements are missing
 	if (!memberButtons) {
 		console.error('Essential element [data-member-buttons] not found. Form reveal cannot initialize.');
@@ -155,11 +125,6 @@ function helperObrConfirmRequiredDOM(memberButtons, zohoContainer, template) {
 
 	if (!template) {
 		console.error('Template not found in [data-member-buttons] container. Form reveal cannot initialize.');
-		return false;
-	}
-
-	if (!zohoContainer) {
-		console.error('Essential element [data-zoho-container] not found. Form reveal cannot initialize.');
 		return false;
 	}
 
@@ -174,27 +139,38 @@ function helperObrConfirmRequiredDOM(memberButtons, zohoContainer, template) {
 function initFormReveal() {
 	// Check for absolute necessities first
 	const memberButtons = document.querySelector('[data-member-buttons]');
-	const zohoContainer = document.querySelector('[data-zoho-container]');
-	const peek = document.querySelector('[data-peek]');
 	const template = memberButtons?.querySelector('template#member-button');
 
-	if (!helperObrConfirmRequiredDOM(memberButtons, zohoContainer, template)) return;
-
-	// Set initial position for zoho container only
-	gsap.set(zohoContainer, { top: '100%' });
-
-	// Ensure triangles start with correct clip-path (in case CSS isn't applied yet)
-	const triangles = peek.querySelectorAll('[data-triangle]');
-	if (triangles.length > 0) {
-		gsap.set(triangles, { clipPath: 'polygon(0% 100%, 100% 0%, 100% 100%, 0% 100%)' });
-	}
+	if (!helperObrConfirmRequiredDOM(memberButtons, template)) return;
 
 	// Populate member buttons from template
 	helperObrPopulateMemberButtons(memberButtons, template, obrFormOptions);
 
 	// Add event delegation for member buttons
-	memberButtons.addEventListener('click', (e) => {
-		helperObrHandleMemberButtonClick(e, zohoContainer, peek);
+	memberButtons.addEventListener('click', helperObrHandleMemberButtonClick);
+}
+
+function initObrModal() {
+	const modal = document.getElementById('obr-modal');
+	const closeButton = document.getElementById('obr-modal-close');
+
+	if (!modal || !closeButton) return;
+
+	// Close button handler
+	closeButton.addEventListener('click', closeObrModal);
+
+	// Close on backdrop click
+	modal.addEventListener('click', (e) => {
+		if (e.target === modal) {
+			closeObrModal();
+		}
+	});
+
+	// Close on Escape key
+	modal.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape') {
+			closeObrModal();
+		}
 	});
 }
 
@@ -207,38 +183,26 @@ function initEligibilityModal() {
 	modalLink.classList.remove('hideme');
 
 	modalLink.addEventListener('click', (e) => {
-		const animationProps = {
-			duration: 0.4,
-			ease: 'back.inOut(1.7)'
-		};
-
+		// Simple show/hide without GSAP
+		modalMessage.style.transition = 'transform 0.4s ease';
 		if (isMobile()) {
-			animationProps.x = '-100%';
+			modalMessage.style.transform = 'translateX(-100%)';
 		} else {
-			animationProps.y = '-100%';
+			modalMessage.style.transform = 'translateY(-100%)';
 		}
-
-		gsap.to(modalMessage, animationProps);
 	});
 
 	const closeButton = modalMessage.querySelector('button');
 	if (!closeButton) return;
 
 	closeButton.addEventListener('click', (e) => {
-		const animationProps = {
-			duration: 0.2,
-			ease: 'power2.inOut'
-		};
-		animationProps.x = null;
-		animationProps.y = null;
-
+		// Simple show/hide without GSAP
+		modalMessage.style.transition = 'transform 0.2s ease';
 		if (isMobile()) {
-			animationProps.x = '0%';
+			modalMessage.style.transform = 'translateX(0%)';
 		} else {
-			animationProps.y = '0%';
+			modalMessage.style.transform = 'translateY(0%)';
 		}
-
-		gsap.to(modalMessage, animationProps);
 	});
 }
 
@@ -288,78 +252,28 @@ function initRevealer() {
 	});
 }
 
-function animateButtonGroup(selector = '[data-member-buttons]') {
-	// Find the button group container
-	const buttonGroup = document.querySelector(selector);
-	if (!buttonGroup) {
-		console.warn(`Button group not found: ${selector}`);
-		return;
-	}
-
-	// Find all buttons/links within the group
-	const buttons = buttonGroup.querySelectorAll('a, button');
-	if (buttons.length === 0) {
-		console.warn(`No buttons found in group: ${selector}`);
-		return;
-	} // Animation settings
-	const pulseDuration = 0.2; // Shorter, snappier pulse
-	const staggerDelay = 0.05; // Quick succession
-	const scaleAmount = 1.05;
-
-	// Create timeline and animate each button individually for proper yoyo effect
-	const tl = gsap.timeline();
-
-	buttons.forEach((button, index) => {
-		tl.to(
-			button,
-			{
-				scale: scaleAmount,
-				duration: pulseDuration,
-				ease: 'power2.out',
-				yoyo: true,
-				repeat: 1 // Each button pulses once and returns
-			},
-			index * staggerDelay
-		);
-	});
-
-	return tl; // Return timeline in case caller wants to chain or control it
-}
-
 function animateIcon(iconElement, animationType, isActive = false) {
-	// Reusable function to animate icons based on state
-	// iconElement: the DOM element to animate
-	// animationType: string describing the animation (e.g., 'rotate-180', 'scale', 'fade')
-	// isActive: boolean indicating the current state
-	const aniDuration = 0.5;
-	const animations = {
-		'rotate-180': {
-			active: { rotation: 180, duration: aniDuration, ease: 'back.out(1.7)' },
-			inactive: { rotation: 0, duration: aniDuration, ease: 'power2.inOut' }
-		},
-		scale: {
-			active: { scale: 1.1, duration: aniDuration * 0.67, ease: 'back.out(1.7)' },
-			inactive: { scale: 1, duration: aniDuration * 0.67, ease: 'power2.out' }
-		},
-		fade: {
-			active: { opacity: 1, duration: aniDuration, ease: 'power2.inOut' },
-			inactive: { opacity: 0.5, duration: aniDuration, ease: 'power2.inOut' }
-		}
-	};
+	// Simple CSS-based animations instead of GSAP
+	const duration = '0.5s';
+	iconElement.style.transition = `transform ${duration} ease`;
 
-	const animationConfig = animations[animationType];
-	if (!animationConfig) {
-		console.warn(`Unknown animation type: ${animationType}`);
-		return;
+	switch (animationType) {
+		case 'rotate-180':
+			iconElement.style.transform = isActive ? 'rotate(180deg)' : 'rotate(0deg)';
+			break;
+		case 'scale':
+			iconElement.style.transform = isActive ? 'scale(1.1)' : 'scale(1)';
+			break;
+		case 'fade':
+			iconElement.style.transition = `opacity ${duration} ease`;
+			iconElement.style.opacity = isActive ? '1' : '0.5';
+			break;
+		default:
+			console.warn(`Unknown animation type: ${animationType}`);
 	}
-
-	const targetState = isActive ? animationConfig.active : animationConfig.inactive;
-	gsap.to(iconElement, targetState);
 }
 function initScrollTo() {
-	gsap.registerPlugin(ScrollToPlugin);
 	// Use event delegation to catch all clicks on elements with data-scrollto attribute
-	// This works for elements added to DOM both before AND after this function runs
 	document.addEventListener('click', (e) => {
 		// Check if the clicked element (or a parent) has data-scrollto attribute
 		const scrollButton = e.target.closest('[data-scrollto]');
@@ -371,14 +285,10 @@ function initScrollTo() {
 		const target = document.getElementById(targetId);
 		if (!target) return;
 
-		gsap.to(window, {
-			duration: 1,
-			scrollTo: target,
-			ease: 'power2.inOut',
-			onComplete: () => {
-				// Animate button group after scroll completes
-				animateButtonGroup();
-			}
+		// Simple smooth scroll behavior
+		target.scrollIntoView({
+			behavior: 'smooth',
+			block: 'start'
 		});
 	});
 }
@@ -390,25 +300,14 @@ function initStickyTemplate() {
 	document.body.appendChild(clone);
 }
 
-// Animate peek section to accommodate form content with a reasonable fixed height
-function animatePeekHeight() {
-	const peek = document.querySelector('[data-peek]');
-	// Use a reasonable fixed height that should accommodate most forms
-	const targetHeight = '1200px';
-
-	gsap.to(peek, {
-		height: targetHeight,
-		duration: 1.5,
-		ease: 'power2.out'
-	});
-}
-
 function initOBR() {
 	initStickyTemplate();
 	initFormReveal();
+	initObrModal(); // Initialize the modal functionality
 	initRevealer();
 	initEligibilityModal();
 	initScrollTo();
 }
+
 // Initialize on window load
 window.addEventListener('load', initOBR);
