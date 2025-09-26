@@ -41,8 +41,15 @@ function helperObrPopulateMemberButtons(memberButtonsContainer, template, obrFor
 	obrFormOptions.forEach((option) => {
 		const clone = template.content.cloneNode(true);
 		const link = clone.querySelector('a');
+
+		// Extract utilityId from URL for persistence tracking
+		const urlParams = new URLSearchParams(new URL(option.url).search);
+		const utilityId = urlParams.get('utilityId');
+
 		link.href = option.url;
 		link.textContent = option.label;
+		link.setAttribute('data-utility-id', utilityId);
+
 		memberButtonsContainer.appendChild(clone);
 	});
 }
@@ -53,16 +60,17 @@ function helperObrHandleMemberButtonClick(e) {
 	if (e.target.tagName === 'A') {
 		e.preventDefault(); // Kill default link behavior
 
-		// Get the URL from the clicked button
+		// Get the URL and utility ID from the clicked button
 		const formUrl = e.target.href;
+		const utilityId = e.target.getAttribute('data-utility-id');
 
 		// Open modal with form
-		openObrModal(formUrl);
+		openObrModal(formUrl, utilityId);
 	}
 }
 
 // Function to open the OBR modal
-function openObrModal(formUrl) {
+function openObrModal(formUrl, utilityId) {
 	const modal = document.getElementById('obr-modal');
 	const loading = document.getElementById('obr-modal-loading');
 	const content = document.getElementById('obr-modal-content');
@@ -72,15 +80,30 @@ function openObrModal(formUrl) {
 		return;
 	}
 
+	// Check if this is the same utility as last time
+	const lastUtilityId = modal.getAttribute('data-last-utility-id');
+	const isSameUtility = lastUtilityId === utilityId;
+
 	// Disable body scrolling
 	document.body.style.overflow = 'hidden';
 
-	// Reset modal state
+	// If it's the same utility and content exists, show immediately
+	if (isSameUtility && content.innerHTML.trim() !== '') {
+		loading.style.display = 'none';
+		content.style.display = 'block';
+		modal.showModal();
+		return;
+	}
+
+	// Reset modal state for new/different utility
 	loading.style.display = 'flex';
 	content.style.display = 'none';
 
 	// Open modal
 	modal.showModal();
+
+	// Store current utility ID on modal
+	modal.setAttribute('data-last-utility-id', utilityId);
 
 	// Load form
 	helperObrCreateAndAppendForm(formUrl, content)
@@ -101,7 +124,6 @@ function openObrModal(formUrl) {
 // Function to close the OBR modal
 function closeObrModal() {
 	const modal = document.getElementById('obr-modal');
-	const content = document.getElementById('obr-modal-content');
 
 	if (modal) {
 		modal.close();
@@ -109,10 +131,9 @@ function closeObrModal() {
 		// Restore body scrolling
 		document.body.style.overflow = '';
 
-		// Clear the iframe to stop any ongoing processes
-		if (content) {
-			content.innerHTML = '';
-		}
+		// Note: We're NOT clearing the iframe content here anymore
+		// This allows the same utility's form to persist between modal openings
+		// Different utilities will still load fresh forms via the openObrModal logic
 	}
 }
 
