@@ -119,17 +119,17 @@ function closeObrModal() {
 function helperObrConfirmRequiredDOM(memberButtons, template) {
 	// Guard clause - exit early if essential elements are missing
 	if (!memberButtons) {
-		console.error('Essential element [data-member-buttons] not found. Form reveal cannot initialize.');
+		console.error('Essential element [data-member-buttons] not found. Modal cannot initialize.');
 		return false;
 	}
 
 	if (!template) {
-		console.error('Template not found in [data-member-buttons] container. Form reveal cannot initialize.');
+		console.error('Template not found in [data-member-buttons] container. Modal cannot initialize.');
 		return false;
 	}
 
 	if (typeof obrFormOptions === 'undefined' || !Array.isArray(obrFormOptions) || obrFormOptions.length === 0) {
-		console.error('obrFormOptions array is required but not found or empty. Form reveal cannot initialize.');
+		console.error('obrFormOptions array is required but not found or empty. Modal cannot initialize.');
 		return false;
 	}
 
