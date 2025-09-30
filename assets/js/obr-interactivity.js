@@ -1,3 +1,6 @@
+// TEMPORARY BYPASS - Set to true to open links in new tab instead of modal
+const BYPASS_MODAL = true;
+
 // Helper function to determine mobile or not
 function isMobile() {
 	return window.matchMedia('(max-width: 639px)').matches;
@@ -50,6 +53,12 @@ function helperObrPopulateMemberButtons(memberButtonsContainer, template, obrFor
 		link.textContent = option.label;
 		link.setAttribute('data-utility-id', utilityId);
 
+		// TEMPORARY BYPASS: Set target="_blank" if bypass is enabled
+		if (BYPASS_MODAL) {
+			link.target = '_blank';
+			link.rel = 'noopener noreferrer';
+		}
+
 		memberButtonsContainer.appendChild(clone);
 	});
 }
@@ -58,6 +67,11 @@ function helperObrPopulateMemberButtons(memberButtonsContainer, template, obrFor
 function helperObrHandleMemberButtonClick(e) {
 	// Check if clicked element is a link
 	if (e.target.tagName === 'A') {
+		// TEMPORARY BYPASS: If bypass is enabled, allow default link behavior
+		if (BYPASS_MODAL) {
+			return; // Let the link open normally in new tab
+		}
+
 		e.preventDefault(); // Kill default link behavior
 
 		// Get the URL and utility ID from the clicked button
