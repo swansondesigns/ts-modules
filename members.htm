@@ -39,9 +39,9 @@
 			<div class="l-constrain--no-padding">
 
 				<!-- What it means... -->
-				<section class="px-8 py-16 text-center text-balance">
+				<section class=" py-16 text-center text-balance">
 
-					<div class="mx-auto max-w-2xl space-y-4">
+					<div class="mx-auto px-8 max-w-2xl space-y-4">
 						<h2 class="font-serif font-light text-3xl">
 							What it means to be a member
 						</h2>
@@ -70,13 +70,15 @@
 					</div>
 
 
-					<div id="map" class="relative cursor-pointer my-8 lg:mt-0 lg:mb-12">
+					<div id="map"
+						class="relative h-[400px] overflow-hidden border-t border-b border-gray cursor-pointer my-8 sm:h-[600px] sm:p-8 md:border-0 lg:mt-0 lg:mb-12">
 
 						<div id="member-name"
 							class="px-4 py-2 absolute text-base bg-navy text-white transition-[opacity,top,left] duration-500 z-20 rounded-md opacity-0">
 						</div>
-						<svg style="enable-background:new 0 0 590.4 373.1;" version="1.1" viewBox="0 0 590.4 373.1"
-							x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+						<svg class="absolute inset-0 scale-[2.5] sm:scale-[1.5] md:relative md:scale-100 md:size-full"
+							style="enable-background:new 0 0 590.4 373.1;transform-origin: 27% 36%;" version="1.1"
+							viewBox="0 0 590.4 373.1" x="0px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
 							xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
 							<style type="text/css">
 								.st0 {
@@ -2195,8 +2197,9 @@
 							</p>
 							<p>
 								<a href="https://tristate.coop/podcast-western-watts-cooperative-roots-tim-rabon-tri-state"
-									class="inline-block rounded-full border border-black px-4 py-2 font-normal no-underline transition-transform text-black hover:text-gray">
-									Listen to the podcast
+									class="inline-flex items-center gap-2 rounded-full border border-solid pl-4 pr-6 py-2 font-normal text-black no-underline transition-transform">
+									<img src="https://tristate.coop/sites/default/files/images/icons/microphone-solid-full.svg"
+										alt="audio icon" class="h-6" />Listen to the podcast
 								</a>
 							</p>
 						</div>
@@ -2242,8 +2245,9 @@
 					<div class="relative grid aspect-video place-content-center sm:aspect-auto sm:h-full">
 						<img src="assets/images/harvester-800x600.jpg" alt="Video thumbnail"
 							class="absolute size-full object-cover" data-att-replace="Harvester" />
-						<a href="VIDEO_URL" data-featherlight="iframe" data-featherlight-iframe-allowfullscreen="true"
-							data-featherlight-iframe-height="281" data-featherlight-iframe-width="500" class="relative">
+						<a href="https://www.youtube.com/embed/6Uxi7C_CKD0" data-featherlight="iframe"
+							data-featherlight-iframe-allowfullscreen="true" data-featherlight-iframe-height="281"
+							data-featherlight-iframe-width="500" class="relative">
 							<img src="https://tristate.coop/sites/default/files/images/esg/play-video-thumbnail-cover.svg"
 								alt="Play button" class="size-24 sm:size-44" />
 						</a>
