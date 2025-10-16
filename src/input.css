@@ -1,6 +1,7 @@
 @import './custom/block-expandable.css';
 @import './custom/featherlight.css';
 @import './custom/grid-leadership.css';
+@import './custom/swiper.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

@@ -1,0 +1,5 @@
+/* Swiper global variables */
+:root {
+	--swiper-theme-color: #3d4d55;
+	--swiper-pagination-bottom: auto;
+}
