@@ -4,6 +4,7 @@
 class LeadershipGrid {
 	constructor() {
 		this.template = document.querySelector('#bio-template');
+		this.dialog = document.querySelector('#leadership-modal');
 
 		// Dummy content for styling
 		this.dummyBio = {
@@ -21,36 +22,100 @@ class LeadershipGrid {
 	}
 
 	init() {
-		// Load dummy content on page load for styling
+		// Set up event delegation for expand buttons
+		this.setupEventHandlers();
+
+		// Load dummy content on page load for styling (temporary)
 		this.showDummyDialog();
 	}
 
-	showDummyDialog() {
-		// Create dialog element
-		const dialog = document.createElement('dialog');
-		// dialog.className = 'fixed inset-0 w-full h-full bg-white z-50 p-6 overflow-auto';
+	setupEventHandlers() {
+		// Event delegation on the leadership container
+		const leadershipContainer = document.querySelector('[data-leadership]');
+		if (leadershipContainer) {
+			leadershipContainer.addEventListener('click', (e) => {
+				const expandBtn = e.target.closest('[data-expand]');
+				if (expandBtn) {
+					e.preventDefault();
+					this.handleExpandClick(expandBtn);
+				}
+			});
+		}
+	}
+
+	handleExpandClick(expandBtn) {
+		// Get the card data
+		const card = expandBtn.closest('[data-card]');
+		if (!card) return;
+
+		const cardData = this.getCardData(card);
+
+		// Fork: determine display method based on current viewport
+		if (this.isMobileView()) {
+			this.showDialog(cardData);
+		} else {
+			this.showOverlay(cardData);
+		}
+	}
+
+	getCardData(card) {
+		// Extract data from the card
+		const img = card.querySelector('img');
+		const name = card.querySelector('.text-xl').textContent.trim();
+		const title = card.querySelector('.mb-6').textContent.trim();
+		const bioText = card.querySelector('[data-bio] > div').innerHTML;
+
+		return {
+			name,
+			title,
+			photo: img?.src || '',
+			bio: bioText
+		};
+	}
+
+	isMobileView() {
+		// Check if we should use mobile dialog (adjust breakpoint as needed)
+		return window.innerWidth < 768; // md breakpoint
+	}
+
+	showDialog(cardData) {
+		// Mobile: Populate existing dialog and show
+		// Clear previous content
+		this.dialog.innerHTML = '';
 
 		// Clone template content and populate data slots
 		const content = this.template.content.cloneNode(true);
-		content.querySelector('[data-photo]').src = this.dummyBio.photo;
-		content.querySelector('[data-photo]').alt = this.dummyBio.name;
-		content.querySelector('[data-name]').textContent = this.dummyBio.name;
-		content.querySelector('[data-title]').textContent = this.dummyBio.title;
-		content.querySelector('[data-modal-bio]').innerHTML = this.dummyBio.bio;
+		this.populateTemplate(content, cardData);
 
 		// Add close button handler
 		const closeBtn = content.querySelector('[data-close]');
 		if (closeBtn) {
 			closeBtn.addEventListener('click', () => {
-				dialog.close();
-				dialog.remove();
+				this.dialog.close();
 			});
 		}
 
 		// Add content to dialog and show
-		dialog.appendChild(content);
-		document.body.appendChild(dialog);
-		dialog.showModal();
+		this.dialog.appendChild(content);
+		this.dialog.showModal();
+	}
+
+	showOverlay(cardData) {
+		// Desktop: Show overlay (placeholder for now)
+		console.log('Desktop overlay not implemented yet', cardData);
+	}
+
+	populateTemplate(content, cardData) {
+		content.querySelector('[data-photo]').src = cardData.photo;
+		content.querySelector('[data-photo]').alt = cardData.name;
+		content.querySelector('[data-name]').textContent = cardData.name;
+		content.querySelector('[data-title]').textContent = cardData.title;
+		content.querySelector('[data-modal-bio]').innerHTML = cardData.bio;
+	}
+
+	showDummyDialog() {
+		// Temporary: Create dialog with dummy data for styling
+		this.showDialog(this.dummyBio);
 	}
 }
 
