@@ -1,53 +1,6 @@
 @layer components {
-	/* Bio expansion behavior on mobile devices. */
+	/* Hide bio content accessibly - screen readers can still access it */
 	[data-bio] {
-		display: grid;
-		grid-template-rows: 0fr;
-		transition: grid-template-rows 0.3s ease;
-	}
-
-	[data-bio].open {
-		grid-template-rows: 1fr;
-		padding: 0 0 2rem;
-	}
-
-	[data-bio] > * {
-		@apply overflow-hidden;
-	}
-
-	[data-bio-container] {
-		@apply absolute z-30 col-span-1 xl:col-span-2;
-	}
-
-	/* Overlay and active state styling */
-	/* 
-		Could not get this to work for .grid-cover without using a class even though other stuff 
-		that is built the same way works fine. 
-	*/
-	.grid-cover {
-		@apply absolute inset-0 -z-10 bg-white opacity-0 transition-opacity duration-300;
-	}
-	[data-leadership].has-active .grid-cover {
-		z-index: 10;
-		opacity: 0.8;
-	}
-
-	[data-leadership] [data-card] {
-		@apply transition-transform duration-300;
-	}
-
-	/* Same oddity here.  This should work but doesn't. */
-	/* [data-leadership].has-active [data-card]:not(.active) {
-		@apply opacity-30;
-	} */
-
-	[data-leadership].has-active [data-card].active {
-		@apply relative z-20 scale-[1.04] transform;
-	}
-
-	@media screen and (min-width: 480px) {
-		[data-bio].open {
-			padding: 2rem 0;
-		}
+		@apply sr-only;
 	}
 }

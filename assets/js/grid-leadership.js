@@ -1,151 +1,60 @@
-const BUTTON_DEFAULT_TEXT = 'View full profile';
-const BUTTON_CLOSE_TEXT = 'Close profile';
+// Leadership Grid - Mobile First Approach
+// Bare bones setup for styling the modal dialog
 
-function closeBio(gridLeadership) {
-	const existingBio = gridLeadership.querySelector('[data-bio-container]');
-	if (existingBio) {
-		existingBio.remove();
-		gridLeadership.classList.remove('has-active');
-		resetButtonStates(gridLeadership);
-	}
-}
+class LeadershipGrid {
+	constructor() {
+		this.template = document.querySelector('#bio-template');
 
-function getGridLayout() {
-	const width = window.innerWidth;
-
-	if (width >= 1280) {
-		return '4-col';
-	} else if (width >= 640) {
-		return '2-col';
-	} else {
-		return '1-col';
-	}
-}
-
-function getCardIndex(card, gridLeadership) {
-	const allCards = [...gridLeadership.querySelectorAll('[data-card]')];
-	return allCards.indexOf(card);
-}
-
-function expandCard(button) {
-	const card = button.closest('[data-card]');
-	const bio = card.querySelector('[data-bio]');
-	const isOpen = bio.classList.contains('open');
-
-	// Toggle the clicked card's bio
-	if (isOpen) {
-		bio.classList.remove('open');
-		button.textContent = BUTTON_DEFAULT_TEXT;
-	} else {
-		bio.classList.add('open');
-		button.textContent = BUTTON_CLOSE_TEXT;
-	}
-}
-
-function placeBio(gridPosition, button, gridLeadership) {
-	const template = document.querySelector('#bio-template');
-	const existingBio = gridLeadership.querySelector('[data-bio-container]');
-
-	// Reset all buttons and active states
-	resetButtonStates(gridLeadership);
-
-	// Calculate target column based on layout
-	const targetColumn = determineTargetColumn(gridPosition);
-	const targetRow = gridPosition['grid row'];
-
-	// If there's an existing bio in the same position, remove it
-	if (existingBio) {
-		const samePosition = existingBio.classList.contains(`col-start-${targetColumn}`) && existingBio.classList.contains(`row-start-${targetRow}`);
-		existingBio.remove();
-		if (samePosition) {
-			gridLeadership.classList.remove('has-active');
-			return; // Button text is already reset
-		}
-	}
-
-	// Create new bio panel
-	const newBio = template.content.firstElementChild.cloneNode(true);
-	newBio.classList.add(`col-start-${targetColumn}`, `row-start-${targetRow}`);
-
-	// Get the bio content from the clicked card
-	const card = button.closest('[data-card]');
-	const cardBio = card.querySelector('[data-bio]');
-	if (cardBio) {
-		// Only replace the content inside [data-bio-content]
-		const newBioContent = newBio.querySelector('[data-bio-content]');
-		if (newBioContent) {
-			newBioContent.innerHTML = cardBio.innerHTML;
-		}
-	}
-
-	gridLeadership.appendChild(newBio);
-	button.textContent = BUTTON_CLOSE_TEXT;
-
-	// Set active states
-	button.closest('[data-card]').classList.add('active');
-	gridLeadership.classList.add('has-active');
-}
-
-function resetButtonStates(gridLeadership) {
-	gridLeadership.querySelectorAll('[data-expand]').forEach((btn) => {
-		btn.textContent = BUTTON_DEFAULT_TEXT;
-		btn.closest('[data-card]').classList.remove('active');
-	});
-}
-
-function determineTargetColumn(gridPosition, targetColumn) {
-	if (gridPosition.layout === '4-col') {
-		const clickedColumn = gridPosition['grid column'];
-		switch (clickedColumn) {
-			case 1:
-				targetColumn = 2;
-				break; // Middle (2-3)
-			case 2:
-				targetColumn = 3;
-				break; // Right (3-4)
-			case 3:
-				targetColumn = 1;
-				break; // Left (1-2)
-			case 4:
-				targetColumn = 2;
-				break; // Middle (2-3)
-		}
-	} else {
-		// Original 2-col logic
-		targetColumn = gridPosition['grid column'] === 1 ? 2 : 1;
-	}
-	return targetColumn;
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-	const gridLeadership = document.querySelector('[data-leadership]');
-
-	gridLeadership.addEventListener('click', (e) => {
-		// Handle close button or overlay click
-		if (e.target.matches('[data-cover], [data-close]')) {
-			closeBio(gridLeadership);
-			return;
-		}
-
-		// Handle expand button click
-		const button = e.target.closest('[data-expand]');
-		if (!button) return;
-
-		const card = button.closest('[data-card]');
-		const layout = getGridLayout();
-		const index = getCardIndex(card, gridLeadership) + 1;
-
-		const gridPosition = {
-			layout: layout,
-			'card number': index,
-			'grid row': Math.floor((index - 1) / (layout === '4-col' ? 4 : 2)) + 1,
-			'grid column': ((index - 1) % (layout === '4-col' ? 4 : 2)) + 1
+		// Dummy content for styling
+		this.dummyBio = {
+			name: 'John Doe',
+			title: 'Chief Executive Officer',
+			photo: 'https://tristate.coop/sites/default/files/images/leadership/2025/duane-highley-400x500.jpg',
+			bio: `
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+			`
 		};
 
-		if (layout === '1-col') {
-			expandCard(button);
-		} else {
-			placeBio(gridPosition, button, gridLeadership);
+		this.init();
+	}
+
+	init() {
+		// Load dummy content on page load for styling
+		this.showDummyDialog();
+	}
+
+	showDummyDialog() {
+		// Create dialog element
+		const dialog = document.createElement('dialog');
+		// dialog.className = 'fixed inset-0 w-full h-full bg-white z-50 p-6 overflow-auto';
+
+		// Clone template content and populate data slots
+		const content = this.template.content.cloneNode(true);
+		content.querySelector('[data-photo]').src = this.dummyBio.photo;
+		content.querySelector('[data-photo]').alt = this.dummyBio.name;
+		content.querySelector('[data-name]').textContent = this.dummyBio.name;
+		content.querySelector('[data-title]').textContent = this.dummyBio.title;
+		content.querySelector('[data-modal-bio]').innerHTML = this.dummyBio.bio;
+
+		// Add close button handler
+		const closeBtn = content.querySelector('[data-close]');
+		if (closeBtn) {
+			closeBtn.addEventListener('click', () => {
+				dialog.close();
+				dialog.remove();
+			});
 		}
-	});
+
+		// Add content to dialog and show
+		dialog.appendChild(content);
+		document.body.appendChild(dialog);
+		dialog.showModal();
+	}
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function () {
+	new LeadershipGrid();
 });
