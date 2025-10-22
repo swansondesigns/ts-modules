@@ -8,6 +8,9 @@ class LeadershipGrid {
 		this.overlay = document.querySelector('[data-bio-overlay]');
 		this.leadershipContainer = document.querySelector('[data-leadership]');
 
+		// Animation constants
+		this.STAGGER_DELAY = 0.05; // Time between each card animation
+
 		// Dummy content for styling
 		this.dummyBio = {
 			name: 'John Doe',
@@ -116,23 +119,15 @@ class LeadershipGrid {
 	}
 
 	cascadeCards() {
-		// Get all cards for animation
-		const cards = this.leadershipContainer.querySelectorAll('[data-card]');
-
 		// GSAP timeline for simple fade out cascade
 		const tl = gsap.timeline();
 
-		// Fade out cards in DOM order
-		cards.forEach((card, index) => {
-			tl.to(
-				card,
-				{
-					opacity: 0,
-					duration: 0.3,
-					ease: 'power2.out'
-				},
-				index * 0.1
-			); // Stagger the fade
+		// Fade out cards using built-in stagger
+		tl.to('[data-card]', {
+			opacity: 0,
+			duration: 0.3,
+			ease: 'power2.out',
+			stagger: this.STAGGER_DELAY
 		});
 
 		return tl; // Return timeline for master coordination
@@ -180,27 +175,19 @@ class LeadershipGrid {
 		});
 
 		// Phase 2: Restore cards in same order (cascade back in)
-		masterTimeline.add(this.restoreCards(), '-=0.1'); // Start slightly before overlay fade ends
+		masterTimeline.add(this.restoreCards(), '-=0.4'); // Start slightly before overlay fade ends
 	}
 
 	restoreCards() {
-		// Get all cards for restoration
-		const cards = this.leadershipContainer.querySelectorAll('[data-card]');
-
 		// GSAP timeline to fade cards back in (same order as they went out)
 		const tl = gsap.timeline();
 
-		// Fade in cards in DOM order
-		cards.forEach((card, index) => {
-			tl.to(
-				card,
-				{
-					opacity: 1,
-					duration: 0.3,
-					ease: 'power2.out'
-				},
-				index * 0.1
-			); // Same stagger timing as cascade out
+		// Fade in cards using built-in stagger
+		tl.to('[data-card]', {
+			opacity: 1,
+			duration: 0.3,
+			ease: 'power2.out',
+			stagger: this.STAGGER_DELAY
 		});
 
 		return tl; // Return timeline for master coordination

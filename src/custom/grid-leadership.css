@@ -3,4 +3,14 @@
 	[data-bio] {
 		@apply sr-only;
 	}
+
+	/* Close button positioning - context aware */
+	[data-close] {
+		@apply absolute; /* Default for overlay */
+	}
+
+	/* Fixed positioning when inside dialog */
+	dialog [data-close] {
+		@apply fixed;
+	}
 }
