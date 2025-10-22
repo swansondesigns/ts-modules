@@ -32,7 +32,8 @@
 
 
 	<link rel="stylesheet" href="assets/css/build.css" />
-
+	<script
+		src="https://tristate.coop/sites/default/files/asset_injector/js/gsap_animation_platform-57397ff5d3b9ddc9453b16048c1221e4.js?syq5xd"></script>
 	<script src="./assets/js/grid-leadership.js" defer></script>
 </head>
 
@@ -361,6 +362,11 @@
 
 
 
+						<!-- Desktop bio overlay layer -->
+						<div class="absolute inset-0 pointer-events-none z-10" data-bio-overlay>
+							<!-- Overlay content gets populated here -->
+						</div>
+
 					</div>
 
 					<!-- Leadership bio dialog -->
@@ -371,7 +377,7 @@
 					<template id="bio-template">
 						<div class="relative">
 							<button
-								class="fixed top-6 right-8 rounded-full size-8 grid place-items-center cursor-pointer"
+								class="absolute top-6 right-8 rounded-full size-8 grid place-items-center cursor-pointer"
 								data-close aria-label="Close">
 								<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"
 									class="pointer-events-none">

@@ -5,6 +5,8 @@ class LeadershipGrid {
 	constructor() {
 		this.template = document.querySelector('#bio-template');
 		this.dialog = document.querySelector('#leadership-modal');
+		this.overlay = document.querySelector('[data-bio-overlay]');
+		this.leadershipContainer = document.querySelector('[data-leadership]');
 
 		// Dummy content for styling
 		this.dummyBio = {
@@ -26,9 +28,8 @@ class LeadershipGrid {
 		this.setupEventHandlers();
 
 		// Load dummy content on page load for styling (temporary)
-		this.showDummyDialog();
+		// this.showDummyDialog();
 	}
-
 	setupEventHandlers() {
 		// Event delegation on the leadership container
 		const leadershipContainer = document.querySelector('[data-leadership]');
@@ -101,8 +102,108 @@ class LeadershipGrid {
 	}
 
 	showOverlay(cardData) {
-		// Desktop: Show overlay (placeholder for now)
-		console.log('Desktop overlay not implemented yet', cardData);
+		// Desktop: Coordinate cascade and overlay with master timeline
+		const masterTimeline = gsap.timeline();
+
+		// First: populate overlay content (but keep it hidden)
+		this.populateOverlay(cardData);
+
+		// Phase 1: Cascade cards out
+		masterTimeline.add(this.cascadeCards());
+
+		// Phase 2: Show overlay content after cascade completes
+		masterTimeline.add(this.showOverlayLayer(), '-=0.1'); // Start slightly before cascade ends
+	}
+
+	cascadeCards() {
+		// Get all cards for animation
+		const cards = this.leadershipContainer.querySelectorAll('[data-card]');
+
+		// GSAP timeline for simple fade out cascade
+		const tl = gsap.timeline();
+
+		// Fade out cards in DOM order
+		cards.forEach((card, index) => {
+			tl.to(
+				card,
+				{
+					opacity: 0,
+					duration: 0.3,
+					ease: 'power2.out'
+				},
+				index * 0.1
+			); // Stagger the fade
+		});
+
+		return tl; // Return timeline for master coordination
+	}
+
+	populateOverlay(cardData) {
+		// Clone template content and populate with data
+		const content = this.template.content.cloneNode(true);
+		this.populateTemplate(content, cardData);
+
+		// Clear overlay and add new content (but keep hidden)
+		this.overlay.innerHTML = '';
+		this.overlay.appendChild(content);
+
+		// Set up close button handler
+		const closeBtn = this.overlay.querySelector('[data-close]');
+		if (closeBtn) {
+			closeBtn.addEventListener('click', () => {
+				this.hideOverlay();
+			});
+		}
+	}
+
+	showOverlayLayer() {
+		// Enable pointer events and fade in overlay
+		const tl = gsap.timeline();
+		gsap.set(this.overlay, { pointerEvents: 'auto', opacity: 0 });
+		tl.to(this.overlay, { opacity: 1, duration: 0.4, ease: 'power2.out' });
+
+		return tl; // Return timeline for master coordination
+	}
+
+	hideOverlay() {
+		// Master timeline for hiding overlay and restoring cards
+		const masterTimeline = gsap.timeline();
+
+		// Phase 1: Hide overlay
+		masterTimeline.to(this.overlay, {
+			opacity: 0,
+			duration: 0.3,
+			ease: 'power2.out',
+			onComplete: () => {
+				this.overlay.style.pointerEvents = 'none';
+			}
+		});
+
+		// Phase 2: Restore cards in same order (cascade back in)
+		masterTimeline.add(this.restoreCards(), '-=0.1'); // Start slightly before overlay fade ends
+	}
+
+	restoreCards() {
+		// Get all cards for restoration
+		const cards = this.leadershipContainer.querySelectorAll('[data-card]');
+
+		// GSAP timeline to fade cards back in (same order as they went out)
+		const tl = gsap.timeline();
+
+		// Fade in cards in DOM order
+		cards.forEach((card, index) => {
+			tl.to(
+				card,
+				{
+					opacity: 1,
+					duration: 0.3,
+					ease: 'power2.out'
+				},
+				index * 0.1
+			); // Same stagger timing as cascade out
+		});
+
+		return tl; // Return timeline for master coordination
 	}
 
 	populateTemplate(content, cardData) {
