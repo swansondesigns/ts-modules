@@ -247,9 +247,9 @@
 					<div class="h-full sm:absolute sm:inset-0">
 						<div class="relative grid aspect-video place-content-center sm:aspect-auto sm:h-full">
 							<img src="https://tristate.coop/sites/default/files/images/western-watts-hard-hat-mobile.jpg"
-								srcset="https://tristate.coop/sites/default/files/images/western-watts-hard-hat-mobile.jpg 639w, https://tristate.coop/sites/default/files/images/western-watts-hard-hat-wide.jpg 640w"
-								sizes="(max-width: 639px) 100vw, 100vw" alt="Western Watts hard hat"
-								class="absolute size-full object-cover" />
+								alt="Western Watts hard hat" class="absolute size-full object-cover sm:hideme" />
+							<img src="https://tristate.coop/sites/default/files/images/western-watts-hard-hat-wide.jpg"
+								alt="Western Watts hard hat" class="absolute size-full object-cover hideme sm:block" />
 						</div>
 					</div>
 
@@ -289,24 +289,26 @@
 						background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(120, 120, 120, 1) 30%, rgba(120, 120, 120, 1) 70%, rgba(0, 0, 0, 0) 100%);
 					}
 				</style>
-				<section class="min-h-96 sm:min-h-[400px] bg-gray slider-background"><!-- Slider main container -->
-					<div class="max-w-[1200px] mx-auto">
+				<section class="min-h-96 sm:min-h-[400px] bg-gray slider-background" style="max-width: 100vw;">
+					<!-- Slider main container -->
+					<div class="xl:max-w-[1200px] xl:mx-auto">
 
 						<div class="swiper h-[400px]">
 							<!-- Additional required wrapper -->
 							<div class="swiper-wrapper"><!-- Slides -->
 								<div class="swiper-slide aspect-video sm:w-2/3">
-									<a href="https://tristate.coop/electrify-and-save">
-										<figure class="relative w-full h-full">
-											<img src="https://tristate.coop/sites/default/files/images/tristate-beneficial-electrification-truck-800x450.jpg"
-												alt="Beneficial Electrification Truck"
-												class="absolute h-full w-full object-cover">
-											<figcaption
-												class="absolute box-border bottom-0 z-10 h-auto bg-black/50 w-full text-white text-center border-0">
-												Learn about our Electrify and Save® Program
-											</figcaption>
-										</figure>
-									</a>
+									<figure class="relative w-full h-full">
+										<img src="https://tristate.coop/sites/default/files/images/tristate-beneficial-electrification-truck-800x450.jpg"
+											alt="Beneficial Electrification Truck"
+											class="absolute h-full w-full object-cover">
+										<figcaption
+											class="absolute box-border bottom-0 z-10 h-auto bg-black/50 w-full text-white text-center border-0">
+											Learn about our Electrify and Save® Program
+										</figcaption>
+										<a href="https://tristate.coop/electrify-and-save" class="absolute inset-0 z-20"
+											aria-label="Learn about our Electrify and Save Program">
+										</a>
+									</figure>
 								</div>
 
 								<div class="swiper-slide h-full sm:w-2/3 ">
@@ -339,17 +341,18 @@
 								</div>
 
 								<div class="swiper-slide aspect-video sm:w-2/3">
-									<a href="https://tristate.coop/powering-the-future">
-										<figure class="relative w-full h-full">
-											<img src="https://tristate.coop/sites/default/files/images/cooperative-benefits/trucks-on-dirt-road-near-transmission-lines.png"
-												alt="Trucks on dirt road near transmission lines"
-												class="absolute h-full w-full object-cover">
-											<figcaption
-												class="absolute box-border bottom-0 z-10 h-auto bg-black/50 w-full text-white text-center border-0">
-												We're building for the future
-											</figcaption>
-										</figure>
-									</a>
+									<figure class="relative w-full h-full">
+										<img src="https://tristate.coop/sites/default/files/images/cooperative-benefits/trucks-on-dirt-road-near-transmission-lines.png"
+											alt="Trucks on dirt road near transmission lines"
+											class="absolute h-full w-full object-cover">
+										<figcaption
+											class="absolute box-border bottom-0 z-10 h-auto bg-black/50 w-full text-white text-center border-0">
+											We're building for the future
+										</figcaption>
+										<a href="https://tristate.coop/powering-future" class="absolute inset-0 z-20"
+											aria-label="We're building for the future">
+										</a>
+									</figure>
 								</div>
 							</div>
 							<!-- If we need pagination -->
