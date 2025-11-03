@@ -227,10 +227,14 @@
 
 				<!-- Stats -->
 				<section
-					class="min-h-96 bg-navy px-8 py-16 text-center text-white sm:min-h-[400px] sm:grid sm:place-content-center lg:px-16 lg:py-24">
+					class="min-h-96 bg-navy px-8 py-16 text-center text-white sm:min-h-[400px] sm:grid sm:place-content-center lg:px-16 lg:py-24"
+					data-stats-block>
 					<div class="grid gap-y-12 sm:grid-cols-2 sm:gap-x-8 md:grid-cols-3 md:px-4">
 						<div class="space-y-2">
-							<p class="font-serif text-3xl font-light sm:text-4xl">450+</p>
+							<p class="font-serif text-3xl font-light sm:text-4xl">
+								<stat-value class="inline-block">450</stat-value><span>+</span>
+							</p>
+
 							<p>
 								Employee volunteer hours used in
 								2024. Tri-State gives each employee
@@ -240,7 +244,9 @@
 						</div>
 
 						<div class="space-y-2">
-							<p class="font-serif text-3xl font-light sm:text-4xl">$265,516</p>
+							<p class="font-serif text-3xl font-light sm:text-4xl">
+								<span>$</span><stat-value class="inline-block">265,516</stat-value>
+							</p>
 							<p>
 								donated to 78 charities and
 								organizations through Tri-State’s
@@ -249,7 +255,9 @@
 						</div>
 
 						<div class="space-y-2">
-							<p class="font-serif text-3xl font-light sm:text-4xl">50+</p>
+							<p class="font-serif text-3xl font-light sm:text-4xl">
+								<stat-value class="inline-block">50</stat-value><span>+</span>
+							</p>
 							<p>
 								community events co-sponsored with
 								our members in 2024, including various
@@ -342,6 +350,53 @@
 		document.querySelectorAll('.swiper').forEach(swiper => {
 			new Swiper(swiper, swiperConfig);
 		});
+	</script>
+	<script
+		src="https://tristate.coop/sites/default/files/asset_injector/js/gsap_animation_platform-57397ff5d3b9ddc9453b16048c1221e4.js?su5b5k"></script>
+	<!-- <script
+
+		src="https://tristate.coop/sites/default/files/asset_injector/js/es_2023_animate_stats-a1f62ec331630e11c7aa90ce028329c2.js?su5b5k"></script> -->
+
+	<script>function animateStats() {
+			console.log('%cSTART:%c animateStats()', 'color:green', 'color:teal');
+			gsap.from('stat-value', {
+				textContent: 0,
+				duration: 4,
+				ease: 'power1.in',
+				snap: { textContent: 1 },
+				stagger: {
+					each: 0.4,
+					onUpdate: function () {
+						this.targets()[0].innerHTML = numberWithCommas(Math.ceil(this.targets()[0].textContent));
+					},
+				},
+				scrollTrigger: {
+					trigger: document.querySelector('.ts-stats-container') || document.querySelector('[data-stats-block]'),
+					start: 'top center',
+					// markers: true,
+				},
+			});
+		}
+		function numberWithCommas(x) {
+			return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+		}
+
+		function setStatValueSize() {
+			const statValues = document.querySelectorAll('stat-value');
+
+			statValues.forEach((statValue) => {
+				const initialValue = parseInt(statValue.textContent.replace(/,/g, ''), 10);
+				statValue.style.width = statValue.offsetWidth + 5 + 'px';
+				statValue.textContent = initialValue;
+			});
+		}
+
+		function initGSAPanimations() {
+			gsap.registerPlugin(ScrollTrigger);
+			setStatValueSize();
+			animateStats();
+		}
+		window.addEventListener('load', initGSAPanimations);
 	</script>
 </body>
 
