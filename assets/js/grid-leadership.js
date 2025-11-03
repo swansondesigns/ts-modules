@@ -1,6 +1,4 @@
 // Leadership Grid - Mobile First Approach
-// Bare bones setup for styling the modal dialog
-
 class LeadershipGrid {
 	constructor() {
 		this.template = document.querySelector('#bio-template');
@@ -102,6 +100,9 @@ class LeadershipGrid {
 		// Add content to dialog and show
 		this.dialog.appendChild(content);
 		this.dialog.showModal();
+
+		// Reset scroll position to top
+		this.dialog.scrollTop = 0;
 	}
 
 	showOverlay(cardData) {
