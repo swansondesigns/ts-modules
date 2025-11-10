@@ -70,7 +70,7 @@
 								<p>
 									<a href="#"
 										class="inline-block rounded-full border border-black text-black px-4 py-2 font-normal no-underline transition-transform hover:text-gray"
-										data-form-link>
+										data-open-dialog>
 										Learn More
 									</a>
 								</p>
@@ -187,11 +187,11 @@
 	</main>
 
 	<!-- Form Dialog -->
-	<dialog id="formDialog"
+	<dialog
 		class="animate-slide-in border-0 rounded-lg shadow-lg p-0 max-w-3xl w-11/12 h-[calc(100vh-2rem)] overflow-hidden backdrop:animate-fade-in backdrop:bg-black/50 backdrop:backdrop-blur-md">
 		<div class="relative h-full flex flex-col pt-12 lg:pt-0">
-			<button
-				class="modal-close absolute top-2 right-2 z-10 cursor-pointer text-gray-600 bg-gray-dark text-white hover:text-black text-2xl font-bold leading-none border-0 bg-none p-0 w-8 h-8 flex items-center justify-center"
+			<button data-close-dialog
+				class="absolute top-2 right-2 z-10 cursor-pointer text-gray-600 bg-gray-dark text-white hover:text-black text-2xl font-bold leading-none border-0 bg-none p-0 w-8 h-8 flex items-center justify-center"
 				aria-label="Close dialog">&times;</button>
 			<div id="iframeContainer" class="flex-1 m-0">
 				<iframe id="formIframe" allowfullscreen="" frameborder="0" marginheight="0" marginwidth="0"
@@ -204,30 +204,35 @@
 	</dialog>
 
 	<script>
-		// Dialog functionality
-		const dialog = document.getElementById('formDialog');
-		const closeButton = document.querySelector('.modal-close');
-		const formLinks = document.querySelectorAll('[data-form-link]');
+		// Initialize dialog functionality on DOM load
+		document.addEventListener('DOMContentLoaded', () => {
+			const dialog = document.querySelector('dialog');
 
-		// Open dialog when clicking data-form-link buttons
-		formLinks.forEach(link => {
-			link.addEventListener('click', (e) => {
-				e.preventDefault();
-				dialog.showModal();
+			if (!dialog) return;
+
+			// Open dialog when clicking elements with data-open-dialog
+			document.addEventListener('click', (e) => {
+				const trigger = e.target.closest('[data-open-dialog]');
+				if (trigger) {
+					e.preventDefault();
+					dialog.showModal();
+				}
 			});
-		});
 
-		// Close dialog when clicking the close button
-		closeButton.addEventListener('click', () => {
-			dialog.close();
-		});
+			// Event delegation for dialog interactions
+			dialog.addEventListener('click', (e) => {
+				// Close dialog when clicking close button
+				if (e.target.closest('[data-close-dialog]')) {
+					dialog.close();
+					return;
+				}
 
-		// Close dialog when clicking outside (on the backdrop)
-		dialog.addEventListener('click', (e) => {
-			if (e.target === dialog) {
-				dialog.close();
-			}
-		});
+				// Close dialog when clicking outside (on the backdrop)
+				if (e.target === dialog) {
+					dialog.close();
+				}
+			});
 
-		// Close dialog with Escape key (handled automatically by dialog)
+			// Escape key handled automatically by dialog
+		});
 	</script>
