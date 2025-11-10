@@ -20,7 +20,19 @@ module.exports = {
 		},
 		extend: {
 			animation: {
-				'spin-slow': 'spin 20s linear infinite'
+				'spin-slow': 'spin 20s linear infinite',
+				'fade-in': 'fadeIn 0.3s ease-in',
+				'slide-in': 'slideIn 0.3s ease-out'
+			},
+			keyframes: {
+				fadeIn: {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
+				},
+				slideIn: {
+					'0%': { transform: 'translateY(-50px)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
+				}
 			},
 			backgroundImage: {
 				'connections-r': "url('https://tristate.coop/sites/default/files/images/electrify-and-save/2023/right-electric-white.svg')",
