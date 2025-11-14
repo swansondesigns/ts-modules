@@ -257,15 +257,6 @@
 		// Populate both tables
 		helperPopulateTable(desktopTable, orgData);
 		helperPopulateTable(mobileTable, orgData);
-
-		// Update active state on buttons
-		const allButtons = document.querySelectorAll('[data-org-key]');
-		allButtons.forEach(btn => {
-			btn.classList.remove('bg-green', 'text-white');
-			btn.classList.add('bg-transparent');
-		});
-		e.target.classList.remove('bg-transparent');
-		e.target.classList.add('bg-green', 'text-white');
 	}
 
 	// Main initialization function
