@@ -222,7 +222,6 @@
 <script>
 	// Helper function to create organization buttons
 	function helperCreateOrgButtons(container, template, data) {
-		// Create a button for each organization
 		Object.keys(data).forEach((orgKey) => {
 			const org = data[orgKey];
 			const clone = template.content.cloneNode(true);
@@ -235,93 +234,84 @@
 		});
 	}
 
-	// Helper function to populate table with income data
-	function helperPopulateTables(orgKey, data) {
-		const org = data[orgKey];
-		if (!org) return;
-
-		const desktopTable = document.querySelector('[data-table="desktop"]');
-		const mobileTable = document.querySelector('[data-table="mobile"]');
-
-		if (!desktopTable || !mobileTable) {
-			console.error('Tables not found');
-			return;
-		}
-
-		// Populate desktop table
-		const desktopCells = desktopTable.querySelectorAll('[data-value]');
-		desktopCells.forEach((cell, index) => {
+	// Helper function to populate a single table with income data
+	function helperPopulateTable(table, orgData) {
+		const cells = table.querySelectorAll('[data-value]');
+		cells.forEach((cell, index) => {
 			const householdSize = index + 1;
-			cell.textContent = org.table[householdSize] || '';
+			cell.textContent = orgData.table[householdSize] || '';
 		});
 
-		// Populate mobile table
-		const mobileCells = mobileTable.querySelectorAll('tbody tr td:nth-child(2)');
-		mobileCells.forEach((cell, index) => {
-			const householdSize = index + 1;
-			cell.textContent = org.table[householdSize] || '';
-		});
-
-		// Show both tables by removing inline style
-		desktopTable.style.removeProperty('display');
-		mobileTable.style.removeProperty('display');
+		// Show table by removing inline style
+		table.style.removeProperty('display');
 	}
 
 	// Helper function to handle organization button clicks
-	function helperHandleOrgButtonClick(e) {
-		if (e.target.hasAttribute('data-org-key')) {
-			const orgKey = e.target.getAttribute('data-org-key');
-			helperPopulateTables(orgKey, incomeLookupData);
+	function helperHandleOrgButtonClick(e, desktopTable, mobileTable) {
+		if (!e.target.hasAttribute('data-org-key')) return;
 
-			// Update active state on buttons
-			const allButtons = document.querySelectorAll('[data-org-key]');
-			allButtons.forEach(btn => {
-				btn.classList.remove('bg-green', 'text-white');
-				btn.classList.add('bg-transparent');
-			});
-			e.target.classList.remove('bg-transparent');
-			e.target.classList.add('bg-green', 'text-white');
-		}
+		const orgKey = e.target.getAttribute('data-org-key');
+		const orgData = incomeLookupData[orgKey];
+		if (!orgData) return;
+
+		// Populate both tables
+		helperPopulateTable(desktopTable, orgData);
+		helperPopulateTable(mobileTable, orgData);
+
+		// Update active state on buttons
+		const allButtons = document.querySelectorAll('[data-org-key]');
+		allButtons.forEach(btn => {
+			btn.classList.remove('bg-green', 'text-white');
+			btn.classList.add('bg-transparent');
+		});
+		e.target.classList.remove('bg-transparent');
+		e.target.classList.add('bg-green', 'text-white');
 	}
 
-	// Helper function to confirm required DOM elements exist
-	function helperConfirmRequiredDOM(container, template, data) {
-		if (!container) {
-			console.error('Essential element [data-organizations] not found.');
-			return false;
+	// Main initialization function
+	function initWeatherization() {
+		// Guard clause: Check for data
+		if (typeof incomeLookupData === 'undefined' || typeof incomeLookupData !== 'object' || Object.keys(incomeLookupData).length === 0) {
+			console.error('incomeLookupData is required but not found or empty.');
+			return;
 		}
 
+		// Guard clause: Check for main container
+		const incomeLookup = document.querySelector('[data-income-lookup]');
+		if (!incomeLookup) {
+			console.error('Main container [data-income-lookup] not found.');
+			return;
+		}
+
+		// Guard clause: Check for organizations container
+		const container = incomeLookup.querySelector('[data-organizations]');
+		if (!container) {
+			console.error('Container [data-organizations] not found.');
+			return;
+		}
+
+		// Guard clause: Check for template
+		const template = container.querySelector('#member-button');
 		if (!template) {
 			console.error('Template #member-button not found.');
-			return false;
+			return;
 		}
 
-		if (typeof data === 'undefined' || typeof data !== 'object' || Object.keys(data).length === 0) {
-			console.error('incomeLookupData is required but not found or empty.');
-			return false;
+		// Guard clause: Check for tables
+		const desktopTable = incomeLookup.querySelector('[data-table="desktop"]');
+		const mobileTable = incomeLookup.querySelector('[data-table="mobile"]');
+		if (!desktopTable || !mobileTable) {
+			console.error('Tables not found.');
+			return;
 		}
-
-		return true;
-	}
-
-	// Initialize income lookup functionality
-	function initIncomeLookup() {
-		const container = document.querySelector('[data-organizations]');
-		const template = document.querySelector('#member-button');
-
-		// Validate required elements
-		if (!helperConfirmRequiredDOM(container, template, incomeLookupData)) return;
 
 		// Create organization buttons
 		helperCreateOrgButtons(container, template, incomeLookupData);
 
 		// Add event delegation for button clicks
-		container.addEventListener('click', helperHandleOrgButtonClick);
-	}
-
-	// Main initialization function
-	function initWeatherization() {
-		initIncomeLookup();
+		container.addEventListener('click', (e) => {
+			helperHandleOrgButtonClick(e, desktopTable, mobileTable);
+		});
 	}
 
 	// Initialize on DOM load
