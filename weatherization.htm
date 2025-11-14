@@ -232,6 +232,7 @@
 
 			button.textContent = org.label;
 			button.setAttribute('data-org-key', orgKey);
+			button.setAttribute('aria-pressed', 'false');
 
 			container.appendChild(clone);
 		});
@@ -250,12 +251,17 @@
 	}
 
 	// Helper function to handle organization button clicks
-	function helperHandleOrgButtonClick(e, desktopTable, mobileTable) {
+	function helperHandleOrgButtonClick(e, container, desktopTable, mobileTable) {
 		if (!e.target.hasAttribute('data-org-key')) return;
 
 		const orgKey = e.target.getAttribute('data-org-key');
 		const orgData = incomeLookupData[orgKey];
 		if (!orgData) return;
+
+		// Update aria-pressed on all buttons
+		const allButtons = container.querySelectorAll('[data-org-key]');
+		allButtons.forEach(btn => btn.setAttribute('aria-pressed', 'false'));
+		e.target.setAttribute('aria-pressed', 'true');
 
 		// Populate both tables
 		helperPopulateTable(desktopTable, orgData);
@@ -304,7 +310,7 @@
 
 		// Add event delegation for button clicks
 		container.addEventListener('click', (e) => {
-			helperHandleOrgButtonClick(e, desktopTable, mobileTable);
+			helperHandleOrgButtonClick(e, container, desktopTable, mobileTable);
 		});
 	}
 
