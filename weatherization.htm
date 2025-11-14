@@ -37,8 +37,8 @@
 						class="absolute inset-0 w-full h-full object-cover z-0" />
 				</section>
 
-				<section class="px-8 py-16 text-center text-balance sm:min-h-[400px] sm:grid sm:place-content-center">
-					<div class="mx-auto max-w-2xl space-y-4">
+				<section class="px-8 py-16  ">
+					<div class="mx-auto max-w-2xl space-y-4 text-center text-balance">
 						<h2 class="font-serif font-light text-3xl">
 							See if you qualify
 						</h2>
@@ -61,112 +61,115 @@
 							and may request income documentation.
 							If you have questions, please contact your electric utility.
 						</p>
+						<p>This is a table to help you check if you qualify based on your household size.* If you
+							make less than the amount listed,
+							you qualify! Keep in mind that income thresholds are higher in some areas, so if you
+							live in a higher-income area or a
+							resort community, you may still qualify.
 
+						</p>
+						<p><small>
 
-						<div>
-							<p>This is a table to help you check if you qualify based on your household size.* If you
-								make less than the amount listed,
-								you qualify! Keep in mind that income thresholds are higher in some areas, so if you
-								live in a higher-income area or a
-								resort community, you may still qualify.
+								*Household members are people who live with you for whom you have financial
+								responsibilities, not roommates.
+							</small>
 
-							</p>
-							<p><small>
+						</p>
+					</div>
 
-									*Household members are people who live with you for whom you have financial
-									responsibilities, not roommates.
-								</small>
+					<div class="mx-auto space-y-4" data-income-lookup>
 
-							</p>
-
-							<div data-income-lookup>
-								<div class="mb-4" data-organizations>
-									<template id="member-button">
-										<button
-											class="cursor-pointer inline-block rounded-full py-2 px-3 border border-solid no-underline leading-none transition-none hover:bg-green/70 hover:text-black"
-											style="font-weight: normal; color: #000"></button>
-									</template>
-									<!-- Buttons will go here -->
-								</div>
-								<table style="display: none;"
-									class="hideme lg:table table-auto border border-gray-500 w-full text-center"
-									data-table="desktop">
-									<thead>
-										<tr class="bg-white">
-											<th class="border border-gray-500 py-2 text-right">Household Size</th>
-											<th class="border border-gray-500 py-2 text-center">1</th>
-											<th class="border border-gray-500 py-2 text-center">2</th>
-											<th class="border border-gray-500 py-2 text-center">3</th>
-											<th class="border border-gray-500 py-2 text-center">4</th>
-											<th class="border border-gray-500 py-2 text-center">5</th>
-											<th class="border border-gray-500 py-2 text-center">6</th>
-											<th class="border border-gray-500 py-2 text-center">7</th>
-											<th class="border border-gray-500 py-2 text-center">8</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<th class="border border-gray-500 py-2 text-right bg-white">Income Threshold
-											</th>
-											<td class="border py-2 text-center bg-white" data-value></td>
-											<td class="border py-2 text-center bg-white" data-value></td>
-											<td class="border py-2 text-center bg-white" data-value></td>
-											<td class="border py-2 text-center bg-white" data-value></td>
-											<td class="border py-2 text-center bg-white" data-value></td>
-											<td class="border py-2 text-center bg-white" data-value></td>
-											<td class="border py-2 text-center bg-white" data-value></td>
-											<td class="border py-2 text-center bg-white" data-value></td>
-										</tr>
-									</tbody>
-								</table>
-
-								<table style="display: none;"
-									class="border border-gray-500 w-full max-w-sm min-w-0 mx-auto lg:hideme"
-									data-table="mobile">
-									<thead>
-										<tr class="bg-gray">
-											<th class="border border-gray-500 px-4 py-2 text-center">Household Size</th>
-											<th class="border border-gray-500 px-4 py-2 text-center">Income Threshold
-											</th>
-										</tr>
-									</thead>
-									<tbody class="bg-white">
-										<tr>
-											<td class="border px-4 py-2">1 Person</td>
-											<td class="border px-4 py-2" data-value></td>
-										</tr>
-										<tr>
-											<td class="border px-4 py-2">2 Persons</td>
-											<td class="border px-4 py-2" data-value></td>
-										</tr>
-										<tr>
-											<td class="border px-4 py-2">3 Persons</td>
-											<td class="border px-4 py-2" data-value></td>
-										</tr>
-										<tr>
-											<td class="border px-4 py-2">4 Persons</td>
-											<td class="border px-4 py-2" data-value></td>
-										</tr>
-										<tr>
-											<td class="border px-4 py-2">5 Persons</td>
-											<td class="border px-4 py-2" data-value></td>
-										</tr>
-										<tr>
-											<td class="border px-4 py-2">6 Persons</td>
-											<td class="border px-4 py-2" data-value></td>
-										</tr>
-										<tr>
-											<td class="border px-4 py-2">7 Persons</td>
-											<td class="border px-4 py-2" data-value></td>
-										</tr>
-										<tr>
-											<td class="border px-4 py-2">8 Persons</td>
-											<td class="border px-4 py-2" data-value></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
+						<div class="weatherization-buttons text-center my-4" data-organizations>
+							<style>
+								.weatherization-buttons button[aria-pressed="true"] {
+									color: #00588d;
+									border-color: #00588d;
+									background-color: white;
+								}
+							</style>
+							<template id="member-button">
+								<button
+									class="cursor-pointer inline-block rounded-full py-2 px-3 border border-solid no-underline leading-none transition-none hover:text-black"></button>
+							</template>
+							<!-- Buttons will go here -->
 						</div>
+						<table style="display: none;"
+							class="w-full hideme lg:table table-auto border border-gray-500 text-center"
+							data-table="desktop">
+							<thead>
+								<tr class="bg-white">
+									<th class="border border-gray-500 py-2 text-right">Household Size</th>
+									<th class="border border-gray-500 py-2 text-center">1</th>
+									<th class="border border-gray-500 py-2 text-center">2</th>
+									<th class="border border-gray-500 py-2 text-center">3</th>
+									<th class="border border-gray-500 py-2 text-center">4</th>
+									<th class="border border-gray-500 py-2 text-center">5</th>
+									<th class="border border-gray-500 py-2 text-center">6</th>
+									<th class="border border-gray-500 py-2 text-center">7</th>
+									<th class="border border-gray-500 py-2 text-center">8</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th class="border border-gray-500 py-2 text-right bg-white">Income Threshold
+									</th>
+									<td class="border py-2 text-center bg-white" data-value></td>
+									<td class="border py-2 text-center bg-white" data-value></td>
+									<td class="border py-2 text-center bg-white" data-value></td>
+									<td class="border py-2 text-center bg-white" data-value></td>
+									<td class="border py-2 text-center bg-white" data-value></td>
+									<td class="border py-2 text-center bg-white" data-value></td>
+									<td class="border py-2 text-center bg-white" data-value></td>
+									<td class="border py-2 text-center bg-white" data-value></td>
+								</tr>
+							</tbody>
+						</table>
+
+						<table style="display: none;"
+							class="border border-gray-500 w-full max-w-sm min-w-0 mx-auto lg:hideme"
+							data-table="mobile">
+							<thead>
+								<tr class="bg-gray">
+									<th class="border border-gray-500 px-4 py-2 text-center">Household Size</th>
+									<th class="border border-gray-500 px-4 py-2 text-center">Income Threshold
+									</th>
+								</tr>
+							</thead>
+							<tbody class="bg-white">
+								<tr>
+									<td class="border px-4 py-2">1 Person</td>
+									<td class="border px-4 py-2" data-value></td>
+								</tr>
+								<tr>
+									<td class="border px-4 py-2">2 Persons</td>
+									<td class="border px-4 py-2" data-value></td>
+								</tr>
+								<tr>
+									<td class="border px-4 py-2">3 Persons</td>
+									<td class="border px-4 py-2" data-value></td>
+								</tr>
+								<tr>
+									<td class="border px-4 py-2">4 Persons</td>
+									<td class="border px-4 py-2" data-value></td>
+								</tr>
+								<tr>
+									<td class="border px-4 py-2">5 Persons</td>
+									<td class="border px-4 py-2" data-value></td>
+								</tr>
+								<tr>
+									<td class="border px-4 py-2">6 Persons</td>
+									<td class="border px-4 py-2" data-value></td>
+								</tr>
+								<tr>
+									<td class="border px-4 py-2">7 Persons</td>
+									<td class="border px-4 py-2" data-value></td>
+								</tr>
+								<tr>
+									<td class="border px-4 py-2">8 Persons</td>
+									<td class="border px-4 py-2" data-value></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</section>
 			</div>
