@@ -20,13 +20,15 @@ function helperPopulateTable(table, orgData) {
 		const householdSize = index + 1;
 		cell.textContent = orgData.table[householdSize] || '';
 	});
+}
 
-	// Show table by removing inline style
-	table.style.removeProperty('display');
+// Helper function to show the income tables container
+function helperShowIncomeTablesContainer(container) {
+	container.classList.remove('hideme');
 }
 
 // Helper function to handle organization button clicks
-function helperHandleOrgButtonClick(e, container, desktopTable, mobileTable) {
+function helperHandleOrgButtonClick(e, container, desktopTable, mobileTable, incomeTablesContainer) {
 	if (!e.target.hasAttribute('data-org-key')) return;
 
 	const orgKey = e.target.getAttribute('data-org-key');
@@ -37,6 +39,9 @@ function helperHandleOrgButtonClick(e, container, desktopTable, mobileTable) {
 	const allButtons = container.querySelectorAll('[data-org-key]');
 	allButtons.forEach((btn) => btn.setAttribute('aria-pressed', 'false'));
 	e.target.setAttribute('aria-pressed', 'true');
+
+	// Show the income tables container
+	helperShowIncomeTablesContainer(incomeTablesContainer);
 
 	// Populate both tables
 	helperPopulateTable(desktopTable, orgData);
@@ -80,12 +85,19 @@ function initWeatherization() {
 		return;
 	}
 
+	// Guard clause: Check for income tables container
+	const incomeTablesContainer = incomeLookup.querySelector('[data-income-tables]');
+	if (!incomeTablesContainer) {
+		console.error('Income tables container [data-income-tables] not found.');
+		return;
+	}
+
 	// Create organization buttons
 	helperCreateOrgButtons(container, template, incomeLookupData);
 
 	// Add event delegation for button clicks
 	container.addEventListener('click', (e) => {
-		helperHandleOrgButtonClick(e, container, desktopTable, mobileTable);
+		helperHandleOrgButtonClick(e, container, desktopTable, mobileTable, incomeTablesContainer);
 	});
 }
 
