@@ -7,7 +7,8 @@
 		"dev": "npx tailwindcss -i ./src/input.css -o ./assets/css/build.css --watch",
 		"build": "npx postcss ./src/input.css -o ./assets/css/build.css",
 		"devar": "cross-env TAILWIND_CONFIG=./tailwind.config.ar.js npx postcss ./src/input.css -o ./assets/css/annual-reports.css --watch",
-		"buildar": "cross-env TAILWIND_CONFIG=./tailwind.config.ar.js npx postcss ./src/input.css -o ./assets/css/annual-reports.css"
+		"buildar": "cross-env TAILWIND_CONFIG=./tailwind.config.ar.js npx postcss ./src/input.css -o ./assets/css/annual-reports.css",
+		"convert:ami": "node scripts/convert-ami-csv.js"
 	},
 	"keywords": [],
 	"author": "",
