@@ -38,7 +38,7 @@
 				<section class="px-8 py-16 bg-sky-50">
 					<div class="mx-auto max-w-3xl space-y-6 text-center text-balance">
 						<h2 class="font-serif font-light text-3xl">Check Your Income Bracket</h2>
-						<p>Select your county and household size to view the current low-income, medium-income, and
+						<p>Select your county and household size to view the current low-income, moderate-income, and
 							non-qualifying ranges.</p>
 					</div>
 
@@ -62,6 +62,19 @@
 
 						<p data-error class="hidden mt-4 text-left text-red-700"></p>
 
+						<div
+							class="mt-6 rounded-md border border-emerald-700 bg-emerald-50 p-4 text-left text-sm text-emerald-900">
+							<div class="flex items-start gap-3">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true"
+									class="mt-0.5 h-5 w-5 shrink-0 fill-current">
+									<path
+										d="M256 32a224 224 0 1 1 0 448 224 224 0 1 1 0-448zm0 480a256 256 0 1 0 0-512 256 256 0 1 0 0 512zM208 352c-8.8 0-16 7.2-16 16s7.2 16 16 16l96 0c8.8 0 16-7.2 16-16s-7.2-16-16-16l-32 0 0-112c0-8.8-7.2-16-16-16l-48 0c-8.8 0-16 7.2-16 16s7.2 16 16 16l32 0 0 96-32 0zm48-168a24 24 0 1 0 0-48 24 24 0 1 0 0 48z" />
+								</svg>
+								<p class="mb-0">Household members are people who live with you for whom you have
+									financial responsibilities, not roommates or temporary guests.</p>
+							</div>
+						</div>
+
 						<div data-results class="hidden mt-6" aria-live="polite">
 							<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
 
@@ -77,7 +90,8 @@
 
 								<div class="rounded-lg overflow-hidden">
 									<div class="bg-sky-300 px-4 py-3">
-										<span class="font-semibold text-xs uppercase tracking-wider text-sky-900">Medium
+										<span
+											class="font-semibold text-xs uppercase tracking-wider text-sky-900">Moderate
 											Income</span>
 									</div>
 									<div class="bg-sky-100 px-4 py-5">
@@ -97,8 +111,17 @@
 								</div>
 
 							</div>
-							<small class="mt-4 block text-gray-dark">*Household members are people who live with you for
-								whom you have financial responsibilities, not roommates.</small>
+							<div
+								class="mt-4 rounded-md border border-sky-200 bg-sky-50 p-4 text-left text-sm text-sky-900">
+								<div class="border-l-4 border-sky-600 pl-3">
+									<strong>Low-income:</strong> Households making less than 80% of Area Median Income
+									(AMI) per year.
+								</div>
+								<div class="mt-3 border-l-4 border-sky-300 pl-3">
+									<strong>Moderate-income:</strong> Households making between 80% and 150% of Area
+									Median Income (AMI) per year.
+								</div>
+							</div>
 						</div>
 					</div>
 				</section>
