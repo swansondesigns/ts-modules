@@ -1,5 +1,6 @@
 .vscode
 .npmrc
+.claude
 node_modules
 assets/css/
 assets/js/GSDevTools.min.js
