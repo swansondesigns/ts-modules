@@ -151,33 +151,10 @@
 	const incomeLookupData = {
 		'hea': {
 			'label': 'Highline Electric',
-			'table': {
-				1: '$108,300',
-				2: '$123,750',
-				3: '$139,200',
-				4: '$154,650',
-				5: '$167,050',
-				6: '$179,400',
-				7: '$191,800',
-				8: '$204,150',
-			},
-		},
-		'wrea': {
-			'label': 'White River Electric',
-			// Multi-row: one row per county group. Logan and Sedgwick share the same
+			// Highline serves multiple counties. Logan and Sedgwick share the same
 			// thresholds, so they are combined into a single row.
 			'rows': {
-				'Phillips': {
-					1: '$108,300',
-					2: '$123,750',
-					3: '$139,200',
-					4: '$154,650',
-					5: '$167,050',
-					6: '$179,400',
-					7: '$191,800',
-					8: '$204,150',
-				},
-				'Logan & Sedgwick': {
+				'Logan & Sedgwick Counties': {
 					1: '$106,800',
 					2: '$116,900',
 					3: '$131,500',
@@ -187,6 +164,29 @@
 					7: '$181,200',
 					8: '$192,900',
 				},
+				'Phillips County': {
+					1: '$108,300',
+					2: '$123,750',
+					3: '$139,200',
+					4: '$154,650',
+					5: '$167,050',
+					6: '$179,400',
+					7: '$191,800',
+					8: '$204,150',
+				},
+			},
+		},
+		'wrea': {
+			'label': 'White River Electric',
+			'table': {
+				1: '$106,800',
+				2: '$116,900',
+				3: '$131,500',
+				4: '$146,100',
+				5: '$157,800',
+				6: '$169,500',
+				7: '$181,200',
+				8: '$192,900',
 			},
 		}
 	}
