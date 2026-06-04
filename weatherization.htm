@@ -87,11 +87,29 @@
 							<p>This is a table to help you check if you qualify based on your household size. If you
 								make less than the amount listed, you qualify!
 							</p>
+							<!-- One row is cloned per data entry: single-row "table" orgs get one row
+							     (labeled "Income Threshold"); multi-row "rows" orgs get one row per label. -->
+							<template id="row-template">
+								<tr>
+									<th class="border border-gray-500 py-2 px-3 text-right bg-white whitespace-nowrap"
+										data-row-label></th>
+									<td class="border py-2 text-center bg-white" data-value></td>
+									<td class="border py-2 text-center bg-white" data-value></td>
+									<td class="border py-2 text-center bg-white" data-value></td>
+									<td class="border py-2 text-center bg-white" data-value></td>
+									<td class="border py-2 text-center bg-white" data-value></td>
+									<td class="border py-2 text-center bg-white" data-value></td>
+									<td class="border py-2 text-center bg-white" data-value></td>
+									<td class="border py-2 text-center bg-white" data-value></td>
+								</tr>
+							</template>
+
+							<!-- Desktop: full-width, fits without scrolling -->
 							<table class="w-full hideme lg:table table-auto border border-gray-500 text-center"
 								data-table="desktop">
 								<thead>
 									<tr class="bg-white">
-										<th class="border border-gray-500 py-2 text-right">Household Size</th>
+										<th class="border border-gray-500 py-2 px-3 text-right">Household Size</th>
 										<th class="border border-gray-500 py-2 text-center">1</th>
 										<th class="border border-gray-500 py-2 text-center">2</th>
 										<th class="border border-gray-500 py-2 text-center">3</th>
@@ -102,67 +120,20 @@
 										<th class="border border-gray-500 py-2 text-center">8</th>
 									</tr>
 								</thead>
-								<tbody>
-									<tr>
-										<th class="border border-gray-500 py-2 text-right bg-white">Income Threshold
-										</th>
-										<td class="border py-2 text-center bg-white" data-value></td>
-										<td class="border py-2 text-center bg-white" data-value></td>
-										<td class="border py-2 text-center bg-white" data-value></td>
-										<td class="border py-2 text-center bg-white" data-value></td>
-										<td class="border py-2 text-center bg-white" data-value></td>
-										<td class="border py-2 text-center bg-white" data-value></td>
-										<td class="border py-2 text-center bg-white" data-value></td>
-										<td class="border py-2 text-center bg-white" data-value></td>
-									</tr>
+								<tbody data-table-body>
+									<!-- Rows injected by weatherization.js -->
 								</tbody>
 							</table>
 
-							<table class="border border-gray-500 w-full max-w-sm min-w-0 mx-auto lg:hideme"
-								data-table="mobile">
-								<thead>
-									<tr class="bg-gray">
-										<th class="border border-gray-500 px-4 py-2 text-center">Household Size</th>
-										<th class="border border-gray-500 px-4 py-2 text-center">Income Threshold
-										</th>
-									</tr>
-								</thead>
-								<tbody class="bg-white">
-									<tr>
-										<td class="border px-4 py-2">1 Person</td>
-										<td class="border px-4 py-2" data-value></td>
-									</tr>
-									<tr>
-										<td class="border px-4 py-2">2 Persons</td>
-										<td class="border px-4 py-2" data-value></td>
-									</tr>
-									<tr>
-										<td class="border px-4 py-2">3 Persons</td>
-										<td class="border px-4 py-2" data-value></td>
-									</tr>
-									<tr>
-										<td class="border px-4 py-2">4 Persons</td>
-										<td class="border px-4 py-2" data-value></td>
-									</tr>
-									<tr>
-										<td class="border px-4 py-2">5 Persons</td>
-										<td class="border px-4 py-2" data-value></td>
-									</tr>
-									<tr>
-										<td class="border px-4 py-2">6 Persons</td>
-										<td class="border px-4 py-2" data-value></td>
-									</tr>
-									<tr>
-										<td class="border px-4 py-2">7 Persons</td>
-										<td class="border px-4 py-2" data-value></td>
-									</tr>
-									<tr>
-										<td class="border px-4 py-2">8 Persons</td>
-										<td class="border px-4 py-2" data-value></td>
-									</tr>
-								</tbody>
-							</table>
-							<p><small>
+							<!-- Mobile: transposed — household size down the rows, one column per data
+							     entry (e.g. county). Column count depends on the selected organization, so
+							     the whole table (thead + tbody) is built by weatherization.js. Scrolls
+							     horizontally when there are enough columns to overflow a narrow screen. -->
+							<div class="overflow-auto lg:hideme">
+								<table class="min-w-full border border-gray-500 text-center"
+									data-table="mobile"></table>
+							</div>
+							<p class="mt-4"><small>
 									*Household members are people who live with you for whom you have financial
 									responsibilities, not
 									roommates.</small>
@@ -193,18 +164,32 @@
 		},
 		'wrea': {
 			'label': 'White River Electric',
-			'table': {
-				1: '$106,800',
-				2: '$116,900',
-				3: '$131,500',
-				4: '$146,100',
-				5: '$157,800',
-				6: '$169,500',
-				7: '$181,200',
-				8: '$192,900',
+			// Multi-row: one row per county group. Logan and Sedgwick share the same
+			// thresholds, so they are combined into a single row.
+			'rows': {
+				'Phillips': {
+					1: '$108,300',
+					2: '$123,750',
+					3: '$139,200',
+					4: '$154,650',
+					5: '$167,050',
+					6: '$179,400',
+					7: '$191,800',
+					8: '$204,150',
+				},
+				'Logan & Sedgwick': {
+					1: '$106,800',
+					2: '$116,900',
+					3: '$131,500',
+					4: '$146,100',
+					5: '$157,800',
+					6: '$169,500',
+					7: '$181,200',
+					8: '$192,900',
+				},
 			},
 		}
-	}						
+	}
 </script>
 
 <script src="assets/js/weatherization.js"></script>
